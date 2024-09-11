@@ -1,0 +1,10 @@
+export { default as About } from "./About";
+export { default as Blog } from "./Blog";
+export { default as Contact } from "./Contact";
+export { default as Home } from "./HomeLayout";
+export { default as ShopNew } from "./ShopNew";
+export { default as Catalog } from "./Catalog";
+export { default as Cart } from "./Cart";
+export { default as ErrorPage } from "./ErrorPage";
+export { default as HomeLayout } from "./HomeLayout";
+export { default as Landing } from "./Landing";
