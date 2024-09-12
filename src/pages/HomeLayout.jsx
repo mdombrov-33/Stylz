@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Header, Navbar } from "../components";
+import { Header, Navbar, MainFooter } from "../components";
 
 function HomeLayout() {
   return (
@@ -7,6 +7,7 @@ function HomeLayout() {
       <Header />
       <Navbar />
       <Outlet />
+      <MainFooter />
     </>
   );
 }
