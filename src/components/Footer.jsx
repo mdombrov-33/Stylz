@@ -8,7 +8,7 @@ function Footer() {
         selected
       </div>
       <div className="font-redHatDisplay text-2xl text-neutral-content sm:text-2xl md:text-4xl lg:text-5xl lg:tracking-widest">
-        summer 2024
+        season 2024
       </div>
     </footer>
   );
