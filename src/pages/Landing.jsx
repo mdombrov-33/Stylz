@@ -14,7 +14,7 @@ function Landing() {
         >
           <div className="flex h-full w-full items-center justify-center bg-black bg-opacity-50">
             <div className="text-center text-white">
-              <button className="btn mt-16 border-black bg-accent font-bold uppercase lg:text-2xl">
+              <button className="btn mt-16 border-black bg-accent font-redHatDisplay font-bold uppercase lg:text-2xl">
                 check new arrivals
               </button>
             </div>
@@ -26,16 +26,16 @@ function Landing() {
         >
           <div className="relative flex h-full w-full items-center bg-black bg-opacity-50">
             <div className="text-white">
-              <button className="btn ml-4 border-2 border-stone-950 lg:text-3xl">
-                - Season 2024
+              <button className="btn ml-4 border-2 border-stone-950 font-redHatDisplay uppercase lg:text-3xl">
+                - season 2024
               </button>
-              <h1 className="absolute top-[26rem] ml-4 text-4xl font-bold capitalize">
+              <h1 className="absolute top-[26rem] ml-4 font-delaGothicOne text-4xl font-medium capitalize">
                 creating unique styles.
               </h1>
-              <p className="absolute top-[32rem] ml-4">
+              <p className="absolute top-[32rem] ml-4 font-redHatDisplay">
                 From concept to execution, we craft timeless identities
               </p>
-              <p className="absolute top-[34rem] ml-4">
+              <p className="absolute top-[34rem] ml-4 font-redHatDisplay">
                 that resonate with your audience.
               </p>
             </div>

@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 
 import { Link, NavLink } from "react-router-dom";
 import brand from "../assets/brand.svg";
+import themeClick from "../assets/switch.mp3";
 import { BsCart3, BsSunFill, BsMoonFill } from "react-icons/bs";
 
-const audio = new Audio("../../public/switch.mp3");
+const audio = new Audio(themeClick);
 
 const themes = {
   lemonade: "lemonade",
@@ -136,6 +137,12 @@ function Navbar() {
         </ul>
       </div>
       <div className="navbar-end">
+        <Link
+          to="/login"
+          className="btn btn-ghost font-redHatDisplay text-2xl font-bold uppercase"
+        >
+          login
+        </Link>
         <label className="swap swap-rotate">
           <input type="checkbox" onChange={handleTheme} />
           <BsSunFill className="swap-on h-4 w-4" />
