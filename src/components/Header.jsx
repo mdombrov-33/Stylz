@@ -4,7 +4,7 @@ function Header() {
       <span className="w-full flex-1 overflow-hidden text-nowrap text-base font-bold uppercase">
         *** open for new collection *** open for new collection *** open for new
         collection *** open for new collection *** open for new collection ***
-        open for new collection *** open for new collection *** open for new new
+        open for new collection *** open for new collection *** open for new
         collection *** open for
       </span>
     </header>

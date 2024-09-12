@@ -1,16 +1,13 @@
 import { Outlet } from "react-router-dom";
-import { Header, Navbar, Footer } from "../components";
+import { Header, Navbar, LandingFooter } from "../components";
 
 function HomeLayout() {
   return (
-    <div className="flex flex-col">
+    <>
       <Header />
       <Navbar />
-      <div className="flex-1">
-        <Outlet />
-      </div>
-      <Footer />
-    </div>
+      <Outlet />
+    </>
   );
 }
 
