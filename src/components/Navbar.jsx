@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import brand from "../assets/brand.svg";
 import { BsCart3, BsSunFill, BsMoonFill } from "react-icons/bs";
 
@@ -56,23 +56,33 @@ function Navbar() {
             className="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-100 p-2 font-redHatDisplay font-bold uppercase shadow"
           >
             <li>
-              <a>new collection</a>
+              <NavLink to="/" className="text-base-content">
+                home
+              </NavLink>
             </li>
             <li></li>
             <li>
-              <a>catalog</a>
+              <NavLink to="/catalog" className="text-base-content">
+                catalog
+              </NavLink>
             </li>
             <li></li>
             <li>
-              <a>about brand</a>
+              <NavLink to="/about" className="text-base-content">
+                about brand
+              </NavLink>
             </li>
             <li></li>
             <li>
-              <a>blog</a>
+              <NavLink to="/blog" className="text-base-content">
+                blog
+              </NavLink>
             </li>
             <li></li>
             <li>
-              <a>contact us</a>
+              <NavLink to="/contact" className="text-base-content">
+                contact
+              </NavLink>
             </li>
           </ul>
         </div>
@@ -84,19 +94,44 @@ function Navbar() {
       <div className="navbar-center ml-4 hidden lg:flex">
         <ul className="menu menu-horizontal px-1 font-redHatDisplay font-bold uppercase">
           <li className="lg:border-l-2 lg:border-stone-950">
-            <a>new collection </a>
+            <NavLink
+              className={({ isActive }) => (isActive ? "underline" : "")}
+              to="/"
+            >
+              home
+            </NavLink>
           </li>
           <li>
-            <a>catalog</a>
+            <NavLink
+              className={({ isActive }) => (isActive ? "underline" : "")}
+              to="/catalog"
+            >
+              catalog
+            </NavLink>
           </li>
           <li>
-            <a>about brand</a>
+            <NavLink
+              className={({ isActive }) => (isActive ? "underline" : "")}
+              to="/about"
+            >
+              about brand
+            </NavLink>
           </li>
           <li>
-            <a>blog</a>
+            <NavLink
+              className={({ isActive }) => (isActive ? "underline" : "")}
+              to="/blog"
+            >
+              blog
+            </NavLink>
           </li>
           <li className="lg:border-r-2 lg:border-stone-950">
-            <a>contact us </a>
+            <NavLink
+              className={({ isActive }) => (isActive ? "underline" : "")}
+              to="/contact"
+            >
+              contact
+            </NavLink>
           </li>
         </ul>
       </div>
