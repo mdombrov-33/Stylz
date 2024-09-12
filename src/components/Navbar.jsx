@@ -53,7 +53,7 @@ function Navbar() {
           </div>
           <ul
             tabIndex={0}
-            className="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-100 p-2 font-bold uppercase shadow"
+            className="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-100 p-2 font-redHatDisplay font-bold uppercase shadow"
           >
             <li>
               <a>new collection</a>
@@ -77,16 +77,12 @@ function Navbar() {
           </ul>
         </div>
         <div className="btn btn-ghost hidden font-delaGothicOne text-xl font-bold uppercase sm:flex">
-          <img
-            src={brand}
-            className="hidden h-12 hover:btn-ghost sm:block"
-            alt=""
-          />
+          <img src={brand} className="hidden h-12 sm:block" alt="" />
           <span className="hidden sm:block">Stylz</span>
         </div>
       </div>
       <div className="navbar-center ml-4 hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 font-bold uppercase">
+        <ul className="menu menu-horizontal px-1 font-redHatDisplay font-bold uppercase">
           <li className="lg:border-l-2 lg:border-stone-950">
             <a>new collection </a>
           </li>

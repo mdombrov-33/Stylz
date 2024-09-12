@@ -2,12 +2,12 @@ import hero1 from "../assets/hero1.jpg";
 import hero2 from "../assets/hero2.jpg";
 
 import { FaArrowDown } from "react-icons/fa";
-import { LandingFooter } from "../components";
+import { LandingFooter, Showcase } from "../components";
 
 function Landing() {
   return (
     <>
-      <section className="grid h-[80dvh] lg:grid-cols-2">
+      <section className="grid h-[80dvh] overflow-hidden lg:grid-cols-2">
         <div
           className="h-full bg-cover"
           style={{ backgroundImage: `url(${hero1})` }}
@@ -49,11 +49,7 @@ function Landing() {
         </div>
       </section>
       <LandingFooter />
-      <div className="h-screen">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid quas
-        esse et ex molestias. Debitis mollitia, quo nobis fuga voluptas officiis
-        qui ad itaque tempora tempore minus culpa perferendis molestias.
-      </div>
+      <Showcase />
     </>
   );
 }

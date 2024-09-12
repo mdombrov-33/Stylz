@@ -1,7 +1,7 @@
 function LandingFooter() {
   return (
     <footer
-      className="flex h-20 items-center justify-around bg-info-content uppercase text-neutral-content"
+      className="flex h-[72px] items-center justify-around bg-info-content uppercase text-neutral-content"
       id="scroll-down"
     >
       <span className="font-redHatDisplay tracking-wider text-accent md:text-2xl">
