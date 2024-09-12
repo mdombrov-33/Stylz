@@ -32,7 +32,7 @@ function Navbar() {
   }, [theme]);
 
   return (
-    <div className="navbar border-b-2 border-t-2 border-stone-950 bg-base-100">
+    <div className="navbar sticky top-0 z-10 border-b-2 border-t-2 border-stone-950 bg-base-100">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -76,10 +76,14 @@ function Navbar() {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost font-delaGothicOne text-xl font-bold uppercase">
-          <img src={brand} className="h-12" alt="" />
-          <span>Stylz</span>
-        </a>
+        <div className="btn btn-ghost hidden font-delaGothicOne text-xl font-bold uppercase sm:flex">
+          <img
+            src={brand}
+            className="hidden h-12 hover:btn-ghost sm:block"
+            alt=""
+          />
+          <span className="hidden sm:block">Stylz</span>
+        </div>
       </div>
       <div className="navbar-center ml-4 hidden lg:flex">
         <ul className="menu menu-horizontal px-1 font-bold uppercase">

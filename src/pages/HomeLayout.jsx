@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Header, Navbar, LandingFooter } from "../components";
+import { Header, Navbar } from "../components";
 
 function HomeLayout() {
   return (
