@@ -12,58 +12,58 @@ import {
 function Showcase() {
   return (
     <div className="grid">
-      <div className="grid grid-cols-1 sm:grid-cols-4 sm:grid-rows-2 lg:grid-cols-4 lg:grid-rows-2">
+      <div className="grid grid-cols-4 sm:grid-cols-4 sm:grid-rows-2 lg:grid-cols-4 lg:grid-rows-2">
         <div
-          className="hidden h-[50dvh] border-b-2 border-r-2 border-stone-950 bg-cover md:block"
+          className="h-[50dvh] border-b-2 border-r-2 border-stone-950 bg-cover bg-center sm:bg-center lg:bg-top"
           style={{
             backgroundImage: `url(${showcase1})`,
             filter: "brightness(70%)",
           }}
         ></div>
         <div
-          className="hidden h-[50dvh] border-b-2 border-r-2 border-stone-950 bg-cover md:block"
+          className="h-[50dvh] border-b-2 border-r-2 border-stone-950 bg-cover bg-center sm:bg-center lg:bg-top"
           style={{
             backgroundImage: `url(${showcase2})`,
             filter: "brightness(70%)",
           }}
         ></div>
         <div
-          className="hidden h-[50dvh] border-b-2 border-r-2 border-stone-950 bg-cover md:block"
+          className="h-[50dvh] border-b-2 border-r-2 border-stone-950 bg-cover bg-center sm:bg-center lg:bg-top"
           style={{
             backgroundImage: `url(${showcase3})`,
             filter: "brightness(70%)",
           }}
         ></div>
         <div
-          className="hidden h-[50dvh] border-b-2 border-stone-950 bg-cover md:block"
+          className="h-[50dvh] border-b-2 border-stone-950 bg-cover bg-center sm:bg-center lg:bg-top"
           style={{
             backgroundImage: `url(${showcase4})`,
             filter: "brightness(70%)",
           }}
         ></div>
         <div
-          className="md-block hidden h-[50dvh] border-b-2 border-r-2 border-stone-950 bg-cover md:block"
+          className="md-block h-[50dvh] border-b-2 border-r-2 border-stone-950 bg-cover bg-center sm:bg-center lg:bg-top"
           style={{
             backgroundImage: `url(${showcase5})`,
             filter: "brightness(70%)",
           }}
         ></div>
         <div
-          className="hidden h-[50dvh] border-b-2 border-r-2 border-stone-950 bg-cover bg-center md:block"
+          className="h-[50dvh] border-b-2 border-r-2 border-stone-950 bg-cover bg-center sm:bg-center lg:bg-top"
           style={{
             backgroundImage: `url(${showcase6})`,
             filter: "brightness(70%)",
           }}
         ></div>
         <div
-          className="hidden h-[50dvh] border-b-2 border-r-2 border-stone-950 bg-cover bg-center md:block"
+          className="h-[50dvh] border-b-2 border-r-2 border-stone-950 bg-cover bg-center sm:bg-center"
           style={{
             backgroundImage: `url(${showcase7})`,
             filter: "brightness(70%)",
           }}
         ></div>
         <div
-          className="hidden h-[50dvh] border-b-2 border-stone-950 bg-cover bg-center md:block"
+          className="h-[50dvh] border-b-2 border-stone-950 bg-cover bg-center sm:bg-center md:bg-center xl:bg-center 2xl:bg-[center_-4.5rem]"
           style={{
             backgroundImage: `url(${showcase8})`,
             filter: "brightness(70%)",
