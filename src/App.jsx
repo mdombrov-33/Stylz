@@ -9,6 +9,7 @@ import {
   Cart,
   ErrorPage,
   Landing,
+  Login,
 } from "./pages";
 
 const router = createBrowserRouter([
@@ -49,7 +50,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <h1>Login</h1>,
+    element: <Login />,
   },
 ]);
 
