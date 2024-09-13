@@ -1,15 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: ["class"],
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       fontFamily: {
-        redHatDisplay: ["Red Hat Display", "sans-serif"], // 300-900
-        delaGothicOne: ["Dela Gothic One", "cursive"], // 400
+        redHatDisplay: ["Red Hat Display", "sans-serif"],
+        delaGothicOne: ["Dela Gothic One", "cursive"],
       },
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"), require("tailwindcss-animate")],
   daisyui: {
     themes: ["lemonade", "dark", "sunset"],
   },
