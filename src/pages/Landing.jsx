@@ -36,7 +36,7 @@ function Landing() {
                 From concept to execution, we craft timeless identities
               </p>
               <p className="absolute top-[34rem] ml-4 font-redHatDisplay">
-                that resonate with your audience.
+                that resonate with your character.
               </p>
             </div>
           </div>

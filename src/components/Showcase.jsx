@@ -14,14 +14,14 @@ function Showcase() {
     <div className="grid">
       <div className="grid grid-cols-4 sm:grid-cols-4 sm:grid-rows-2 lg:grid-cols-4 lg:grid-rows-2">
         <div
-          className="h-[50dvh] border-b-2 border-r-2 border-stone-950 bg-cover bg-center sm:bg-center lg:bg-top"
+          className="h-[50dvh] border-b-2 border-r-2 border-stone-950 bg-cover bg-center sm:bg-center lg:bg-center"
           style={{
             backgroundImage: `url(${showcase1})`,
             filter: "brightness(70%)",
           }}
         ></div>
         <div
-          className="h-[50dvh] border-b-2 border-r-2 border-stone-950 bg-cover bg-center sm:bg-center lg:bg-top"
+          className="h-[50dvh] border-b-2 border-r-2 border-stone-950 bg-cover bg-center sm:bg-center md:bg-center xl:bg-[center_-3rem]"
           style={{
             backgroundImage: `url(${showcase2})`,
             filter: "brightness(70%)",
