@@ -9,7 +9,7 @@ function Landing() {
     <>
       <section className="grid h-[80dvh] overflow-hidden lg:grid-cols-2">
         <div
-          className="h-full bg-cover"
+          className="h-full border-b-2 border-stone-950 bg-cover"
           style={{ backgroundImage: `url(${hero1})` }}
         >
           <div className="flex h-full w-full items-center justify-center bg-black bg-opacity-50">
