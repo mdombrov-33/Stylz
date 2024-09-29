@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
 import { FaGoogle } from "react-icons/fa";
+import { IoArrowBackCircle } from "react-icons/io5";
+
 import login from "../assets/login.jpg";
 
 function Login() {
@@ -39,8 +41,8 @@ function Login() {
             id="password"
           />
 
-          <div className="mt-2 flex w-96 justify-between">
-            <div>
+          <div className="mt-2 flex w-96 items-center justify-between">
+            <div className="flex items-center justify-center">
               <input
                 type="checkbox"
                 className="h-[15px] w-[15px] text-stone-950 checked:bg-stone-950 focus:ring-stone-950"
@@ -75,14 +77,15 @@ function Login() {
           onClick={() => navigate(-1)}
           className="btn mt-12 text-2xl font-bold uppercase"
         >
-          Go Back
+          <IoArrowBackCircle className="inline" />
+          Return
         </button>
       </div>
       <div>
         <img
           className="hidden h-screen w-full border-l-2 border-stone-950 object-cover grayscale md:block"
           src={login}
-          alt="Illustration of a elegant woman with a big white hat"
+          alt="Picture of a person leaning against a brick wall, face is not visible"
         />
       </div>
     </section>

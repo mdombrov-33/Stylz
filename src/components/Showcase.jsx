@@ -41,7 +41,7 @@ function Showcase() {
         ></div>
         <div
           ref={ref2}
-          className="h-[50dvh] border-b-2 border-r-2 border-stone-950 bg-cover bg-center sm:bg-center md:bg-center xl:bg-[center_-3rem]"
+          className="h-[50dvh] border-b-2 border-r-2 border-stone-950 bg-cover bg-center sm:bg-center md:bg-center 2xl:bg-[center_-3rem]"
           style={{
             backgroundImage: isIntersecting2
               ? `url(${showcase2})`
@@ -101,7 +101,7 @@ function Showcase() {
         ></div>
         <div
           ref={ref8}
-          className="md-block h-[50dvh] border-r-2 border-stone-950 bg-cover bg-center sm:bg-center lg:bg-top"
+          className="md-block h-[50dvh] border-r-2 border-stone-950 bg-cover bg-top sm:bg-center 2xl:bg-[center_-5rem]"
           style={{
             backgroundImage: isIntersecting8
               ? `url(${showcase8})`
