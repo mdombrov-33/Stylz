@@ -1,13 +1,9 @@
-import { useNavigate } from "react-router-dom";
-
 import { FaGoogle } from "react-icons/fa";
-import { IoArrowBackCircle } from "react-icons/io5";
 
+import { ReturnBtn } from "../components";
 import login from "../assets/login.jpg";
 
 function Login() {
-  const navigate = useNavigate();
-
   return (
     <section className="grid h-screen justify-center md:grid-cols-2">
       <div className="mt-20 flex flex-col items-center justify-center">
@@ -73,13 +69,7 @@ function Login() {
             Sign up
           </a>
         </p>
-        <button
-          onClick={() => navigate(-1)}
-          className="btn mt-12 text-2xl font-bold uppercase"
-        >
-          <IoArrowBackCircle className="inline" />
-          Return
-        </button>
+        <ReturnBtn />
       </div>
       <div>
         <img

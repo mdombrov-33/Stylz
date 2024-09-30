@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-
 import { Link, NavLink } from "react-router-dom";
+
 import brand from "../assets/brand.svg";
 import themeClick from "../assets/switch.mp3";
+
 import { BsCart3, BsSunFill, BsMoonFill } from "react-icons/bs";
 
 const audio = new Audio(themeClick);

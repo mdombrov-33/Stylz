@@ -1,4 +1,4 @@
-function LandingFooter() {
+function Collab() {
   return (
     <footer
       className="flex h-[72px] items-center justify-around bg-info-content uppercase text-neutral-content"
@@ -15,4 +15,4 @@ function LandingFooter() {
   );
 }
 
-export default LandingFooter;
+export default Collab;
