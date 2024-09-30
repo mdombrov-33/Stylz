@@ -2,7 +2,7 @@ import hero1 from "../assets/hero1.jpg";
 import hero2 from "../assets/hero2.jpg";
 
 import { FaArrowDown } from "react-icons/fa";
-import { LandingFooter, Showcase } from "../components";
+import { Collab, Showcase } from "../components";
 
 function Landing() {
   return (
@@ -48,7 +48,7 @@ function Landing() {
           </div>
         </div>
       </section>
-      <LandingFooter />
+      <Collab />
       <Showcase />
     </>
   );
