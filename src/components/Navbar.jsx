@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-
 import { Link, NavLink } from "react-router-dom";
+
 import brand from "../assets/brand.svg";
 import themeClick from "../assets/switch.mp3";
 import { BsCart3, BsSunFill, BsMoonFill } from "react-icons/bs";
@@ -89,7 +89,9 @@ function Navbar() {
         </div>
         <div className="btn btn-ghost hidden font-delaGothicOne text-xl font-bold uppercase sm:flex">
           <img src={brand} className="hidden h-12 sm:block" alt="" />
-          <span className="hidden sm:block">Stylz</span>
+          <Link to="/" className="hidden font-delaGothicOne uppercase sm:block">
+            Stylz
+          </Link>
         </div>
       </div>
       <div className="navbar-center ml-4 hidden lg:flex">
