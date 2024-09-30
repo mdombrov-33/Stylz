@@ -20,6 +20,7 @@ function Register() {
             type="text"
             placeholder="John Doe"
             id="full-name"
+            autoComplete="name"
           />
           <label
             className="w-96 justify-start font-redHatDisplay font-bold"
@@ -32,6 +33,7 @@ function Register() {
             type="email"
             placeholder="stylzmc@gmail.com"
             id="email"
+            autoComplete="username"
           />
           <label
             className="w-96 justify-start font-redHatDisplay font-bold"
@@ -44,10 +46,11 @@ function Register() {
             type="password"
             placeholder="********"
             id="password"
+            autoComplete="new-password"
           />
           <label
             className="w-96 justify-start font-redHatDisplay font-bold"
-            htmlFor="password"
+            htmlFor="confirm-password"
           >
             Confirm Password
           </label>
@@ -56,20 +59,16 @@ function Register() {
             type="password"
             placeholder="********"
             id="confirm-password"
+            autoComplete="new-password"
           />
 
           <button className="btn my-2 w-full rounded-lg bg-accent py-2 text-lg text-white">
             Register
           </button>
         </form>
-<<<<<<< HEAD
         <div className="mt-14">
           <ReturnBtn />
         </div>
-=======
-
-        <ReturnBtn />
->>>>>>> dc250f6a1bcacbb887f8daee0777ba0e756bafa5
       </div>
     </section>
   );

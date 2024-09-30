@@ -24,6 +24,7 @@ function Login() {
             type="email"
             placeholder="stylzmc@gmail.com"
             id="email"
+            autoComplete="username"
           />
           <label
             className="w-96 justify-start font-redHatDisplay font-bold"
@@ -36,6 +37,7 @@ function Login() {
             type="password"
             placeholder="********"
             id="password"
+            autoComplete="current-password"
           />
 
           <div className="mt-2 flex w-96 items-center justify-between">
