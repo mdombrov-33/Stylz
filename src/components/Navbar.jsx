@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
 
+import { Link, NavLink } from "react-router-dom";
 import brand from "../assets/brand.svg";
 import themeClick from "../assets/switch.mp3";
-
 import { BsCart3, BsSunFill, BsMoonFill } from "react-icons/bs";
 
 const audio = new Audio(themeClick);
@@ -142,7 +141,9 @@ function Navbar() {
           to="/login"
           className="btn btn-ghost font-redHatDisplay text-2xl font-bold uppercase"
         >
-          login
+          <button className="pr-2 font-delaGothicOne font-light uppercase">
+            login
+          </button>
         </Link>
         <label className="swap swap-rotate">
           <input type="checkbox" onChange={handleTheme} />
