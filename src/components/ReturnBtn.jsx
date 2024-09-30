@@ -6,7 +6,7 @@ function ReturnBtn() {
   return (
     <button
       onClick={() => Navigate(-1)}
-      className="btn mt-12 text-2xl font-bold uppercase"
+      className="btn text-2xl font-bold uppercase"
     >
       <IoArrowBackCircle className="inline" />
       Return

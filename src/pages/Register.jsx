@@ -62,8 +62,9 @@ function Register() {
             Register
           </button>
         </form>
-
-        <ReturnBtn />
+        <div className="mt-14">
+          <ReturnBtn />
+        </div>
       </div>
     </section>
   );
