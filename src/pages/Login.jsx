@@ -2,6 +2,7 @@ import { FaGoogle } from "react-icons/fa";
 
 import { ReturnBtn } from "../components";
 import login from "../assets/login.jpg";
+import { Link } from "react-router-dom";
 
 function Login() {
   return (
@@ -65,9 +66,9 @@ function Login() {
         </form>
         <p className="mt-2">
           Don't have an account?{" "}
-          <a href="/" className="text-accent hover:underline">
+          <Link to="/register" className="text-accent hover:underline">
             Sign up
-          </a>
+          </Link>
         </p>
         <ReturnBtn />
       </div>

@@ -10,6 +10,7 @@ import {
   ErrorPage,
   Landing,
   Login,
+  Register,
 } from "./pages";
 
 const router = createBrowserRouter([
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
   },
 ]);
 
