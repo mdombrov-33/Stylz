@@ -12,60 +12,65 @@ function Login() {
           Welcome Back
         </h3>
         <p className="py-2">Welcome back! Please enter your details.</p>
-        <form className="flex w-96 flex-col items-center">
-          <label
-            className="w-96 justify-start font-redHatDisplay font-bold"
-            htmlFor="email"
-          >
-            Email
-          </label>
-          <input
-            className="my-2 w-full rounded-lg border border-stone-950 px-4 py-2 placeholder-gray-500"
-            type="email"
-            placeholder="stylzmc@gmail.com"
-            id="email"
-            autoComplete="username"
-          />
-          <label
-            className="w-96 justify-start font-redHatDisplay font-bold"
-            htmlFor="password"
-          >
-            Password
-          </label>
-          <input
-            className="my-2 w-full rounded-lg border border-stone-950 px-4 py-2 placeholder-gray-500"
-            type="password"
-            placeholder="********"
-            id="password"
-            autoComplete="current-password"
-          />
+        <fieldset>
+          <legend className="sr-only">Login Details</legend>
+          <form className="flex w-96 flex-col items-center">
+            <label
+              className="w-96 justify-start font-redHatDisplay font-bold"
+              htmlFor="email"
+            >
+              Email
+            </label>
+            <input
+              className="my-2 w-full rounded-lg border border-stone-950 px-4 py-2 placeholder-gray-500"
+              type="email"
+              placeholder="stylzmc@gmail.com"
+              id="email"
+              name="email"
+              autoComplete="username"
+            />
+            <label
+              className="w-96 justify-start font-redHatDisplay font-bold"
+              htmlFor="password"
+            >
+              Password
+            </label>
+            <input
+              className="my-2 w-full rounded-lg border border-stone-950 px-4 py-2 placeholder-gray-500"
+              type="password"
+              placeholder="********"
+              id="password"
+              name="password"
+              autoComplete="current-password"
+            />
 
-          <div className="mt-2 flex w-96 items-center justify-between">
-            <div className="flex items-center justify-center">
-              <input
-                type="checkbox"
-                className="h-[15px] w-[15px] text-stone-950 checked:bg-stone-950 focus:ring-stone-950"
-                id="checkbox"
-              />
-              <label
-                htmlFor="checkbox"
-                className="ml-2 font-redHatDisplay text-base-content"
-              >
-                Remember me
-              </label>
+            <div className="mt-2 flex w-96 items-center justify-between">
+              <div className="flex items-center justify-center">
+                <input
+                  type="checkbox"
+                  className="h-[15px] w-[15px] text-stone-950 checked:bg-stone-950 focus:ring-stone-950"
+                  id="checkbox"
+                />
+                <label
+                  htmlFor="checkbox"
+                  className="ml-2 font-redHatDisplay text-base-content"
+                >
+                  Remember me
+                </label>
+              </div>
+              <a href="/" className="font-bold text-gray-500 hover:underline">
+                Forgot password?
+              </a>
             </div>
-            <a href="/" className="font-bold text-gray-500 hover:underline">
-              Forgot password?
-            </a>
-          </div>
-          <button className="btn my-2 w-full rounded-lg bg-accent py-2 text-lg text-white">
-            Sign in
-          </button>
-          <button className="btn my-2 w-full rounded-lg bg-neutral-content py-2 text-lg text-white">
-            <FaGoogle />
-            Sign in with Google
-          </button>
-        </form>
+            <button className="btn my-2 w-full rounded-lg bg-accent py-2 text-lg text-white">
+              Sign in
+            </button>
+            <button className="btn my-2 w-full rounded-lg bg-neutral-content py-2 text-lg text-white">
+              <FaGoogle />
+              Sign in with Google
+            </button>
+          </form>
+        </fieldset>
         <p className="mt-2">
           Don't have an account?{" "}
           <Link to="/register" className="text-accent hover:underline">

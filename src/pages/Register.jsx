@@ -4,7 +4,7 @@ function Register() {
   return (
     <section className="flex h-screen items-center justify-center">
       <div className="mt-20 flex flex-col items-center justify-center">
-        <h2 className="font-redHatDisplay text-4xl font-bold uppercase">
+        <h2 className="font-redHatDisplay text-3xl font-bold uppercase">
           Create your account
         </h2>
         <p className="py-2">It's quick and easy</p>
@@ -13,7 +13,7 @@ function Register() {
             <legend className="sr-only">Registration Form</legend>
             <label
               className="w-96 justify-start font-redHatDisplay font-bold"
-              htmlFor="full-name"
+              htmlFor="full_name"
             >
               Full Name
             </label>
@@ -21,7 +21,8 @@ function Register() {
               className="my-2 w-full rounded-lg border border-stone-950 px-4 py-2 placeholder-gray-500"
               type="text"
               placeholder="John Doe"
-              id="full-name"
+              id="full_name"
+              name="full_name"
               autoComplete="name"
               required
             />
@@ -36,6 +37,7 @@ function Register() {
               type="email"
               placeholder="stylzmc@gmail.com"
               id="email"
+              name="email"
               autoComplete="username"
               required
             />
@@ -50,12 +52,13 @@ function Register() {
               type="password"
               placeholder="********"
               id="password"
+              name="password"
               autoComplete="new-password"
               required
             />
             <label
               className="w-96 justify-start font-redHatDisplay font-bold"
-              htmlFor="confirm-password"
+              htmlFor="confirm_password"
             >
               Confirm Password
             </label>
@@ -63,7 +66,8 @@ function Register() {
               className="my-2 w-full rounded-lg border border-stone-950 px-4 py-2 placeholder-gray-500"
               type="password"
               placeholder="********"
-              id="confirm-password"
+              id="confirm_password"
+              name="confirm_password"
               autoComplete="new-password"
               required
             />
