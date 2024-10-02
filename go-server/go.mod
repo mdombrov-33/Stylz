@@ -1,3 +1,5 @@
 module github.com/mdombrov-33/stylz/goserver
 
 go 1.23.1
+
+require github.com/lib/pq v1.10.9 // indirect
