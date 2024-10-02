@@ -1,79 +1,107 @@
 package main
 
 import (
+	"database/sql"
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
+
+	_ "github.com/lib/pq"
+	"github.com/rs/cors"
+	"golang.org/x/crypto/bcrypt"
 )
 
-type User struct {
-    FullName string `json:"full_name"`
-	Email string `json:"email"`
-    Password string `json:"password"`
-	ConfirmPassword string `json:"confirm_password"`
-}
+var db *sql.DB
 
-// CORS Middleware
-func corsMiddleware(next http.Handler) http.Handler {
-    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-        w.Header().Set("Access-Control-Allow-Origin", "*")
-        w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
-        w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
-
-        // Handle preflight request
-        if r.Method == http.MethodOptions {
-            w.WriteHeader(http.StatusOK)
-            return
-        }
-
-        next.ServeHTTP(w, r)
-    })
-}
-
-func loginHandler(w http.ResponseWriter, r *http.Request) {
-    if r.Method != http.MethodPost {
-        http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
-        return
-    }
-
-    var user User
-    err := json.NewDecoder(r.Body).Decode(&user)
+func init() {
+    var err error
+    connStr := "user=admin dbname=stylzdb sslmode=disable host=localhost port=5432 password=admin"
+    db, err = sql.Open("postgres", connStr)
     if err != nil {
-        http.Error(w, "Error parsing request body", http.StatusBadRequest)
-        return
+        log.Fatal("Error connecting to the database:", err)
     }
 
-    // Login logic
-    fmt.Fprintf(w, "Login successful for user: %s", user.Email)
+    err = db.Ping()
+    if err != nil {
+        log.Fatal("Error pinging the database:", err)
+    }
+}
+
+func createUserTable() {
+    query := `
+    CREATE TABLE IF NOT EXISTS users (
+        id SERIAL PRIMARY KEY,
+        full_name VARCHAR(100) NOT NULL,
+        email VARCHAR(100) UNIQUE NOT NULL,
+        password VARCHAR(80) NOT NULL,
+        confirm_password VARCHAR(80) NOT NULL
+    );`
+    _, err := db.Exec(query)
+    if err != nil {
+        log.Fatal("Error creating users table:", err)
+    }
+}
+
+func createUser(fullName, email, password, confirmPassword string) error {
+    hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
+    if err != nil {
+        log.Println("Error hashing password:", err)
+        return err
+    }
+
+    hashedConfirmPassword, err := bcrypt.GenerateFromPassword([]byte(confirmPassword), bcrypt.DefaultCost)
+    if err != nil {
+        log.Println("Error hashing confirm password:", err)
+        return err
+    }
+
+    query := `INSERT INTO users (full_name, email, password, confirm_password) VALUES ($1, $2, $3, $4) RETURNING id`
+    var id int
+    err = db.QueryRow(query, fullName, email, string(hashedPassword), string(hashedConfirmPassword)).Scan(&id)
+    if err != nil {
+        log.Println("Error inserting user into database:", err)
+        return err
+    }
+    log.Printf("New user ID: %d\n", id)
+    return nil
 }
 
 func registerHandler(w http.ResponseWriter, r *http.Request) {
-    if r.Method != http.MethodPost {
-        http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
-        return
+    var user struct {
+        FullName        string `json:"full_name"`
+        Email           string `json:"email"`
+        Password        string `json:"password"`
+        ConfirmPassword string `json:"confirm_password"`
     }
 
-    var user User
     err := json.NewDecoder(r.Body).Decode(&user)
     if err != nil {
         http.Error(w, "Error parsing request body", http.StatusBadRequest)
+        log.Println("Error parsing request body:", err)
         return
     }
 
-    // Registration logic
-    fmt.Fprintf(w, "Registration successful for user: %s", user.Email)
-	createUser(user.FullName, user.Email, user.Password, user.ConfirmPassword)
+    if user.Password != user.ConfirmPassword {
+        http.Error(w, "Passwords do not match", http.StatusBadRequest)
+        return
+    }
+
+    err = createUser(user.FullName, user.Email, user.Password, user.ConfirmPassword)
+    if err != nil {
+        http.Error(w, "Error creating user", http.StatusInternalServerError)
+        return
+    }
+
+    w.WriteHeader(http.StatusCreated)
+    w.Write([]byte("User registered successfully"))
 }
 
 func main() {
-	createUserTable()
-    http.Handle("/login", corsMiddleware(http.HandlerFunc(loginHandler)))
-    http.Handle("/register", corsMiddleware(http.HandlerFunc(registerHandler)))
+    createUserTable()
 
-    fmt.Println("Server is running on port 3000")
-    err := http.ListenAndServe(":3000", nil)
-    if err != nil {
-        log.Fatal("Error starting server:", err)
-    }
+    http.HandleFunc("/register", registerHandler)
+    handler := cors.Default().Handler(http.DefaultServeMux)
+    
+    log.Println("Server running on port 8080")
+    log.Fatal(http.ListenAndServe(":8080", handler))
 }
