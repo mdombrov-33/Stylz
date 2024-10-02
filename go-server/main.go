@@ -8,9 +8,10 @@ import (
 )
 
 type User struct {
-    Username string `json:"username"`
-    Password string `json:"password"`
     FullName string `json:"full_name"`
+	Email string `json:"email"`
+    Password string `json:"password"`
+	ConfirmPassword string `json:"confirm_password"`
 }
 
 // CORS Middleware
@@ -44,7 +45,7 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
     }
 
     // Login logic
-    fmt.Fprintf(w, "Login successful for user: %s", user.Username)
+    fmt.Fprintf(w, "Login successful for user: %s", user.Email)
 }
 
 func registerHandler(w http.ResponseWriter, r *http.Request) {
@@ -61,10 +62,12 @@ func registerHandler(w http.ResponseWriter, r *http.Request) {
     }
 
     // Registration logic
-    fmt.Fprintf(w, "Registration successful for user: %s", user.FullName)
+    fmt.Fprintf(w, "Registration successful for user: %s", user.Email)
+	createUser(user.FullName, user.Email, user.Password, user.ConfirmPassword)
 }
 
 func main() {
+	createUserTable()
     http.Handle("/login", corsMiddleware(http.HandlerFunc(loginHandler)))
     http.Handle("/register", corsMiddleware(http.HandlerFunc(registerHandler)))
 
