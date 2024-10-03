@@ -6,7 +6,7 @@ function ContactInfo() {
   return (
     <>
       <section>
-        <div className="grid items-center justify-center md:grid-cols-2 md:gap-40">
+        <div className="ml-2 grid items-center justify-center md:grid-cols-2 md:gap-40">
           {/* LEFT SIDE */}
           <div>
             <h2 className="mt-4 text-2xl font-bold uppercase">live support</h2>
