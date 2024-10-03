@@ -2,7 +2,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import {
   About,
   Blog,
-  Contact,
   HomeLayout,
   ShopNew,
   Catalog,
@@ -12,6 +11,19 @@ import {
   Login,
   Register,
 } from "./pages";
+
+import {
+  FAQs,
+  Feedback,
+  Ordering,
+  Payment,
+  Returns,
+  Shipping,
+  SizeGuide,
+  WhyStylz,
+  ContactInfo,
+} from "./pages/ContactRoutes";
+import ContactLayout from "./pages/ContactLayout";
 
 const router = createBrowserRouter([
   {
@@ -33,7 +45,45 @@ const router = createBrowserRouter([
       },
       {
         path: "contact",
-        element: <Contact />,
+        element: <ContactLayout />,
+        children: [
+          {
+            index: true,
+            element: <ContactInfo />,
+          },
+          {
+            path: "payment",
+            element: <Payment />,
+          },
+          {
+            path: "ordering",
+            element: <Ordering />,
+          },
+          {
+            path: "shipping",
+            element: <Shipping />,
+          },
+          {
+            path: "returns",
+            element: <Returns />,
+          },
+          {
+            path: "sizeguide",
+            element: <SizeGuide />,
+          },
+          {
+            path: "whystylz",
+            element: <WhyStylz />,
+          },
+          {
+            path: "feedback",
+            element: <Feedback />,
+          },
+          {
+            path: "faqs",
+            element: <FAQs />,
+          },
+        ],
       },
       {
         path: "new",

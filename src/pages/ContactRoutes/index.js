@@ -1,0 +1,9 @@
+export { default as Ordering } from "./Ordering";
+export { default as Payment } from "./Payment";
+export { default as Shipping } from "./Shipping";
+export { default as Returns } from "./Returns";
+export { default as SizeGuide } from "./SizeGuide";
+export { default as WhyStylz } from "./WhyStylz";
+export { default as Feedback } from "./Feedback";
+export { default as FAQs } from "./FAQs";
+export { default as ContactInfo } from "./ContactInfo";

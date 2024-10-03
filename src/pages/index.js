@@ -1,6 +1,6 @@
 export { default as About } from "./About";
 export { default as Blog } from "./Blog";
-export { default as Contact } from "./Contact";
+export { default as Contact } from "./ContactLayout";
 export { default as Home } from "./HomeLayout";
 export { default as ShopNew } from "./ShopNew";
 export { default as Catalog } from "./Catalog";
