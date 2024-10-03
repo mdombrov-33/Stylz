@@ -7,8 +7,8 @@ function Register() {
         <h2 className="font-redHatDisplay text-3xl font-bold uppercase">
           Create your account
         </h2>
-        <p className="py-2">It's quick and easy</p>
-        <form className="flex w-96 flex-col items-center">
+        <p className="py-2">It&apos;s quick and easy</p>
+        <form className="flex w-96 flex-col items-center" method="POST">
           <fieldset className="w-full">
             <legend className="sr-only">Registration Form</legend>
             <label

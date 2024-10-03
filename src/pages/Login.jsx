@@ -72,7 +72,7 @@ function Login() {
           </form>
         </fieldset>
         <p className="mt-2">
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <Link to="/register" className="text-accent hover:underline">
             Sign up
           </Link>
@@ -83,7 +83,7 @@ function Login() {
       </div>
       <div>
         <img
-          className="hidden h-screen w-full border-l-2 border-stone-950 object-cover grayscale md:block"
+          className="hidden h-screen w-full object-cover grayscale md:block"
           src={login}
           alt="Picture of a person leaning against a brick wall, face is not visible"
         />
