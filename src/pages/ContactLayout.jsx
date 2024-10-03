@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 function ContactLayout() {
   return (
-    <section className="grid h-full py-10 pl-12 md:grid-cols-3">
+    <section className="ml-8 grid h-full py-10 md:mr-12 md:grid-cols-3">
       <section>
         <h1 className="text-3xl font-bold uppercase tracking-wider">
           contact us
