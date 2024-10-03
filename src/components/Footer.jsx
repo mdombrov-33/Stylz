@@ -10,7 +10,6 @@ function MainFooter() {
       </nav>
       <nav>
         <h6 className="footer-title">Company</h6>
-        <a className="link-hover link">About us</a>
         <a className="link-hover link">Contact</a>
         <a className="link-hover link">Jobs</a>
         <a className="link-hover link">Press kit</a>
@@ -26,7 +25,6 @@ function MainFooter() {
         <a className="link-hover link">Twitter</a>
         <a className="link-hover link">Instagram</a>
         <a className="link-hover link">Facebook</a>
-        <a className="link-hover link">Github</a>
       </nav>
       <nav>
         <h6 className="footer-title">Explore</h6>

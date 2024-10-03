@@ -48,7 +48,7 @@ const router = createBrowserRouter([
         element: <ContactLayout />,
         children: [
           {
-            index: true,
+            path: "contactinfo",
             element: <ContactInfo />,
           },
           {

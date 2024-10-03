@@ -3,80 +3,42 @@ import { Outlet } from "react-router-dom";
 
 function ContactLayout() {
   return (
-    <section className="grid h-screen border-b-2 py-10 pl-6 md:grid-cols-3 md:gap-60">
+    <section className="grid h-full py-10 pl-12 md:grid-cols-3">
       <section>
-        <h1 className="text-3xl font-bold uppercase">contact us</h1>
+        <h1 className="text-3xl font-bold uppercase tracking-wider">
+          contact us
+        </h1>
         <h3 className="py-6 font-bold uppercase"> customer care</h3>
         <nav className="w-max">
           <ul className="grid grid-cols-3 gap-x-20 sm:grid-cols-4 md:grid-cols-1">
-            <NavLink
-              to="/contact"
-              className="link-hover mt-2 w-max transition-all duration-150 hover:text-accent"
-            >
-              Contact us
-            </NavLink>
-
-            <NavLink
-              to="payment"
-              className="mt-2 w-max transition-all duration-150 hover:text-accent hover:underline"
-            >
-              Payment
-            </NavLink>
-
-            <NavLink
-              to="ordering"
-              className="mt-2 w-max transition-all duration-150 hover:text-accent hover:underline"
-            >
-              Ordering
-            </NavLink>
-
-            <NavLink
-              to="shipping"
-              className="mt-2 w-max transition-all duration-150 hover:text-accent hover:underline"
-            >
-              Shipping
-            </NavLink>
-
-            <NavLink
-              to="returns"
-              className="mt-2 w-max transition-all duration-150 hover:text-accent hover:underline"
-            >
-              Returns
-            </NavLink>
-
-            <NavLink
-              to="sizeguide"
-              className="mt-2 w-max transition-all duration-150 hover:text-accent hover:underline"
-            >
-              Size Guide
-            </NavLink>
-
-            <NavLink
-              to="whystylz"
-              className="mt-2 w-max transition-all duration-150 hover:text-accent hover:underline"
-            >
-              Why Stylz
-            </NavLink>
-
-            <NavLink
-              to="feedback"
-              className="mt-2 w-max transition-all duration-150 hover:text-accent hover:underline"
-            >
-              Feedback
-            </NavLink>
-
-            <NavLink
-              to="faqs"
-              className="mt-2 w-max transition-all duration-150 hover:text-accent hover:underline"
-            >
-              FAQs
-            </NavLink>
+            {[
+              { to: "contactinfo", label: "Contact us" },
+              { to: "payment", label: "Payment" },
+              { to: "ordering", label: "Ordering" },
+              { to: "shipping", label: "Shipping" },
+              { to: "returns", label: "Returns" },
+              { to: "sizeguide", label: "Size Guide" },
+              { to: "whystylz", label: "Why Stylz" },
+              { to: "feedback", label: "Feedback" },
+              { to: "faqs", label: "FAQs" },
+            ].map((link) => (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                className={({ isActive }) =>
+                  `mt-2 w-max font-redHatDisplay transition-all duration-150 ${
+                    isActive ? "text-accent" : "hover:text-accent"
+                  }`
+                }
+              >
+                {link.label}
+              </NavLink>
+            ))}
           </ul>
         </nav>
       </section>
-      <section>
-        <Outlet />
-      </section>
+
+      <Outlet />
     </section>
   );
 }

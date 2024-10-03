@@ -131,7 +131,7 @@ function Navbar() {
           <li className="lg:border-r-2 lg:border-stone-950">
             <NavLink
               className={({ isActive }) => (isActive ? "underline" : "")}
-              to="/contact"
+              to="/contact/contactinfo"
             >
               contact
             </NavLink>
