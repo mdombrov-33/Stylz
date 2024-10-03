@@ -2,7 +2,7 @@ import { FaWhatsapp } from "react-icons/fa";
 function ContactInfo() {
   return (
     <>
-      <section className="">
+      <section>
         <div className="ml-6 grid items-center justify-center md:grid-cols-2 md:gap-16">
           {/* LEFT SIDE */}
           <div>

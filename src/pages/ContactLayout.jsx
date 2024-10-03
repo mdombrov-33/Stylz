@@ -5,7 +5,7 @@ function ContactLayout() {
   return (
     <>
       <section className="grid h-full md:grid-cols-3">
-        <div className="ml-12 mt-12 md:col-span-1">
+        <div className="mt-12 flex flex-col items-center md:col-span-1 md:ml-12 md:items-stretch md:justify-start">
           <h1 className="text-3xl font-bold uppercase tracking-wider">
             contact us
           </h1>
