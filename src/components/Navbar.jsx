@@ -81,7 +81,7 @@ function Navbar() {
             </li>
             <li></li>
             <li>
-              <NavLink to="/contact" className="text-base-content">
+              <NavLink to="/contact/contactinfo" className="text-base-content">
                 contact
               </NavLink>
             </li>
