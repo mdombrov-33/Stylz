@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Loader from "../../components/Loader";
 import visa from "../../assets/contact/visa.png";
 import americanExpress from "../../assets/contact/americanexpress.png";
 import masterCard from "../../assets/contact/mastercard.png";
@@ -8,7 +9,6 @@ import paypal from "../../assets/contact/paypal.png";
 import apple from "../../assets/contact/apple.png";
 import google from "../../assets/contact/google.png";
 import giro from "../../assets/contact/giro.png";
-import Loader from "../../components/Loader";
 
 const images = [
   visa,

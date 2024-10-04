@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { Header, Navbar, MainFooter } from "../components";
-import ScrollToTop from "../components/utils/ScrollToTop";
+import ScrollToTop from "../utils/ScrollToTop";
 
 function HomeLayout() {
   return (
@@ -9,8 +9,7 @@ function HomeLayout() {
       <Header />
       <Navbar />
       <div className="min-h-screen">
-
-      <Outlet />
+        <Outlet />
       </div>
       <MainFooter />
     </>

@@ -3,8 +3,20 @@ import { FaGoogle } from "react-icons/fa";
 import { ReturnBtn } from "../components";
 import loginImg from "../assets/login.jpg";
 import { Link } from "react-router-dom";
+import Loader from "../components/Loader";
+import { useState } from "react";
 
 function Login() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleImageLoad = () => {
+    setIsLoading(false);
+  };
+
+  const handleImageError = () => {
+    setIsLoading(false);
+  };
+
   return (
     <section className="grid h-screen justify-center md:grid-cols-2">
       <div className="mt-20 flex flex-col items-center justify-center">
@@ -81,11 +93,18 @@ function Login() {
           <ReturnBtn />
         </div>
       </div>
-      <div>
+      <div className="relative">
+        {isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Loader />
+          </div>
+        )}
         <img
-          className="hidden h-screen w-full object-cover grayscale md:block"
+          className={`hidden h-screen w-full object-cover grayscale md:block ${isLoading ? "hidden" : "block"} `}
           src={loginImg}
           alt="Picture of a person leaning against a brick wall, face is not visible"
+          onLoad={handleImageLoad}
+          onError={handleImageError}
         />
       </div>
     </section>
