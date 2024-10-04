@@ -1,30 +1,29 @@
+import { Suspense, lazy } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import {
-  About,
-  Blog,
-  HomeLayout,
-  ShopNew,
-  Catalog,
-  Cart,
-  ErrorPage,
-  Landing,
-  Login,
-  Register,
-} from "./pages";
+import Loader from "./components/Loader";
 
-import {
-  FAQs,
-  Feedback,
-  Ordering,
-  Payment,
-  Returns,
-  Shipping,
-  SizeGuide,
-  WhyStylz,
-  ContactInfo,
-} from "./pages/ContactRoutes";
+const About = lazy(() => import("./pages/About"));
+const Blog = lazy(() => import("./pages/Blog"));
+const HomeLayout = lazy(() => import("./pages/HomeLayout"));
+const ShopNew = lazy(() => import("./pages/ShopNew"));
+const Catalog = lazy(() => import("./pages/Catalog"));
+const Cart = lazy(() => import("./pages/Cart"));
+const ErrorPage = lazy(() => import("./pages/ErrorPage"));
+const Landing = lazy(() => import("./pages/Landing"));
+const Login = lazy(() => import("./pages/Login"));
+const Register = lazy(() => import("./pages/Register"));
 
-import ContactLayout from "./pages/ContactLayout";
+const FAQs = lazy(() => import("./pages/ContactRoutes/FAQs"));
+const Feedback = lazy(() => import("./pages/ContactRoutes/Feedback"));
+const Ordering = lazy(() => import("./pages/ContactRoutes/Ordering"));
+const Payment = lazy(() => import("./pages/ContactRoutes/Payment"));
+const Returns = lazy(() => import("./pages/ContactRoutes/Returns"));
+const Shipping = lazy(() => import("./pages/ContactRoutes/Shipping"));
+const SizeGuide = lazy(() => import("./pages/ContactRoutes/SizeGuide"));
+const WhyStylz = lazy(() => import("./pages/ContactRoutes/WhyStylz"));
+const ContactInfo = lazy(() => import("./pages/ContactRoutes/ContactInfo"));
+
+const ContactLayout = lazy(() => import("./pages/ContactLayout"));
 
 const router = createBrowserRouter([
   {
@@ -111,7 +110,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <Suspense fallback={<Loader />}>
+      <RouterProvider router={router} />
+    </Suspense>
+  );
 }
 
 export default App;
