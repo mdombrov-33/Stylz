@@ -22,50 +22,50 @@ function Showcase() {
       <div className="object-cover object-center">
         <img
           src={showcase1}
-          className="h-full object-cover object-center brightness-75"
+          className="h-full border-b-2 border-r-2 border-stone-950 object-cover object-center brightness-75"
           loading="lazy"
           alt=""
         />
       </div>
       <img
         src={showcase2}
-        className="h-full object-cover object-center brightness-75"
+        className="h-full border-b-2 border-r-2 border-stone-950 object-cover object-center brightness-75"
         loading="lazy"
         alt=""
       />
       <img
         src={showcase3}
-        className="h-full object-cover object-center brightness-75"
+        className="h-full border-b-2 border-r-2 border-stone-950 object-cover object-center brightness-75"
         loading="lazy"
         alt=""
       />
       <img
         src={showcase4}
-        className="posit h-full object-cover object-center brightness-75"
+        className="posit h-full border-b-2 border-stone-950 object-cover object-center brightness-75"
         loading="lazy"
         alt=""
       />
       <img
         src={showcase5}
-        className="h-full object-cover object-center brightness-75"
+        className="h-full border-b-2 border-r-2 border-stone-950 object-cover object-center brightness-75"
         loading="lazy"
         alt=""
       />
       <img
         src={showcase6}
-        className="h-full object-cover object-center brightness-75"
+        className="h-full border-b-2 border-r-2 border-stone-950 object-cover object-center brightness-75"
         loading="lazy"
         alt=""
       />
       <img
         src={showcase7}
-        className="h-full object-cover object-center brightness-75"
+        className="h-full border-b-2 border-r-2 border-stone-950 object-cover object-center brightness-75"
         loading="lazy"
         alt=""
       />
       <img
         src={showcase8}
-        className="h-full object-cover object-center brightness-75"
+        className="h-full border-b-2 border-stone-950 object-cover object-center brightness-75"
         loading="lazy"
         alt=""
       />
