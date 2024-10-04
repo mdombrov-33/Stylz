@@ -23,7 +23,14 @@ import {
   WhyStylz,
   ContactInfo,
 } from "./pages/ContactRoutes";
+
 import ContactLayout from "./pages/ContactLayout";
+
+
+
+
+
+
 
 const router = createBrowserRouter([
   {
@@ -110,7 +117,10 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+
+
+
+  return <RouterProvider router={router}/>
 }
 
 export default App;
