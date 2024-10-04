@@ -10,7 +10,7 @@ import giro from "../../assets/contact/giro.png";
 
 function Payment() {
   return (
-    <section className="grid grid-cols-2 sm:grid-cols-3 justify-center items-center mt-12 gap-20 p-12">
+    <section className="grid grid-cols-2 sm:grid-cols-3 justify-center items-center mt-12 gap-12 px-6">
       <img className="md:h-36 md:w-40 min-w-[10rem] min-h-[9rem]" loading="lazy" src={visa} alt="Visa" />
       <img className="md:h-36 md:w-40 min-w-[10rem] min-h-[9rem]" loading="lazy" src={americanExpress} alt="American Express" />
       <img className="md:h-36 md:w-40 min-w-[10rem] min-h-[9rem]" loading="lazy" src={discover} alt="Discover" />
