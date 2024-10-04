@@ -141,7 +141,7 @@ function Navbar() {
       <div className="navbar-end">
         <Link
           to="/login"
-          className="btn btn-ghost font-redHatDisplay text-2xl font-bold uppercase"
+          className="btn btn-ghost font-redHatDisplay text-base font-bold uppercase sm:text-2xl"
         >
           <button className="pr-2 font-delaGothicOne font-light uppercase">
             login

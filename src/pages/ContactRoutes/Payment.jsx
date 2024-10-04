@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import Loader from "../../components/Loader";
+import Loader from "@/components/Loader";
+
 import visa from "../../assets/contact/visa.png";
 import americanExpress from "../../assets/contact/americanexpress.png";
 import masterCard from "../../assets/contact/mastercard.png";

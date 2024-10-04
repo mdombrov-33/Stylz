@@ -1,4 +1,4 @@
-import { ReturnBtn } from "../components";
+import ReturnBtn from "@/components/ReturnBtn";
 
 function Register() {
   return (

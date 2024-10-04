@@ -1,10 +1,10 @@
 import { Suspense, lazy } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Loader from "./components/Loader";
+import Loader from "@/components/Loader";
 
 const About = lazy(() => import("./pages/About"));
 const Blog = lazy(() => import("./pages/Blog"));
-const HomeLayout = lazy(() => import("./pages/HomeLayout"));
+const AppLayout = lazy(() => import("./pages/AppLayout"));
 const ShopNew = lazy(() => import("./pages/ShopNew"));
 const Catalog = lazy(() => import("./pages/Catalog"));
 const Cart = lazy(() => import("./pages/Cart"));
@@ -28,7 +28,7 @@ const ContactLayout = lazy(() => import("./pages/ContactLayout"));
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomeLayout />,
+    element: <AppLayout />,
     errorElement: <ErrorPage />,
     children: [
       {

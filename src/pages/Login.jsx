@@ -1,9 +1,9 @@
 import { FaGoogle } from "react-icons/fa";
 
-import { ReturnBtn } from "../components";
+import ReturnBtn from "@/components/ReturnBtn";
 import loginImg from "../assets/login.jpg";
 import { Link } from "react-router-dom";
-// import Loader from "../components/Loader";
+// import Loader from "@/components/Loader";
 // import { useState } from "react";
 
 function Login() {

@@ -1,6 +1,5 @@
-import { WhatsAppBtn } from "../../components/Contact";
+import WhatsAppBtn from "@/features/contact/WhatsAppBtn";
 function ContactInfo() {
- 
   return (
     <>
       <section>
@@ -13,7 +12,7 @@ function ContactInfo() {
               through Live Chat using button below(ENGLISH ONLY).
             </p>
             <p className="py-6 font-bold">Or Message Us on WhatsApp.</p>
-           <WhatsAppBtn/>
+            <WhatsAppBtn />
             <p className="py-6 font-bold underline">
               Let&apos;s chat! (Agent is unavailable)
             </p>

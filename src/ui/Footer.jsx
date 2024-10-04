@@ -1,4 +1,4 @@
-function MainFooter() {
+function Footer() {
   return (
     <footer className="footer grid grid-cols-3 bg-info-content p-10 text-neutral-content sm:grid-cols-6 md:grid-cols-5">
       <nav>
@@ -44,4 +44,4 @@ function MainFooter() {
   );
 }
 
-export default MainFooter;
+export default Footer;
