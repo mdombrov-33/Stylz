@@ -1,7 +1,7 @@
 import { FaGoogle } from "react-icons/fa";
 
 import { ReturnBtn } from "../components";
-import login from "../assets/login.jpg";
+import loginImg from "../assets/login.jpg";
 import { Link } from "react-router-dom";
 
 function Login() {
@@ -84,7 +84,7 @@ function Login() {
       <div>
         <img
           className="hidden h-screen w-full object-cover grayscale md:block"
-          src={login}
+          src={loginImg}
           alt="Picture of a person leaning against a brick wall, face is not visible"
         />
       </div>

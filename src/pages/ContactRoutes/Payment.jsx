@@ -34,17 +34,23 @@ function Payment() {
   }, []);
 
   return (
+    <>
+    <div>
+
+    <p className="text-center mt-6 p-4 font-bold text-2xl font-redHatDisplay xl:mr-44">We support different payment services, check them out!</p>
+    </div>
     <section className="grid grid-cols-2 sm:grid-cols-3 justify-center items-center mt-12 gap-12 px-6">
-      <img className="md:h-36 md:w-40 min-w-[10rem] min-h-[9rem]" loading="lazy" src={visa} alt="Visa" />
-      <img className="md:h-36 md:w-40 min-w-[10rem] min-h-[9rem]" loading="lazy" src={americanExpress} alt="American Express" />
-      <img className="md:h-36 md:w-40 min-w-[10rem] min-h-[9rem]" loading="lazy" src={discover} alt="Discover" />
-      <img className="md:h-36 md:w-40 min-w-[10rem] min-h-[9rem]" loading="lazy" src={jcb} alt="JCB" />
-      <img className="md:h-36 md:w-40 min-w-[10rem] min-h-[9rem]" loading="lazy" src={paypal} alt="PayPal" />
-      <img className="md:h-36 md:w-40 min-w-[10rem] min-h-[9rem]" loading="lazy" src={apple} alt="Apple Pay" />
-      <img className="md:h-36 md:w-40 min-w-[10rem] min-h-[9rem]" loading="lazy" src={google} alt="Google Pay" />
-      <img className="md:h-36 md:w-40 min-w-[10rem] min-h-[9rem]" loading="lazy" src={giro} alt="Giro" />
-      <img className="md:h-36 md:w-40 min-w-[10rem] min-h-[9rem]" loading="lazy" src={masterCard} alt="MasterCard" />
+      <img className="md:h-36 md:w-40 min-w-[10rem] min-h-[9rem]"  src={visa} alt="Visa" />
+      <img className="md:h-36 md:w-40 min-w-[10rem] min-h-[9rem]"  src={americanExpress} alt="American Express" />
+      <img className="md:h-36 md:w-40 min-w-[10rem] min-h-[9rem]"  src={discover} alt="Discover" />
+      <img className="md:h-36 md:w-40 min-w-[10rem] min-h-[9rem]"  src={jcb} alt="JCB" />
+      <img className="md:h-36 md:w-40 min-w-[10rem] min-h-[9rem]"  src={paypal} alt="PayPal" />
+      <img className="md:h-36 md:w-40 min-w-[10rem] min-h-[9rem]" src={apple} alt="Apple Pay" />
+      <img className="md:h-36 md:w-40 min-w-[10rem] min-h-[9rem]"  src={google} alt="Google Pay" />
+      <img className="md:h-36 md:w-40 min-w-[10rem] min-h-[9rem]"  src={giro} alt="Giro" />
+      <img className="md:h-36 md:w-40 min-w-[10rem] min-h-[9rem]"  src={masterCard} alt="MasterCard" />
     </section>
+    </>
   );
 }
 
