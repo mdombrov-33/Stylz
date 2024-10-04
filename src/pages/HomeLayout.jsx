@@ -6,7 +6,10 @@ function HomeLayout() {
     <>
       <Header />
       <Navbar />
+      <div className="min-h-screen">
+
       <Outlet />
+      </div>
       <MainFooter />
     </>
   );

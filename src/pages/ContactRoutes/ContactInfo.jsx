@@ -1,12 +1,10 @@
-import { FaWhatsapp } from "react-icons/fa";
+import { WhatsAppBtn } from "../../components/Contact";
 function ContactInfo() {
-  const handleClick = () => {
-    window.location.href = "https://www.whatsapp.com/";
-  };
+ 
   return (
     <>
       <section>
-        <div className="ml-2 grid items-center justify-center md:grid-cols-2 md:gap-40">
+        <div className="ml-2 grid items-center justify-center md:grid-cols-2 md:gap-40 lg:mt-12">
           {/* LEFT SIDE */}
           <div>
             <h2 className="mt-4 text-2xl font-bold uppercase">live support</h2>
@@ -15,13 +13,7 @@ function ContactInfo() {
               through Live Chat using button below(ENGLISH ONLY).
             </p>
             <p className="py-6 font-bold">Or Message Us on WhatsApp.</p>
-            <button onClick={handleClick} className="btn w-96 md:w-72">
-              <FaWhatsapp className="mr-2 text-2xl" />
-              <span className="text-lg">WhatsApp</span>
-              <span className="ml-5 w-20 rounded-xl border border-accent bg-accent p-2">
-                New!
-              </span>
-            </button>
+           <WhatsAppBtn/>
             <p className="py-6 font-bold underline">
               Let&apos;s chat! (Agent is unavailable)
             </p>
