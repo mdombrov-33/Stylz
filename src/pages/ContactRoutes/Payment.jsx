@@ -1,5 +1,5 @@
-// import { useEffect, useState } from "react";
-// import Loader from "@/components/Loader";
+import { useEffect, useState } from "react";
+import Loader from "@/components/Loader";
 
 import visa from "../../assets/contact/visa.png";
 import americanExpress from "../../assets/contact/americanexpress.png";
@@ -11,40 +11,40 @@ import apple from "../../assets/contact/apple.png";
 import google from "../../assets/contact/google.png";
 import giro from "../../assets/contact/giro.png";
 
-// const images = [
-//   visa,
-//   americanExpress,
-//   masterCard,
-//   discover,
-//   jcb,
-//   paypal,
-//   apple,
-//   google,
-//   giro,
-// ];
+const images = [
+  visa,
+  americanExpress,
+  masterCard,
+  discover,
+  jcb,
+  paypal,
+  apple,
+  google,
+  giro,
+];
 
-// function preloadImages(imageArray, callback) {
-//   let loadedCount = 0;
-//   imageArray.forEach((image) => {
-//     const img = new Image();
-//     img.src = image;
-//     img.onload = () => {
-//       loadedCount++;
-//       if (loadedCount === imageArray.length) {
-//         callback();
-//       }
-//     };
-//   });
-// }
+function preloadImages(imageArray, callback) {
+  let loadedCount = 0;
+  imageArray.forEach((image) => {
+    const img = new Image();
+    img.src = image;
+    img.onload = () => {
+      loadedCount++;
+      if (loadedCount === imageArray.length) {
+        callback();
+      }
+    };
+  });
+}
 
 function Payment() {
-  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   preloadImages(images, () => {
-  //     setLoading(false);
-  //   });
-  // }, []);
+  useEffect(() => {
+    preloadImages(images, () => {
+      setLoading(false);
+    });
+  }, []);
 
   return (
     <>
@@ -53,61 +53,61 @@ function Payment() {
           We support different payment services, check them out!
         </p>
       </div>
-      {/* {loading ? (
+      {loading ? (
         <div className="mt-12 flex items-center justify-center">
           <div className="spinner">
-            <Loader /> */}
-      {/* </div> */}
-      {/* </div> */}
-      {/* // ) : ( */}
-      <section className="mt-12 grid grid-cols-2 items-center justify-center gap-12 px-6 sm:grid-cols-3">
-        <img
-          className="min-h-[9rem] min-w-[10rem] md:h-36 md:w-40"
-          src={visa}
-          alt="Visa"
-        />
-        <img
-          className="min-h-[9rem] min-w-[10rem] md:h-36 md:w-40"
-          src={americanExpress}
-          alt="American Express"
-        />
-        <img
-          className="min-h-[9rem] min-w-[10rem] md:h-36 md:w-40"
-          src={discover}
-          alt="Discover"
-        />
-        <img
-          className="min-h-[9rem] min-w-[10rem] md:h-36 md:w-40"
-          src={jcb}
-          alt="JCB"
-        />
-        <img
-          className="min-h-[9rem] min-w-[10rem] md:h-36 md:w-40"
-          src={paypal}
-          alt="PayPal"
-        />
-        <img
-          className="min-h-[9rem] min-w-[10rem] md:h-36 md:w-40"
-          src={apple}
-          alt="Apple Pay"
-        />
-        <img
-          className="min-h-[9rem] min-w-[10rem] md:h-36 md:w-40"
-          src={google}
-          alt="Google Pay"
-        />
-        <img
-          className="min-h-[9rem] min-w-[10rem] md:h-36 md:w-40"
-          src={giro}
-          alt="Giro"
-        />
-        <img
-          className="min-h-[9rem] min-w-[10rem] md:h-36 md:w-40"
-          src={masterCard}
-          alt="MasterCard"
-        />
-      </section>
-      {/* )} */}
+            <Loader />
+          </div>
+        </div>
+      ) : (
+        <section className="mt-12 grid grid-cols-2 items-center justify-center gap-12 px-6 sm:grid-cols-3">
+          <img
+            className="min-h-[9rem] min-w-[10rem] md:h-36 md:w-40"
+            src={visa}
+            alt="Visa"
+          />
+          <img
+            className="min-h-[9rem] min-w-[10rem] md:h-36 md:w-40"
+            src={americanExpress}
+            alt="American Express"
+          />
+          <img
+            className="min-h-[9rem] min-w-[10rem] md:h-36 md:w-40"
+            src={discover}
+            alt="Discover"
+          />
+          <img
+            className="min-h-[9rem] min-w-[10rem] md:h-36 md:w-40"
+            src={jcb}
+            alt="JCB"
+          />
+          <img
+            className="min-h-[9rem] min-w-[10rem] md:h-36 md:w-40"
+            src={paypal}
+            alt="PayPal"
+          />
+          <img
+            className="min-h-[9rem] min-w-[10rem] md:h-36 md:w-40"
+            src={apple}
+            alt="Apple Pay"
+          />
+          <img
+            className="min-h-[9rem] min-w-[10rem] md:h-36 md:w-40"
+            src={google}
+            alt="Google Pay"
+          />
+          <img
+            className="min-h-[9rem] min-w-[10rem] md:h-36 md:w-40"
+            src={giro}
+            alt="Giro"
+          />
+          <img
+            className="min-h-[9rem] min-w-[10rem] md:h-36 md:w-40"
+            src={masterCard}
+            alt="MasterCard"
+          />
+        </section>
+      )}
     </>
   );
 }

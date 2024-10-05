@@ -164,9 +164,11 @@ function Navbar() {
           </div>
         </NavLink>
       </div>
-      <a className="btn bg-base-content uppercase text-base-100 hover:text-white">
+      <button
+        className={`${theme === themes.lemonade ? "hover:text-base-content" : "hover:text-base-content"} btn bg-base-content uppercase text-base-100 hover:text-accent`}
+      >
         shop all new
-      </a>
+      </button>
     </nav>
   );
 }
