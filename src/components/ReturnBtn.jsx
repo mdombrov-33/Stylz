@@ -2,10 +2,10 @@ import { IoArrowBackCircle } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 
 function ReturnBtn() {
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <button
-      onClick={() => Navigate(-1)}
+      onClick={() => navigate(-1)}
       className="btn text-2xl font-bold uppercase"
     >
       <IoArrowBackCircle className="inline" />

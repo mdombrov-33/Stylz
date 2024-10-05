@@ -33,7 +33,7 @@ function Navbar() {
   }, [theme]);
 
   return (
-    <div className="navbar sticky top-0 z-10 border-b-2 border-t-2 border-stone-950 bg-base-100">
+    <nav className="navbar sticky top-0 z-10 border-b-2 border-t-2 border-stone-950 bg-base-100">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -167,7 +167,7 @@ function Navbar() {
       <a className="btn bg-base-content uppercase text-base-100 hover:text-white">
         shop all new
       </a>
-    </div>
+    </nav>
   );
 }
 

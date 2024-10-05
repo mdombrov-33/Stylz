@@ -1,6 +1,8 @@
-"compilerOptions": {
-    "baseUrl": ".",
+//vscode intellisense for @ alias
+{
+  "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"]
     }
   }
+}
