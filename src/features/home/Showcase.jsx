@@ -9,7 +9,7 @@ import showcase8 from "../../assets/showcase/showcase8.jpg";
 
 function Showcase() {
   return (
-    <div className="grid h-full grid-cols-4 md:grid-cols-4">
+    <div className="grid grid-cols-4">
       <img
         src={showcase2}
         className="h-dvh min-h-96 border-b-2 border-r-2 border-stone-950 object-cover object-center brightness-75"
