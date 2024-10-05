@@ -12,22 +12,22 @@ function Showcase() {
     <div className="grid grid-cols-4">
       <img
         src={showcase2}
-        className="h-full min-h-96 border-b-2 border-r-2 border-stone-950 object-cover object-center brightness-75"
+        className="h-full min-h-96 w-full border-b-2 border-r-2 border-stone-950 object-cover object-center brightness-75"
         alt=""
       />
       <img
         src={showcase7}
-        className="h-full min-h-96 border-b-2 border-r-2 border-stone-950 object-cover object-center brightness-75"
+        className="h-full min-h-96 w-full border-b-2 border-r-2 border-stone-950 object-cover object-center brightness-75"
         alt=""
       />
       <img
         src={showcase3}
-        className="h-full min-h-96 border-b-2 border-r-2 border-stone-950 object-cover object-center brightness-75"
+        className="h-full min-h-96 w-full border-b-2 border-r-2 border-stone-950 object-cover object-center brightness-75"
         alt=""
       />
       <img
         src={showcase8}
-        className="h-full min-h-96 border-b-2 border-stone-950 object-cover object-center brightness-75"
+        className="h-full min-h-96 w-full border-b-2 border-stone-950 object-cover object-center brightness-75"
         alt=""
       />
     </div>
