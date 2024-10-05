@@ -10,7 +10,7 @@ function Landing() {
     <>
       <section className="grid h-[80dvh] overflow-hidden lg:grid-cols-2">
         <div
-          className="h-full border-b-2 border-stone-950 bg-cover"
+          className="h-full w-full border-b-2 border-stone-950 bg-cover"
           style={{ backgroundImage: `url(${hero1})` }}
         >
           <div className="flex h-full w-full items-center justify-center bg-black bg-opacity-50">
@@ -22,7 +22,7 @@ function Landing() {
           </div>
         </div>
         <div
-          className="hidden h-full border-t-2 border-stone-950 bg-cover lg:grid lg:grid-rows-1 lg:border-l-2 lg:border-t-0 lg:border-stone-950"
+          className="hidden h-full w-full border-t-2 border-stone-950 bg-cover lg:grid lg:grid-rows-1 lg:border-l-2 lg:border-t-0 lg:border-stone-950"
           style={{ backgroundImage: `url(${hero2})` }}
         >
           <div className="relative flex h-full w-full items-center bg-black bg-opacity-50">
