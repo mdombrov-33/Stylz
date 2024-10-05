@@ -8,7 +8,7 @@ import Showcase from "@/features/home/Showcase";
 function Landing() {
   return (
     <>
-      <section className="grid h-[80dvh] overflow-hidden lg:grid-cols-2">
+      <section className="grid h-screen overflow-hidden lg:grid-cols-2">
         <div
           className="h-full w-full border-b-2 border-stone-950 bg-cover"
           style={{ backgroundImage: `url(${hero1})` }}

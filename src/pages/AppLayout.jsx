@@ -10,7 +10,7 @@ function HomeLayout() {
       <ScrollToTop />
       <Header />
       <Navbar />
-      <main>
+      <main className="min-h-screen">
         <Outlet />
       </main>
       <Footer />
