@@ -23,7 +23,7 @@ function Login() {
         <h3 className="font-redHatDisplay text-4xl font-bold uppercase">
           Welcome Back
         </h3>
-        <p className="py-2">Welcome back! Please enter your details.</p>
+        <p className="py-2">Welcome back! Please enter your details</p>
         <fieldset>
           <legend className="sr-only">Login Details</legend>
           <form className="flex w-96 flex-col items-center">
