@@ -5,7 +5,7 @@ function About() {
         About Stylz
       </h1>
 
-      <div className="flex flex-col items-center justify-center gap-6 px-6">
+      <div className="flex flex-col justify-center gap-6 px-6">
         <p>
           Welcome to <span className="font-redHatDisplay font-bold">Stylz</span>
           , your number one source for all things fashion. We're dedicated to
