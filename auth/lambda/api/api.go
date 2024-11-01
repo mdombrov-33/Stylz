@@ -29,6 +29,9 @@ func (api ApiHandler) RegisterUserHandler(request events.APIGatewayProxyRequest)
 		return events.APIGatewayProxyResponse{
 			Body:       "Invalid Request",
 			StatusCode: http.StatusBadRequest,
+			Headers: map[string]string{
+				"Access-Control-Allow-Origin": "*",
+			},
 		}, err
 	}
 
@@ -36,6 +39,9 @@ func (api ApiHandler) RegisterUserHandler(request events.APIGatewayProxyRequest)
 		return events.APIGatewayProxyResponse{
 			Body:       "Invalid request - fields empty",
 			StatusCode: http.StatusBadRequest,
+			Headers: map[string]string{
+				"Access-Control-Allow-Origin": "*",
+			},
 		}, err
 	}
 
@@ -45,6 +51,9 @@ func (api ApiHandler) RegisterUserHandler(request events.APIGatewayProxyRequest)
 		return events.APIGatewayProxyResponse{
 			Body:       "Internal Server Error",
 			StatusCode: http.StatusInternalServerError,
+			Headers: map[string]string{
+				"Access-Control-Allow-Origin": "*",
+			},
 		}, err
 	}
 
@@ -52,6 +61,9 @@ func (api ApiHandler) RegisterUserHandler(request events.APIGatewayProxyRequest)
 		return events.APIGatewayProxyResponse{
 			Body:       "User already exists",
 			StatusCode: http.StatusConflict,
+			Headers: map[string]string{
+				"Access-Control-Allow-Origin": "*",
+			},
 		}, nil
 	}
 
@@ -60,6 +72,9 @@ func (api ApiHandler) RegisterUserHandler(request events.APIGatewayProxyRequest)
 		return events.APIGatewayProxyResponse{
 			Body:       "Internal Server Error",
 			StatusCode: http.StatusInternalServerError,
+			Headers: map[string]string{
+				"Access-Control-Allow-Origin": "*",
+			},
 		}, fmt.Errorf("error creating user: %w", err)
 	}
 
@@ -70,12 +85,18 @@ func (api ApiHandler) RegisterUserHandler(request events.APIGatewayProxyRequest)
 		return events.APIGatewayProxyResponse{
 			Body:       "Internal Server Error",
 			StatusCode: http.StatusInternalServerError,
+			Headers: map[string]string{
+				"Access-Control-Allow-Origin": "*",
+			},
 		}, fmt.Errorf("error inserting user: %w", err)
 	}
 
 	return events.APIGatewayProxyResponse{
 		Body:       "User registered",
 		StatusCode: http.StatusOK,
+		Headers: map[string]string{
+			"Access-Control-Allow-Origin": "*",
+		},
 	}, nil
 }
 
@@ -92,6 +113,9 @@ func (api ApiHandler) LoginUser(request events.APIGatewayProxyRequest) (events.A
 		return events.APIGatewayProxyResponse{
 			Body:       "Invalid Request",
 			StatusCode: http.StatusBadRequest,
+			Headers: map[string]string{
+				"Access-Control-Allow-Origin": "*",
+			},
 		}, err
 	}
 
@@ -100,6 +124,9 @@ func (api ApiHandler) LoginUser(request events.APIGatewayProxyRequest) (events.A
 		return events.APIGatewayProxyResponse{
 			Body:       "Internal Server Error",
 			StatusCode: http.StatusInternalServerError,
+			Headers: map[string]string{
+				"Access-Control-Allow-Origin": "*",
+			},
 		}, err
 	}
 
@@ -107,6 +134,9 @@ func (api ApiHandler) LoginUser(request events.APIGatewayProxyRequest) (events.A
 		return events.APIGatewayProxyResponse{
 			Body:       "Invalid credentials",
 			StatusCode: http.StatusBadRequest,
+			Headers: map[string]string{
+				"Access-Control-Allow-Origin": "*",
+			},
 		}, nil
 	}
 
@@ -116,5 +146,8 @@ func (api ApiHandler) LoginUser(request events.APIGatewayProxyRequest) (events.A
 	return events.APIGatewayProxyResponse{
 		Body:       successMsg,
 		StatusCode: http.StatusOK,
+		Headers: map[string]string{
+			"Access-Control-Allow-Origin": "*",
+		},
 	}, nil
 }

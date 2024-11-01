@@ -22,7 +22,7 @@ function Register() {
 
     try {
       const response = await axios.post(
-        " https://xp3vs2ukp2.execute-api.eu-north-1.amazonaws.com/prod/register",
+        "https://xp3vs2ukp2.execute-api.eu-north-1.amazonaws.com/prod/register",
         data,
         {
           headers: {

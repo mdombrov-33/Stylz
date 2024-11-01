@@ -3,10 +3,42 @@ import { FaGoogle } from "react-icons/fa";
 import ReturnBtn from "@/components/ReturnBtn";
 import loginImg from "../assets/login.jpg";
 import { Link } from "react-router-dom";
+import { useRef } from "react";
+import axios from "axios";
 // import Loader from "@/components/Loader";
 // import { useState } from "react";
 
 function Login() {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+
+    const data = {
+      email,
+      password,
+    };
+
+    try {
+      const response = await axios.post(
+        "https://xp3vs2ukp2.execute-api.eu-north-1.amazonaws.com/prod/login",
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   // const [isLoading, setIsLoading] = useState(true);
 
   // const handleImageLoad = () => {
@@ -26,7 +58,10 @@ function Login() {
         <p className="py-2">Welcome back! Please enter your details</p>
         <fieldset>
           <legend className="sr-only">Login Details</legend>
-          <form className="flex w-96 flex-col items-center">
+          <form
+            onSubmit={handleSubmit}
+            className="flex w-96 flex-col items-center"
+          >
             <label
               className="w-96 justify-start font-redHatDisplay font-bold"
               htmlFor="email"
@@ -40,6 +75,7 @@ function Login() {
               id="email"
               name="email"
               autoComplete="username"
+              ref={emailRef}
             />
             <label
               className="w-96 justify-start font-redHatDisplay font-bold"
@@ -54,6 +90,7 @@ function Login() {
               id="password"
               name="password"
               autoComplete="current-password"
+              ref={passwordRef}
             />
 
             <div className="mt-2 flex w-96 items-center justify-between">
