@@ -1,4 +1,4 @@
 configure error page
 configure auth forms validation
 change origin allow access for backend from * to my websites
-configure error messages from backend when doing auth
+configure error messages from backend when doing auth(show them for the client too)
