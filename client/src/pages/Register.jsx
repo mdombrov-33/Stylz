@@ -1,6 +1,20 @@
 import ReturnBtn from "@/components/ReturnBtn";
+import { useRef } from "react";
 
 function Register() {
+  const fullNameRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const fullName = fullNameRef.current.value;
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    console.log(fullName, email, password);
+  };
+
   return (
     <section className="flex h-screen items-center justify-center">
       <div className="mt-20 flex flex-col items-center justify-center">
@@ -8,7 +22,11 @@ function Register() {
           Create your account
         </h2>
         <p className="py-2">It&apos;s quick and easy</p>
-        <form className="flex w-96 flex-col items-center" method="POST">
+        <form
+          onSubmit={handleSubmit}
+          className="flex w-96 flex-col items-center"
+          method="POST"
+        >
           <fieldset className="w-full">
             <legend className="sr-only">Registration Form</legend>
             <label
@@ -25,6 +43,7 @@ function Register() {
               name="full_name"
               autoComplete="name"
               required
+              ref={fullNameRef}
             />
             <label
               className="w-96 justify-start font-redHatDisplay font-bold"
@@ -40,6 +59,7 @@ function Register() {
               name="email"
               autoComplete="username"
               required
+              ref={emailRef}
             />
             <label
               className="w-96 justify-start font-redHatDisplay font-bold"
@@ -55,6 +75,7 @@ function Register() {
               name="password"
               autoComplete="new-password"
               required
+              ref={passwordRef}
             />
             <label
               className="w-96 justify-start font-redHatDisplay font-bold"
