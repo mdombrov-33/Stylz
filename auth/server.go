@@ -44,9 +44,9 @@ func NewGoAwsStack(scope constructs.Construct, id string, props *GoAwsStackProps
 	api := awsapigateway.NewRestApi(stack, jsii.String("myAPIGateway"), &awsapigateway.RestApiProps{
 		//* Enable CORS
 		DefaultCorsPreflightOptions: &awsapigateway.CorsOptions{
-			AllowHeaders: jsii.Strings("Content-Type", "Authorization"),           // headers
-			AllowMethods: jsii.Strings("GET", "POST", "DELETE", "PUT", "OPTIONS"), // methods
-			AllowOrigins: jsii.Strings("*"),                                       // origins
+			AllowHeaders: jsii.Strings("Content-Type", "Authorization"),                        // headers
+			AllowMethods: jsii.Strings("GET", "POST", "DELETE", "PUT", "OPTIONS"),              // methods
+			AllowOrigins: jsii.Strings("http://localhost:5173", "https://stylzmc.netlify.app"), // origins
 		},
 		DeployOptions: &awsapigateway.StageOptions{
 			LoggingLevel: awsapigateway.MethodLoggingLevel_INFO,
