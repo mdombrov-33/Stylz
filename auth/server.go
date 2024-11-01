@@ -45,7 +45,7 @@ func NewGoAwsStack(scope constructs.Construct, id string, props *GoAwsStackProps
 		//* Enable CORS
 		DefaultCorsPreflightOptions: &awsapigateway.CorsOptions{
 			AllowHeaders: jsii.Strings("Content-Type", "Authorization"),                        // headers
-			AllowMethods: jsii.Strings("GET", "POST", "DELETE", "PUT"),                         // methods
+			AllowMethods: jsii.Strings("GET", "POST", "DELETE", "PUT", "OPTIONS"),              // methods
 			AllowOrigins: jsii.Strings("http://localhost:5173", "https://stylzmc.netlify.app"), // origins
 		},
 		DeployOptions: &awsapigateway.StageOptions{

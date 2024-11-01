@@ -13,7 +13,7 @@ function Register() {
   const onSubmit = async (data) => {
     try {
       const res = await axios.post(
-        " https://fba76vjk6e.execute-api.eu-north-1.amazonaws.com/prod/register",
+        "https://xp3vs2ukp2.execute-api.eu-north-1.amazonaws.com/prod/register",
         data
       ); // or the full URL
       console.log(res.data);
