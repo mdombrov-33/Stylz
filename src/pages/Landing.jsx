@@ -27,9 +27,9 @@ function Landing() {
         >
           <div className="relative flex h-full w-full items-center bg-black bg-opacity-50">
             <div className="text-white">
-              <button className="btn ml-4 border-2 border-stone-950 font-redHatDisplay uppercase lg:text-3xl">
+              <span className="ml-4 cursor-default rounded-lg border-2 border-stone-950 bg-white p-2 font-redHatDisplay font-bold uppercase text-black lg:text-3xl">
                 - season 2024
-              </button>
+              </span>
               <h1 className="absolute top-[26rem] ml-4 font-delaGothicOne text-4xl font-medium capitalize">
                 creating unique styles.
               </h1>
