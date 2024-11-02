@@ -35,7 +35,7 @@ func (api ApiHandler) RegisterUserHandler(request events.APIGatewayProxyRequest)
 		}, err
 	}
 
-	if registerUser.Email == "" || registerUser.Password == "" {
+	if registerUser.Email == "" || registerUser.Password == "" || registerUser.FullName == "" {
 		return events.APIGatewayProxyResponse{
 			Body:       "Invalid request - fields empty",
 			StatusCode: http.StatusBadRequest,
@@ -92,10 +92,11 @@ func (api ApiHandler) RegisterUserHandler(request events.APIGatewayProxyRequest)
 	}
 
 	return events.APIGatewayProxyResponse{
-		Body:       "User registered",
-		StatusCode: http.StatusOK,
+		Body:       fmt.Sprintf(`{"full_name": "%s", "email": "%s", "message": "Registration successful!"}`, user.FullName, user.Email),
+		StatusCode: http.StatusCreated,
 		Headers: map[string]string{
 			"Access-Control-Allow-Origin": "*",
+			"Content-Type":                "application/json",
 		},
 	}, nil
 }

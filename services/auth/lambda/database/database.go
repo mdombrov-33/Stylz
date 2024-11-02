@@ -67,6 +67,9 @@ func (u DynamoDBClient) InsertUser(user types.User) error {
 			"password": {
 				S: aws.String(user.PasswordHash),
 			},
+			"full_name": {
+				S: aws.String(user.FullName),
+			},
 		},
 	}
 	// insert the item

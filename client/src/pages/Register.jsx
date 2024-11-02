@@ -1,38 +1,28 @@
 import ReturnBtn from "@/components/ReturnBtn";
-import axios from "axios";
-import { useRef } from "react";
+import { Form } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { registerUser } from "@/features/user/userSlice";
 
 function Register() {
-  const fullNameRef = useRef();
-  const emailRef = useRef();
-  const passwordRef = useRef();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { status, error } = useSelector((state) => state.user);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
 
-    const fullName = fullNameRef.current.value;
-    const email = emailRef.current.value;
-    const password = passwordRef.current.value;
-
-    const data = {
-      full_name: fullName,
-      email,
-      password,
+    const user = {
+      full_name: data.full_name,
+      email: data.email,
+      password: data.password,
     };
 
-    try {
-      const response = await axios.post(
-        "https://xp3vs2ukp2.execute-api.eu-north-1.amazonaws.com/prod/register",
-        data,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      console.log(response);
-    } catch (error) {
-      console.error(error);
+    const result = await dispatch(registerUser(user));
+    if (registerUser.fulfilled.match(result)) {
+      navigate("/login");
     }
   };
 
@@ -42,11 +32,11 @@ function Register() {
         <h2 className="font-redHatDisplay text-3xl font-bold uppercase">
           Create your account
         </h2>
-        <p className="py-2">It&apos;s quick and easy</p>
-        <form
-          onSubmit={handleSubmit}
+        <p className="py-2">It's quick and easy</p>
+        <Form
           className="flex w-96 flex-col items-center"
-          method="POST"
+          method="post"
+          onSubmit={handleSubmit}
         >
           <fieldset className="w-full">
             <legend className="sr-only">Registration Form</legend>
@@ -64,7 +54,6 @@ function Register() {
               name="full_name"
               autoComplete="name"
               required
-              ref={fullNameRef}
             />
             <label
               className="w-96 justify-start font-redHatDisplay font-bold"
@@ -80,7 +69,6 @@ function Register() {
               name="email"
               autoComplete="username"
               required
-              ref={emailRef}
             />
             <label
               className="w-96 justify-start font-redHatDisplay font-bold"
@@ -96,7 +84,6 @@ function Register() {
               name="password"
               autoComplete="new-password"
               required
-              ref={passwordRef}
             />
             <label
               className="w-96 justify-start font-redHatDisplay font-bold"
@@ -113,11 +100,20 @@ function Register() {
               autoComplete="new-password"
               required
             />
-            <button className="btn my-2 w-full rounded-lg bg-accent py-2 text-lg text-white">
-              Register
+            <button
+              type="submit"
+              className="btn my-2 w-full rounded-lg bg-accent py-2 text-lg text-white"
+              disabled={status === "loading"}
+            >
+              {status === "loading" ? (
+                <span className="loading loading-spinner loading-md"></span>
+              ) : (
+                "Register"
+              )}
             </button>
           </fieldset>
-        </form>
+        </Form>
+        {error && <p className="text-red-500 mt-2">{error}</p>}
         <div className="mt-14">
           <ReturnBtn />
         </div>
