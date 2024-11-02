@@ -1,6 +1,10 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const PORT = 8080;
+
+//Enable CORS
+app.use(cors());
 
 // Serve static images
 app.use("/images", express.static("public/images"));
