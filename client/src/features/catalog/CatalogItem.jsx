@@ -17,9 +17,10 @@ function CatalogItems({ name, description, price, image, altImage, gender }) {
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
         <p>{description}</p>
-
-        <p className="uppercase font-bold">{gender}</p>
-        <p className="text-2xl font-bold">{price}$</p>
+        <div className="mt-6">
+          <p className="uppercase font-bold">{gender}</p>
+          <p className="text-2xl font-bold">{price}$</p>
+        </div>
       </div>
 
       <div className="card-actions justify-end py-6 px-6">
