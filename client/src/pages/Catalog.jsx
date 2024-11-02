@@ -37,7 +37,7 @@ function Catalog() {
       <h1 className="uppercase font-bold text-center mt-6 text-2xl">
         Collection
       </h1>
-      <section className="grid md:grid-cols-2 xl:grid-cols-4 p-6  gap-6 justify-center ">
+      <section className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-6 gap-20 justify-center ">
         {data.data.map((item) => {
           return (
             <CatalogItem
