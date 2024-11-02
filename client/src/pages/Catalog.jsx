@@ -24,8 +24,6 @@ function Catalog() {
     fetchCatalog();
   }, []);
 
-  console.log(data);
-
   if (isLoading) {
     return <Loader />;
   }
@@ -35,22 +33,26 @@ function Catalog() {
   }
 
   return (
-    <section>
-      <h1 className="uppercase font-bold text-center mt-6 text-2xl">Catalog</h1>
-      {data.data.map((item) => {
-        return (
-          <CatalogItem
-            key={item.id}
-            name={item.name}
-            gender={item.gender}
-            image={item.image}
-            altImage={item.altImage}
-            price={item.price}
-            description={item.description}
-          />
-        );
-      })}
-    </section>
+    <>
+      <h1 className="uppercase font-bold text-center mt-6 text-2xl">
+        Collection
+      </h1>
+      <section className="grid md:grid-cols-2 xl:grid-cols-4 p-6  gap-6 justify-center ">
+        {data.data.map((item) => {
+          return (
+            <CatalogItem
+              key={item.id}
+              name={item.name}
+              gender={item.gender}
+              image={item.image}
+              altImage={item.altImage}
+              price={item.price}
+              description={item.description}
+            />
+          );
+        })}
+      </section>
+    </>
   );
 }
 

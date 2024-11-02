@@ -1,19 +1,33 @@
+import { useState } from "react";
+
 function CatalogItems({ name, description, price, image, altImage, gender }) {
   const baseURL = "https://stylz-shop.onrender.com";
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="card bg-base-100 w-96 shadow-xl">
+    <main className="card bg-base-100 w-96 shadow-xl">
       <figure>
-        <img src={`${baseURL}/${image}`} alt="Shoes" />
+        <img
+          onMouseLeave={() => setIsHovered(false)}
+          onMouseEnter={() => setIsHovered(true)}
+          src={`${baseURL}/${isHovered ? altImage : image}`}
+          alt={name}
+        />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
-        <p>If a dog chews shoes whose shoes does he choose?</p>
-        <div className="card-actions justify-end">
-          <button className="btn btn-primary">Buy Now</button>
-        </div>
+        <p>{description}</p>
+
+        <p className="uppercase font-bold">{gender}</p>
+        <p className="text-2xl font-bold">{price}$</p>
       </div>
-    </div>
+
+      <div className="card-actions justify-end py-6 px-6">
+        <button className="btn font-delaGothicOne btn-accent">
+          Add to Cart
+        </button>
+      </div>
+    </main>
   );
 }
 
