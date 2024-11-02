@@ -1,18 +1,17 @@
 import ReturnBtn from "@/components/ReturnBtn";
-import { Form } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
-import { registerUser } from "@/features/user/userSlice";
+import axios from "axios";
+import { useState } from "react";
+import { Form, useNavigate } from "react-router-dom";
 
 function Register() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { status, error } = useSelector((state) => state.user);
+  const [status, setStatus] = useState("idle");
+  const [error, setError] = useState(null);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries(formData));
 
     const user = {
       full_name: data.full_name,
@@ -20,9 +19,35 @@ function Register() {
       password: data.password,
     };
 
-    const result = await dispatch(registerUser(user));
-    if (registerUser.fulfilled.match(result)) {
-      navigate("/login");
+    if (data.password !== data.confirm_password) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    if (data.password.length < 6) {
+      setError("Password must be at least 6 characters long");
+      return;
+    }
+
+    try {
+      setStatus("loading");
+      const response = await axios.post(
+        "https://xp3vs2ukp2.execute-api.eu-north-1.amazonaws.com/prod/register",
+        user,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (response.status === 201) {
+        navigate("/login");
+      }
+    } catch (error) {
+      setStatus("failed");
+      setError(error.response.data);
+    } finally {
+      setStatus("idle");
     }
   };
 

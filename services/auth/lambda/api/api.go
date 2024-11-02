@@ -59,7 +59,7 @@ func (api ApiHandler) RegisterUserHandler(request events.APIGatewayProxyRequest)
 
 	if userExists {
 		return events.APIGatewayProxyResponse{
-			Body:       "User already exists",
+			Body:       "User with this email already exists",
 			StatusCode: http.StatusConflict,
 			Headers: map[string]string{
 				"Access-Control-Allow-Origin": "*",
@@ -142,10 +142,10 @@ func (api ApiHandler) LoginUser(request events.APIGatewayProxyRequest) (events.A
 	}
 
 	accessToken := types.CreateToken(user)
-	successMsg := fmt.Sprintf(`{"access_token": "%s"}`, accessToken)
+	// successMsg := fmt.Sprintf(`{"access_token": "%s"}`, accessToken)
 
 	return events.APIGatewayProxyResponse{
-		Body:       successMsg,
+		Body:       fmt.Sprintf(`{"full_name": "%s", "email": "%s", "access_token": "%s"}`, user.FullName, user.Email, accessToken),
 		StatusCode: http.StatusOK,
 		Headers: map[string]string{
 			"Access-Control-Allow-Origin": "*",
