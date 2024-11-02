@@ -43,6 +43,16 @@ const getNanoid = async () => {
     },
     {
       id: nanoid(),
+      name: "Classic Moto",
+      price: 149.99,
+      gender: "women",
+      description:
+        "An archival style from over a decade ago - the Classic Moto is an iconic, customer-favorite piece. It’s crafted from soft and supple, washed lambskin that gets better with wear and is finished with luxe details like antique brass closures and zippers. Perfect with your favorite worn-in jeans or over a drapey dress - there is no wrong way to wear a leather jacket.",
+      image: "images/classic-moto.jpg",
+      altImage: "images/classic-moto-hover.jpg",
+    },
+    {
+      id: nanoid(),
       name: "Twill Moleskin Flat Front Trouser",
       price: 149.99,
       gender: "men",
@@ -60,6 +70,16 @@ const getNanoid = async () => {
         "The Abstract Ribbon Cardigan is a modern take on the classic cardigan. The ribbons are woven into the fabric, creating a unique texture that is both visually interesting and soft to the touch. The cardigan is made from a blend of wool and cashmere, making it warm and comfortable to wear.",
       image: "images/abstract-ribbon-cardigan.jpg",
       altImage: "images/abstract-ribbon-cardigan-hover.jpg",
+    },
+    {
+      id: nanoid(),
+      name: "Flat Front Trouser",
+      price: 129.99,
+      gender: "women",
+      description:
+        "The Flat Front Trouser is a classic, tailored pant that is perfect for any occasion. The pant is made from a soft, stretchy fabric that is comfortable to wear all day long. The pant features a flat front, side pockets, and a straight leg that is flattering on all body types. The pant is available in a range of colors, and is perfect for both casual and formal occasions.",
+      image: "images/flat-front-trouser.jpg",
+      altImage: "images/flat-front-trouser-hover.jpg",
     },
     {
       id: nanoid(),
