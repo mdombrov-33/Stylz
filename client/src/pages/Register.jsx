@@ -32,7 +32,7 @@ function Register() {
         <h2 className="font-redHatDisplay text-3xl font-bold uppercase">
           Create your account
         </h2>
-        <p className="py-2">It's quick and easy</p>
+        <p className="py-2">It&apos;s quick and easy</p>
         <Form
           className="flex w-96 flex-col items-center"
           method="post"

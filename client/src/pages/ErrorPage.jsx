@@ -9,7 +9,7 @@ function ErrorPage() {
       </div>
       <h2 className="text-center mt-36 md:mt-12 font-bold text-4xl">Oops!</h2>
       <p className="text-center py-6 text-2xl">
-        We couldn't find the page you're looking for
+        We couldn&apos;t find the page you&apos;re looking for
       </p>
       <div className="flex justify-center">
         <ReturnBtn />
