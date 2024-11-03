@@ -3,8 +3,20 @@ const app = express();
 const cors = require("cors");
 const PORT = 8080;
 
-//Enable CORS
-app.use(cors());
+const allowedOrigins = ["http://localhost:5173", "https://stylzmc.netlify.app"];
+
+// Configure CORS to allow only specific origins
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+  })
+);
 
 // Serve static images
 app.use("/images", express.static("public/images"));
