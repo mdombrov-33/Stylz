@@ -24,7 +24,7 @@ function CatalogItems({ name, description, price, image, altImage, gender }) {
       </div>
 
       <div className="card-actions justify-end py-6 px-6">
-        <button className="btn font-delaGothicOne btn-accent">
+        <button className="btn font-redHatDisplay font-bold text-lg btn-accent">
           Add to Cart
         </button>
       </div>
