@@ -3,6 +3,7 @@ package middleware
 import (
 	"fmt"
 	"net/http"
+	"os"
 	"strings"
 	"time"
 
@@ -65,7 +66,7 @@ func extractTokenFromHeaders(headers map[string]string) string {
 
 func parseToken(tokenString string) (jwt.MapClaims, error) {
 	token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
-		secret := "secret" //should match the secret in types.go
+		secret := os.Getenv("JWT_SECRET") //from .env file
 		return []byte(secret), nil
 	})
 

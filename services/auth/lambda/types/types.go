@@ -1,6 +1,7 @@
 package types
 
 import (
+	"os"
 	"time"
 
 	"github.com/golang-jwt/jwt/v5"
@@ -47,7 +48,10 @@ func CreateToken(user User) string {
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims, nil)
-	secret := "secret" // TODO: get from env
+	secret := os.Getenv("JWT_SECRET")
+	if secret == "" {
+		return ""
+	}
 
 	tokenString, err := token.SignedString([]byte(secret))
 	if err != nil {
