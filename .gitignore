@@ -48,6 +48,7 @@ dist-ssr
 .cdk.staging
 cdk.out
 
+.env
 
 #Todo
 TODO.txt
