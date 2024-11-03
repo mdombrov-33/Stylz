@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Form, Link, NavLink } from "react-router-dom";
 
 import brand from "../assets/brand.svg";
 import themeClick from "../assets/switch.mp3";
@@ -18,6 +18,7 @@ const getThemeLocalStorage = () => {
 
 function Navbar() {
   const [theme, setTheme] = useState(getThemeLocalStorage);
+  const token = localStorage.getItem("access_token");
 
   const handleTheme = () => {
     const newTheme =
@@ -139,14 +140,22 @@ function Navbar() {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link
-          to="/login"
-          className="btn btn-ghost font-redHatDisplay text-base font-bold uppercase sm:text-2xl"
-        >
-          <button className="pr-2 font-delaGothicOne font-light uppercase">
-            login
-          </button>
-        </Link>
+        {token ? (
+          <Form action="/logout" method="post">
+            <button className="pr-2 font-delaGothicOne font-light uppercase sm:text-2xl btn-ghost btn mr-6">
+              logout
+            </button>
+          </Form>
+        ) : (
+          <Link
+            to={token ? null : "/login"}
+            className="btn btn-ghost font-redHatDisplay text-base font-bold uppercase sm:text-2xl"
+          >
+            <button className="pr-2 font-delaGothicOne font-light uppercase">
+              login
+            </button>
+          </Link>
+        )}
         <label className="swap swap-rotate">
           <input type="checkbox" onChange={handleTheme} />
           <BsSunFill className="swap-on h-4 w-4" />

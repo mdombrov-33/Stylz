@@ -28,6 +28,7 @@ const ContactLayout = lazy(() => import("./pages/ContactLayout"));
 
 import { action as registerAction } from "@/pages/Register";
 import { action as loginAction } from "@/pages/Login";
+import { logoutAction } from "@/utils/auth";
 
 const router = createBrowserRouter([
   {
@@ -112,6 +113,10 @@ const router = createBrowserRouter([
     path: "/register",
     element: <Register />,
     action: registerAction,
+  },
+  {
+    path: "/logout",
+    action: logoutAction,
   },
 ]);
 
