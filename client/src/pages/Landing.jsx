@@ -4,12 +4,8 @@ import hero2 from "../assets/hero2.jpg";
 import { FaArrowDown } from "react-icons/fa";
 import Collab from "@/features/home/Collab";
 import Showcase from "@/features/home/Showcase";
-import { useSelector } from "react-redux";
 
 function Landing() {
-  const userInfo = useSelector((state) => state.user.userInfo);
-  console.log(userInfo);
-
   return (
     <>
       <section className="grid h-[80svh] overflow-hidden lg:grid-cols-2">

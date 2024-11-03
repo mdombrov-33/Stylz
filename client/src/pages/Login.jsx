@@ -11,8 +11,6 @@ function Login() {
   const navigate = useNavigate();
   const { status, error } = useSelector((state) => state.user);
 
-  console.log(status, error);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
