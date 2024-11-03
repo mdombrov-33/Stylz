@@ -10,6 +10,11 @@ import (
 	"github.com/aws/aws-lambda-go/events"
 )
 
+var allowedOrigins = map[string]bool{
+	"http://localhost:5173":       true, // dev frontend
+	"https://stylzmc.netlify.app": true, // production
+}
+
 type ApiHandler struct {
 	// when we call api functions, we want to interact with the database
 	dbStore database.UserStore
@@ -21,8 +26,20 @@ func NewApiHandler(dbStore database.UserStore) ApiHandler {
 	}
 }
 
+func getAllowedOrigin(request events.APIGatewayProxyRequest) string {
+	origin := request.Headers["origin"] // origin should start with small letter
+	fmt.Println("Origin: ", origin)
+	fmt.Println("All headers", request.Headers)
+	if allowedOrigins[origin] {
+		return origin
+	}
+
+	return "https://stylzmc.netlify.app"
+}
+
 func (api ApiHandler) RegisterUserHandler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	var registerUser types.RegisterUser
+	allowedOrigin := getAllowedOrigin(request)
 
 	err := json.Unmarshal([]byte(request.Body), &registerUser)
 	if err != nil {
@@ -30,7 +47,7 @@ func (api ApiHandler) RegisterUserHandler(request events.APIGatewayProxyRequest)
 			Body:       "Invalid Request",
 			StatusCode: http.StatusBadRequest,
 			Headers: map[string]string{
-				"Access-Control-Allow-Origin": "*",
+				"Access-Control-Allow-Origin": allowedOrigin,
 			},
 		}, err
 	}
@@ -40,7 +57,7 @@ func (api ApiHandler) RegisterUserHandler(request events.APIGatewayProxyRequest)
 			Body:       "Invalid request - fields empty",
 			StatusCode: http.StatusBadRequest,
 			Headers: map[string]string{
-				"Access-Control-Allow-Origin": "*",
+				"Access-Control-Allow-Origin": allowedOrigin,
 			},
 		}, err
 	}
@@ -52,7 +69,7 @@ func (api ApiHandler) RegisterUserHandler(request events.APIGatewayProxyRequest)
 			Body:       "Internal Server Error",
 			StatusCode: http.StatusInternalServerError,
 			Headers: map[string]string{
-				"Access-Control-Allow-Origin": "*",
+				"Access-Control-Allow-Origin": allowedOrigin,
 			},
 		}, err
 	}
@@ -62,7 +79,7 @@ func (api ApiHandler) RegisterUserHandler(request events.APIGatewayProxyRequest)
 			Body:       "User with this email already exists",
 			StatusCode: http.StatusConflict,
 			Headers: map[string]string{
-				"Access-Control-Allow-Origin": "*",
+				"Access-Control-Allow-Origin": allowedOrigin,
 			},
 		}, nil
 	}
@@ -73,7 +90,7 @@ func (api ApiHandler) RegisterUserHandler(request events.APIGatewayProxyRequest)
 			Body:       "Internal Server Error",
 			StatusCode: http.StatusInternalServerError,
 			Headers: map[string]string{
-				"Access-Control-Allow-Origin": "*",
+				"Access-Control-Allow-Origin": allowedOrigin,
 			},
 		}, fmt.Errorf("error creating user: %w", err)
 	}
@@ -86,7 +103,7 @@ func (api ApiHandler) RegisterUserHandler(request events.APIGatewayProxyRequest)
 			Body:       "Internal Server Error",
 			StatusCode: http.StatusInternalServerError,
 			Headers: map[string]string{
-				"Access-Control-Allow-Origin": "*",
+				"Access-Control-Allow-Origin": allowedOrigin,
 			},
 		}, fmt.Errorf("error inserting user: %w", err)
 	}
@@ -95,11 +112,13 @@ func (api ApiHandler) RegisterUserHandler(request events.APIGatewayProxyRequest)
 		Body:       fmt.Sprintf(`{"full_name": "%s", "email": "%s", "message": "Registration successful!"}`, user.FullName, user.Email),
 		StatusCode: http.StatusCreated,
 		Headers: map[string]string{
-			"Access-Control-Allow-Origin": "*",
+			"Access-Control-Allow-Origin": allowedOrigin,
 			"Content-Type":                "application/json",
 		},
 	}, nil
 }
+
+////////////////////////
 
 func (api ApiHandler) LoginUser(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	type LoginRequest struct {
@@ -108,6 +127,7 @@ func (api ApiHandler) LoginUser(request events.APIGatewayProxyRequest) (events.A
 	}
 
 	var loginRequest LoginRequest
+	allowedOrigin := getAllowedOrigin(request)
 
 	err := json.Unmarshal([]byte(request.Body), &loginRequest)
 	if err != nil {
@@ -115,7 +135,7 @@ func (api ApiHandler) LoginUser(request events.APIGatewayProxyRequest) (events.A
 			Body:       "Invalid Request",
 			StatusCode: http.StatusBadRequest,
 			Headers: map[string]string{
-				"Access-Control-Allow-Origin": "*",
+				"Access-Control-Allow-Origin": allowedOrigin,
 			},
 		}, err
 	}
@@ -126,7 +146,7 @@ func (api ApiHandler) LoginUser(request events.APIGatewayProxyRequest) (events.A
 			Body:       "Internal Server Error",
 			StatusCode: http.StatusInternalServerError,
 			Headers: map[string]string{
-				"Access-Control-Allow-Origin": "*",
+				"Access-Control-Allow-Origin": allowedOrigin,
 			},
 		}, err
 	}
@@ -136,19 +156,27 @@ func (api ApiHandler) LoginUser(request events.APIGatewayProxyRequest) (events.A
 			Body:       "Invalid credentials",
 			StatusCode: http.StatusBadRequest,
 			Headers: map[string]string{
-				"Access-Control-Allow-Origin": "*",
+				"Access-Control-Allow-Origin": allowedOrigin,
 			},
 		}, nil
 	}
 
-	accessToken := types.CreateToken(user)
-	// successMsg := fmt.Sprintf(`{"access_token": "%s"}`, accessToken)
+	accessToken, err := types.CreateToken(user)
+	if err != nil {
+		return events.APIGatewayProxyResponse{
+			Body:       fmt.Sprintf(`{"error": "Failed to create token: %s"}`, err.Error()),
+			StatusCode: http.StatusInternalServerError,
+			Headers: map[string]string{
+				"Access-Control-Allow-Origin": allowedOrigin,
+			},
+		}, nil
+	}
 
 	return events.APIGatewayProxyResponse{
 		Body:       fmt.Sprintf(`{"full_name": "%s", "email": "%s", "access_token": "%s"}`, user.FullName, user.Email, accessToken),
 		StatusCode: http.StatusOK,
 		Headers: map[string]string{
-			"Access-Control-Allow-Origin": "*",
+			"Access-Control-Allow-Origin": allowedOrigin,
 		},
 	}, nil
 }

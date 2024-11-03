@@ -1,6 +1,7 @@
 package types
 
 import (
+	"errors"
 	"os"
 	"time"
 
@@ -38,7 +39,7 @@ func ValidatePassword(hashedPassword, plainTextPassword string) bool {
 	return err == nil
 }
 
-func CreateToken(user User) string {
+func CreateToken(user User) (string, error) {
 	now := time.Now()
 	validUntil := now.Add(time.Hour * 2).Unix()
 
@@ -50,13 +51,13 @@ func CreateToken(user User) string {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims, nil)
 	secret := os.Getenv("JWT_SECRET")
 	if secret == "" {
-		return ""
+		return "", errors.New("JWT_SECRET is not set")
 	}
 
 	tokenString, err := token.SignedString([]byte(secret))
 	if err != nil {
-		return ""
+		return "", errors.New("Failed to sign token")
 	}
 
-	return tokenString
+	return tokenString, nil
 }
