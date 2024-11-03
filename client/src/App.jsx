@@ -1,4 +1,5 @@
 import { Suspense, lazy } from "react";
+import { Toaster } from "react-hot-toast";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Loader from "@/components/Loader";
 
@@ -24,6 +25,9 @@ const WhyStylz = lazy(() => import("./pages/ContactRoutes/WhyStylz"));
 const ContactInfo = lazy(() => import("./pages/ContactRoutes/ContactInfo"));
 
 const ContactLayout = lazy(() => import("./pages/ContactLayout"));
+
+import { action as registerAction } from "@/pages/Register";
+import { action as loginAction } from "@/pages/Login";
 
 const router = createBrowserRouter([
   {
@@ -102,16 +106,19 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+    action: loginAction,
   },
   {
     path: "/register",
     element: <Register />,
+    action: registerAction,
   },
 ]);
 
 function App() {
   return (
     <Suspense fallback={<Loader />}>
+      <Toaster position="bottom-left" />
       <RouterProvider router={router} />
     </Suspense>
   );

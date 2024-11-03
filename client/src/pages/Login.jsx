@@ -2,31 +2,12 @@ import { FaGoogle } from "react-icons/fa";
 
 import ReturnBtn from "@/components/ReturnBtn";
 import loginImg from "../assets/login.jpg";
-import { Form, Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "@/features/user/userSlice";
+import { Form, Link, useNavigation, redirect } from "react-router-dom";
+import { toast } from "react-hot-toast";
+import axios from "axios";
 
 function Login() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { status, error } = useSelector((state) => state.user);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
-
-    const user = {
-      email: data.email,
-      password: data.password,
-    };
-
-    const response = await dispatch(loginUser(user));
-
-    if (loginUser.fulfilled.match(response)) {
-      navigate("/");
-    }
-  };
+  const navigation = useNavigation();
 
   return (
     <section className="grid h-screen justify-center md:grid-cols-2">
@@ -37,11 +18,7 @@ function Login() {
         <p className="py-2">Welcome back! Please enter your details</p>
         <fieldset>
           <legend className="sr-only">Login Details</legend>
-          <Form
-            method="post"
-            onSubmit={handleSubmit}
-            className="flex w-96 flex-col items-center"
-          >
+          <Form method="post" className="flex w-96 flex-col items-center">
             <label
               className="w-96 justify-start font-redHatDisplay font-bold"
               htmlFor="email"
@@ -73,8 +50,6 @@ function Login() {
               required
             />
 
-            {error && <p className="text-red-500">{error}</p>}
-
             <div className="mt-2 flex w-96 items-center justify-between">
               <div className="flex items-center justify-center">
                 <input
@@ -94,7 +69,7 @@ function Login() {
               </a>
             </div>
             <button className="btn my-2 w-full rounded-lg bg-accent py-2 text-lg text-white">
-              {status === "loading" ? (
+              {navigation.state === "submitting" ? (
                 <span className="loading loading-spinner loading-md"></span>
               ) : (
                 "Sign In"
@@ -124,6 +99,34 @@ function Login() {
       />
     </section>
   );
+}
+
+export async function action({ request }) {
+  const data = await request.formData();
+  const loginData = {
+    email: data.get("email"),
+    password: data.get("password"),
+  };
+
+  try {
+    const response = await axios.post(
+      "https://xp3vs2ukp2.execute-api.eu-north-1.amazonaws.com/prod/login",
+      loginData,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const access_token = response.data.access_token;
+    localStorage.setItem("access_token", access_token);
+    toast.success("Login successful!");
+    return redirect("/");
+  } catch (err) {
+    const msg = err.response.data.message;
+    toast.error(msg ? msg : err.response.data);
+    return err;
+  }
 }
 
 export default Login;

@@ -1,55 +1,11 @@
 import ReturnBtn from "@/components/ReturnBtn";
 import axios from "axios";
-import { useState } from "react";
-import { Form, useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
+
+import { Form, redirect, useNavigation } from "react-router-dom";
 
 function Register() {
-  const navigate = useNavigate();
-  const [status, setStatus] = useState("idle");
-  const [error, setError] = useState(null);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries(formData));
-
-    const user = {
-      full_name: data.full_name,
-      email: data.email,
-      password: data.password,
-    };
-
-    if (data.password !== data.confirm_password) {
-      setError("Passwords do not match");
-      return;
-    }
-
-    if (data.password.length < 6) {
-      setError("Password must be at least 6 characters long");
-      return;
-    }
-
-    try {
-      setStatus("loading");
-      const response = await axios.post(
-        "https://xp3vs2ukp2.execute-api.eu-north-1.amazonaws.com/prod/register",
-        user,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      if (response.status === 201) {
-        navigate("/login");
-      }
-    } catch (error) {
-      setStatus("failed");
-      setError(error.response.data);
-    } finally {
-      setStatus("idle");
-    }
-  };
+  const navigation = useNavigation();
 
   return (
     <section className="flex h-screen items-center justify-center">
@@ -58,11 +14,7 @@ function Register() {
           Create your account
         </h2>
         <p className="py-2">It&apos;s quick and easy</p>
-        <Form
-          className="flex w-96 flex-col items-center"
-          method="post"
-          onSubmit={handleSubmit}
-        >
+        <Form className="flex w-96 flex-col items-center" method="post">
           <fieldset className="w-full">
             <legend className="sr-only">Registration Form</legend>
             <label
@@ -128,9 +80,9 @@ function Register() {
             <button
               type="submit"
               className="btn my-2 w-full rounded-lg bg-accent py-2 text-lg text-white"
-              disabled={status === "loading"}
+              disabled={navigation.state === "submitting"}
             >
-              {status === "loading" ? (
+              {navigation.state === "submitting" ? (
                 <span className="loading loading-spinner loading-md"></span>
               ) : (
                 "Register"
@@ -138,13 +90,38 @@ function Register() {
             </button>
           </fieldset>
         </Form>
-        {error && <p className="text-red-500 mt-2">{error}</p>}
+
         <div className="mt-14">
           <ReturnBtn />
         </div>
       </div>
     </section>
   );
+}
+export async function action({ request }) {
+  const data = await request.formData();
+  const registerData = {
+    full_name: data.get("full_name"),
+    email: data.get("email"),
+    password: data.get("password"),
+  };
+
+  try {
+    await axios.post(
+      "https://xp3vs2ukp2.execute-api.eu-north-1.amazonaws.com/prod/register",
+      registerData,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    toast.success("Account created successfully!");
+    return redirect("/login");
+  } catch (err) {
+    toast.error(err.response.data);
+    return err;
+  }
 }
 
 export default Register;

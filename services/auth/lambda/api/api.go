@@ -62,6 +62,16 @@ func (api ApiHandler) RegisterUserHandler(request events.APIGatewayProxyRequest)
 		}, err
 	}
 
+	if len(registerUser.Password) < 6 {
+		return events.APIGatewayProxyResponse{
+			Body:       "Password must be at least 6 characters",
+			StatusCode: http.StatusBadRequest,
+			Headers: map[string]string{
+				"Access-Control-Allow-Origin": allowedOrigin,
+			},
+		}, err
+	}
+
 	// does a user with this email already exist?
 	userExists, err := api.dbStore.DoesUserExist(registerUser.Email)
 	if err != nil {
