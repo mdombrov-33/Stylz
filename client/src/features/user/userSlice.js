@@ -43,7 +43,8 @@ const userSlice = createSlice({
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.payload;
+        state.error =
+          action.payload?.message || action.payload || "An error occurred";
       });
   },
 });

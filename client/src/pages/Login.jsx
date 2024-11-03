@@ -3,15 +3,15 @@ import { FaGoogle } from "react-icons/fa";
 import ReturnBtn from "@/components/ReturnBtn";
 import loginImg from "../assets/login.jpg";
 import { Form, Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "@/features/user/userSlice";
 
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [status, setStatus] = useState("idle");
-  const [error, setError] = useState(null);
+  const { status, error } = useSelector((state) => state.user);
+
+  console.log(status, error);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,25 +23,10 @@ function Login() {
       password: data.password,
     };
 
-    if (user.password.length < 6) {
-      setError("Password must be at least 6 characters long");
-      return;
-    }
+    const response = await dispatch(loginUser(user));
 
-    try {
-      setStatus("loading");
-      const response = await dispatch(loginUser(user));
-      if (loginUser.rejected.match(response)) {
-        setStatus("failed");
-        console.log(response);
-        setError(response.payload);
-      }
-      if (loginUser.fulfilled.match(response)) {
-        setStatus("succeeded");
-        navigate("/");
-      }
-    } finally {
-      setStatus("idle");
+    if (loginUser.fulfilled.match(response)) {
+      navigate("/");
     }
   };
 
