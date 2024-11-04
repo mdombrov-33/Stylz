@@ -1,11 +1,31 @@
 import ReturnBtn from "@/components/ReturnBtn";
 import axios from "axios";
+import { useRef, useState } from "react";
 import { toast } from "react-hot-toast";
 
 import { Form, redirect, useNavigation } from "react-router-dom";
 
 function Register() {
   const navigation = useNavigation();
+
+  const passwordRef = useRef(null);
+  const confirmPasswordRef = useRef(null);
+  const [passwordError, setPasswordError] = useState("");
+
+  const handlePasswordBlur = () => {
+    if (passwordRef.current.value !== confirmPasswordRef.current.value) {
+      setPasswordError("Passwords do not match.");
+    } else {
+      setPasswordError("");
+    }
+  };
+
+  const handleFormSubmit = async (event) => {
+    if (passwordRef.current.value !== confirmPasswordRef.current.value) {
+      event.preventDefault(); // Prevent form submission if passwords don't match
+      toast.error("Passwords do not match.");
+    }
+  };
 
   return (
     <section className="flex h-screen items-center justify-center">
@@ -14,7 +34,11 @@ function Register() {
           Create your account
         </h2>
         <p className="py-2">It&apos;s quick and easy</p>
-        <Form className="flex w-96 flex-col items-center" method="post">
+        <Form
+          className="flex w-96 flex-col items-center"
+          method="post"
+          onSubmit={handleFormSubmit}
+        >
           <fieldset className="w-full">
             <legend className="sr-only">Registration Form</legend>
             <label
@@ -61,6 +85,7 @@ function Register() {
               name="password"
               autoComplete="new-password"
               required
+              ref={passwordRef}
             />
             <label
               className="w-96 justify-start font-redHatDisplay font-bold"
@@ -76,6 +101,8 @@ function Register() {
               name="confirm_password"
               autoComplete="new-password"
               required
+              ref={confirmPasswordRef}
+              onBlur={handlePasswordBlur}
             />
             <button
               type="submit"
@@ -91,6 +118,8 @@ function Register() {
           </fieldset>
         </Form>
 
+        {passwordError && <span className="text-red-500">{passwordError}</span>}
+
         <div className="mt-14">
           <ReturnBtn to={-1} />
         </div>
@@ -98,6 +127,7 @@ function Register() {
     </section>
   );
 }
+
 export async function action({ request }) {
   const data = await request.formData();
   const registerData = {
