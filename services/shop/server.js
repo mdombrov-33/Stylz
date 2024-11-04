@@ -32,7 +32,7 @@ const getNanoid = async () => {
   const nanoid = await getNanoid();
 
   // Mock data with generated IDs using nanoid
-  const catalog = [
+  const newItems = [
     {
       id: nanoid(),
       name: "Brushed Houndstooth Hendrik Overcoat",
@@ -135,9 +135,9 @@ const getNanoid = async () => {
     },
   ];
 
-  // API endpoint to get the catalog
-  app.get("/api/catalog", (req, res) => {
-    res.json(catalog);
+  // API endpoint to get the new items
+  app.get("/api/new", (req, res) => {
+    res.json(newItems);
   });
 
   // Start the server

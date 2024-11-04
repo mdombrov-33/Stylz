@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function CatalogItems({ name, description, price, image, altImage, gender }) {
+function ShopNewItems({ name, description, price, image, altImage, gender }) {
   const baseURL = "https://stylz-shop.onrender.com";
   const [isHovered, setIsHovered] = useState(false);
 
@@ -32,4 +32,4 @@ function CatalogItems({ name, description, price, image, altImage, gender }) {
   );
 }
 
-export default CatalogItems;
+export default ShopNewItems;
