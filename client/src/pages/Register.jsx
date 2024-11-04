@@ -1,6 +1,6 @@
 import ReturnBtn from "@/components/ReturnBtn";
 import axios from "axios";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { toast } from "react-hot-toast";
 
 import { Form, redirect, useNavigation } from "react-router-dom";
@@ -10,7 +10,6 @@ function Register() {
 
   const passwordRef = useRef(null);
   const confirmPasswordRef = useRef(null);
-  const [passwordError, setPasswordError] = useState("");
 
   const handleFormSubmit = async (event) => {
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
@@ -108,8 +107,6 @@ function Register() {
             </button>
           </fieldset>
         </Form>
-
-        {passwordError && <span className="text-red-500">{passwordError}</span>}
 
         <div className="mt-14">
           <ReturnBtn to={-1} />
