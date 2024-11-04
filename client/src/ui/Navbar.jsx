@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Form, Link, NavLink } from "react-router-dom";
+import { Form, Link, NavLink, useLocation } from "react-router-dom";
 
 import brand from "../assets/brand.svg";
 import themeClick from "../assets/switch.mp3";
@@ -18,6 +18,9 @@ const getThemeLocalStorage = () => {
 };
 
 function Navbar() {
+  const location = useLocation();
+  const isOnNewRoute = location.pathname === "/new";
+
   const [theme, setTheme] = useState(getThemeLocalStorage);
 
   const token = getAuthToken();
@@ -175,13 +178,16 @@ function Navbar() {
           </div>
         </NavLink>
       </div>
-      <Link to="/new" className=" btn bg-base-content">
-        <button
-          className={`${theme === themes.lemonade ? "hover:text-base-content" : "hover:text-base-content"} uppercase text-base-100 hover:text-accent`}
-        >
-          shop all new
-        </button>
-      </Link>
+
+      {!isOnNewRoute && (
+        <Link to="/new" className=" btn bg-base-content">
+          <button
+            className={`${theme === themes.lemonade ? "hover:text-base-content" : "hover:text-base-content"} uppercase text-base-100 hover:text-accent`}
+          >
+            shop all new
+          </button>
+        </Link>
+      )}
     </nav>
   );
 }
