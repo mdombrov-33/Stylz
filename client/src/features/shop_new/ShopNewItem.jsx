@@ -8,6 +8,7 @@ function ShopNewItems({ name, description, price, image, altImage, gender }) {
     <main className="card bg-base-100 w-96 shadow-xl">
       <figure>
         <img
+          className="max-h-96 w-full object-cover"
           onMouseLeave={() => setIsHovered(false)}
           onMouseEnter={() => setIsHovered(true)}
           src={`${baseURL}/${isHovered ? altImage : image}`}
