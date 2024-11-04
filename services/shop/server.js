@@ -36,6 +36,8 @@ const getNanoid = async () => {
     {
       id: nanoid(),
       name: "Brushed Houndstooth Hendrik Overcoat",
+      sizes: ["S", "M", "L", "XL"],
+      category: "coats",
       price: 249.99,
       gender: "men",
       description:
@@ -46,6 +48,8 @@ const getNanoid = async () => {
     {
       id: nanoid(),
       name: "Ronnie Turtleneck",
+      sizes: ["M", "L", "XL"],
+      category: "sweaters",
       price: 89.99,
       gender: "men",
       description:
@@ -56,6 +60,8 @@ const getNanoid = async () => {
     {
       id: nanoid(),
       name: "Classic Moto",
+      sizes: ["S", "M"],
+      category: "jackets",
       price: 149.99,
       gender: "women",
       description:
@@ -66,6 +72,8 @@ const getNanoid = async () => {
     {
       id: nanoid(),
       name: "Twill Moleskin Flat Front Trouser",
+      sizes: ["S", "M", "L", "XL"],
+      category: "pants",
       price: 149.99,
       gender: "men",
       description:
@@ -76,6 +84,8 @@ const getNanoid = async () => {
     {
       id: nanoid(),
       name: "Abstract Ribbon Cardigan",
+      sizes: ["S", "M", "L"],
+      category: "sweaters",
       price: 119.99,
       gender: "men",
       description:
@@ -86,6 +96,8 @@ const getNanoid = async () => {
     {
       id: nanoid(),
       name: "Flat Front Trouser",
+      sizes: ["S", "M", "L"],
+      category: "pants",
       price: 129.99,
       gender: "women",
       description:
@@ -96,6 +108,8 @@ const getNanoid = async () => {
     {
       id: nanoid(),
       name: "Plaid Zip Sweater",
+      sizes: ["S", "M", "L", "XL"],
+      category: "sweaters",
       price: 99.99,
       gender: "men",
       description:
@@ -106,6 +120,8 @@ const getNanoid = async () => {
     {
       id: nanoid(),
       name: "Oak Street x Billy Reid Trench Boot",
+      sizes: ["8", "9", "10", "11"],
+      category: "shoes",
       price: 299.99,
       gender: "men",
       description:
@@ -116,6 +132,8 @@ const getNanoid = async () => {
     {
       id: nanoid(),
       name: "Melange Yellowhammer Tuscumbia Shirt Button-Down",
+      sizes: ["S", "M", "L", "XL"],
+      category: "shirts",
       price: 79.99,
       gender: "men",
       description:
@@ -126,6 +144,8 @@ const getNanoid = async () => {
     {
       id: nanoid(),
       name: "Corded Plaid Tuscumbia Shirt Button Down",
+      sizes: ["S", "M", "L", "XL"],
+      category: "shirts",
       price: 159.99,
       gender: "men",
       description:
@@ -134,11 +154,13 @@ const getNanoid = async () => {
       altImage: "images/new/corded-plaid-shirt-hover.jpg",
     },
   ];
-
+  ////////////////////////////////////////
   const catalogItems = [
     {
       id: nanoid(),
       name: "Brushed Houndstooth Hendrik Overcoat",
+      sizes: ["S", "M", "L", "XL"],
+      category: "coats",
       price: 249.99,
       gender: "men",
       description:
@@ -149,6 +171,8 @@ const getNanoid = async () => {
     {
       id: nanoid(),
       name: "Ronnie Turtleneck",
+      sizes: ["M", "L", "XL"],
+      category: "sweaters",
       price: 89.99,
       gender: "men",
       description:
@@ -159,6 +183,8 @@ const getNanoid = async () => {
     {
       id: nanoid(),
       name: "Classic Moto",
+      sizes: ["S", "M"],
+      category: "jackets",
       price: 149.99,
       gender: "women",
       description:
@@ -169,6 +195,8 @@ const getNanoid = async () => {
     {
       id: nanoid(),
       name: "Twill Moleskin Flat Front Trouser",
+      sizes: ["S", "M", "L", "XL"],
+      category: "pants",
       price: 149.99,
       gender: "men",
       description:
@@ -179,6 +207,8 @@ const getNanoid = async () => {
     {
       id: nanoid(),
       name: "Abstract Ribbon Cardigan",
+      sizes: ["S", "M", "L"],
+      category: "sweaters",
       price: 119.99,
       gender: "men",
       description:
@@ -189,6 +219,8 @@ const getNanoid = async () => {
     {
       id: nanoid(),
       name: "Flat Front Trouser",
+      sizes: ["S", "M", "L"],
+      category: "pants",
       price: 129.99,
       gender: "women",
       description:
@@ -199,6 +231,8 @@ const getNanoid = async () => {
     {
       id: nanoid(),
       name: "Plaid Zip Sweater",
+      sizes: ["S", "M", "L", "XL"],
+      category: "sweaters",
       price: 99.99,
       gender: "men",
       description:
@@ -209,6 +243,8 @@ const getNanoid = async () => {
     {
       id: nanoid(),
       name: "Oak Street x Billy Reid Trench Boot",
+      sizes: ["8", "9", "10", "11"],
+      category: "shoes",
       price: 299.99,
       gender: "men",
       description:
@@ -219,6 +255,8 @@ const getNanoid = async () => {
     {
       id: nanoid(),
       name: "Melange Yellowhammer Tuscumbia Shirt Button-Down",
+      sizes: ["S", "M", "L", "XL"],
+      category: "shirts",
       price: 79.99,
       gender: "men",
       description:
@@ -229,12 +267,30 @@ const getNanoid = async () => {
     {
       id: nanoid(),
       name: "Corded Plaid Tuscumbia Shirt Button Down",
+      sizes: ["S", "M", "L", "XL"],
+      category: "shirts",
       price: 159.99,
       gender: "men",
       description:
         "Our best-selling Tuscumbia shirt is the cornerstone of lived-in luxury. This version is cut in a standard fit, providing ease of movement and ultimate comfort. It’s 100% cotton, but with a brushed finish to the exterior giving it a little more weight and a super soft feel.  It's constructed with a button-down collar, barrel cuffs, and a tonal thread throughout the body. Thoughtfully finished with smoke mother of pearl buttons, a left-side chest pocket, and a subtle detail: our heirloom ribbon applied to the bottom of the under-placket.",
       image: "images/new/corded-plaid-shirt.jpg",
       altImage: "images/new/corded-plaid-shirt-hover.jpg",
+    },
+
+    {
+      id: nanoid(),
+      name: "Leather Flight Jacket with Shearling Collar",
+      sizes: ["S", "M", "L", "XL"],
+      category: "jackets",
+      isAvailable: true,
+      price: 499.99,
+      gender: "men",
+      description:
+        "This classic leather flight jacket is made from premium cowhide leather and features a shearling collar. The jacket is lined with a quilted polyester lining for added warmth and comfort. It has two front pockets and a zippered chest pocket for storage. The jacket is available in black and brown.",
+      image: "images/catalog/leather-flight-jacket.jpg",
+      altImage: "images/catalog/leather-flight-jacket-hover.jpg",
+      altImage2: "images/catalog/leather-flight-jacket-2.jpg",
+      altImage3: "images/catalog/leather-flight-jacket-3.jpg",
     },
   ];
 
