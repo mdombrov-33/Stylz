@@ -6,6 +6,7 @@ import (
 	"lambda-func/database"
 	"lambda-func/types"
 	"net/http"
+	"regexp"
 
 	"github.com/aws/aws-lambda-go/events"
 )
@@ -62,14 +63,36 @@ func (api ApiHandler) RegisterUserHandler(request events.APIGatewayProxyRequest)
 		}, err
 	}
 
-	if len(registerUser.Password) < 6 {
+	if len(registerUser.Password) < 8 {
 		return events.APIGatewayProxyResponse{
-			Body:       "Password must be at least 6 characters",
+			Body:       "Password must be at least 8 characters",
 			StatusCode: http.StatusBadRequest,
 			Headers: map[string]string{
 				"Access-Control-Allow-Origin": allowedOrigin,
 			},
 		}, err
+	}
+
+	if len(registerUser.Password) > 64 {
+		return events.APIGatewayProxyResponse{
+			Body:       "Password must be at most 64 characters",
+			StatusCode: http.StatusBadRequest,
+			Headers: map[string]string{
+				"Access-Control-Allow-Origin": allowedOrigin,
+			},
+		}, err
+	}
+
+	// check if email is valid
+	emailRegex := regexp.MustCompile(`^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`)
+	if !emailRegex.MatchString(registerUser.Email) {
+		return events.APIGatewayProxyResponse{
+			Body:       "Invalid email format",
+			StatusCode: http.StatusBadRequest,
+			Headers: map[string]string{
+				"Access-Control-Allow-Origin": allowedOrigin,
+			},
+		}, nil
 	}
 
 	// does a user with this email already exist?
