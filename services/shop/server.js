@@ -173,20 +173,6 @@ const getNanoid = async () => {
       altImage2: "images/new/corded-plaid-shirt-2.jpg",
       altImage3: "images/new/corded-plaid-shirt-3.jpg",
     },
-    {
-      id: nanoid(),
-      name: "Corded Plaid Tuscumbia Shirt Button Down",
-      sizes: ["S", "M", "L", "XL"],
-      category: "shirts",
-      price: 159.99,
-      gender: "men",
-      description:
-        "Our best-selling Tuscumbia shirt is the cornerstone of lived-in luxury. This version is cut in a standard fit, providing ease of movement and ultimate comfort. It’s 100% cotton, but with a brushed finish to the exterior giving it a little more weight and a super soft feel.  It's constructed with a button-down collar, barrel cuffs, and a tonal thread throughout the body. Thoughtfully finished with smoke mother of pearl buttons, a left-side chest pocket, and a subtle detail: our heirloom ribbon applied to the bottom of the under-placket.",
-      image: "images/new/corded-plaid-shirt.jpg",
-      altImage: "images/new/corded-plaid-shirt-hover.jpg",
-      altImage2: "images/new/corded-plaid-shirt-2.jpg",
-      altImage3: "images/new/corded-plaid-shirt-3.jpg",
-    },
   ];
   ////////////////////////////////////////
   const catalogItems = [
