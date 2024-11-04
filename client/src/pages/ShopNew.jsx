@@ -12,7 +12,7 @@ function ShopNew() {
   const { data, isLoading, error } = useQuery({
     queryKey: ["newItems"],
     queryFn: fetchNewItems,
-    staleTime: 1000 * 60 * 1, // 10 minutes
+    staleTime: 1000 * 60 * 10, // 10 minutes
     cacheTime: 1000 * 60 * 60, // 1 hour
     refetchOnWindowFocus: true,
     refetchInterval: 1000 * 60 * 15, // 15 minutes
