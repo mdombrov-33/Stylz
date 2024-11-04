@@ -2,6 +2,7 @@ import { Suspense, lazy } from "react";
 import { Toaster } from "react-hot-toast";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Loader from "@/components/Loader";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const About = lazy(() => import("./pages/About"));
 const Blog = lazy(() => import("./pages/Blog"));
@@ -124,12 +125,16 @@ const router = createBrowserRouter([
   },
 ]);
 
+const queryClient = new QueryClient();
+
 function App() {
   return (
-    <Suspense fallback={<Loader />}>
-      <Toaster position="bottom-left" />
-      <RouterProvider router={router} />
-    </Suspense>
+    <QueryClientProvider client={queryClient}>
+      <Suspense fallback={<Loader />}>
+        <Toaster position="bottom-left" />
+        <RouterProvider router={router} />
+      </Suspense>
+    </QueryClientProvider>
   );
 }
 

@@ -1,26 +1,23 @@
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useEffect, useState } from "react";
 import Loader from "@/components/Loader";
 import ShopNewItems from "@/features/shop_new/ShopNewItem";
 
-function ShopNew() {
-  const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+async function fetchNewItems() {
+  const response = await axios("https://stylz-shop.onrender.com/api/new");
+  return response.data;
+}
 
-  useEffect(() => {
-    const fetchNewItems = async () => {
-      try {
-        const response = await axios("https://stylz-shop.onrender.com/api/new");
-        setData(response);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchNewItems();
-  }, []);
+function ShopNew() {
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["newItems"],
+    queryFn: fetchNewItems,
+    staleTime: 1000 * 60 * 10, // 10 minutes
+    cacheTime: 1000 * 60 * 60, // 1 hour
+    refetchOnWindowFocus: true,
+    refetchInterval: 1000 * 60 * 15, // 15 minutes
+    retry: 3,
+  });
 
   if (isLoading) {
     return <Loader />;
@@ -36,19 +33,17 @@ function ShopNew() {
         New Arrivals
       </h1>
       <section className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-6 gap-20 justify-center ">
-        {data.data.map((item) => {
-          return (
-            <ShopNewItems
-              key={item.id}
-              name={item.name}
-              gender={item.gender}
-              image={item.image}
-              altImage={item.altImage}
-              price={item.price}
-              description={item.description}
-            />
-          );
-        })}
+        {data.map((item) => (
+          <ShopNewItems
+            key={item.id}
+            name={item.name}
+            gender={item.gender}
+            image={item.image}
+            altImage={item.altImage}
+            price={item.price}
+            description={item.description}
+          />
+        ))}
       </section>
     </>
   );
