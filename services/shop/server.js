@@ -238,6 +238,10 @@ const getNanoid = async () => {
     },
   ];
 
+  app.get("/api/new", (req, res) => {
+    res.json(newItems);
+  });
+
   // API endpoint to get the catalog items with pagination
   app.get("/api/catalog", (req, res) => {
     const { page = 1, limit = 20 } = req.query;
