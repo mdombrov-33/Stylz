@@ -12,14 +12,6 @@ function Register() {
   const confirmPasswordRef = useRef(null);
   const [passwordError, setPasswordError] = useState("");
 
-  const handlePasswordBlur = () => {
-    if (passwordRef.current.value !== confirmPasswordRef.current.value) {
-      setPasswordError("Passwords do not match.");
-    } else {
-      setPasswordError("");
-    }
-  };
-
   const handleFormSubmit = async (event) => {
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
       event.preventDefault(); // Prevent form submission if passwords don't match
@@ -102,7 +94,6 @@ function Register() {
               autoComplete="new-password"
               required
               ref={confirmPasswordRef}
-              onBlur={handlePasswordBlur}
             />
             <button
               type="submit"
