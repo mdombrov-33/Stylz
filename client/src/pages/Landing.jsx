@@ -1,6 +1,7 @@
 import { FaArrowDown } from "react-icons/fa";
 import Collab from "@/features/home/Collab";
 import Showcase from "@/features/home/Showcase";
+import { Link } from "react-router-dom";
 
 function Landing() {
   return (
@@ -14,9 +15,11 @@ function Landing() {
         >
           <div className="flex h-full w-full items-center justify-center bg-black bg-opacity-50">
             <div className="text-center text-white">
-              <button className="btn mt-16 border-black bg-accent font-redHatDisplay font-bold uppercase lg:text-2xl">
-                check new arrivals
-              </button>
+              <Link to="/new">
+                <button className="btn mt-16 border-black bg-accent font-redHatDisplay font-bold uppercase lg:text-2xl">
+                  check new arrivals
+                </button>
+              </Link>
             </div>
           </div>
         </div>
