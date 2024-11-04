@@ -43,7 +43,6 @@ export function logoutAction() {
 // Utility to check if the user is authenticated
 export function checkAuthLoader() {
   const token = getAuthToken();
-  console.log(token);
   if (!token) {
     toast.error("You need to login to access cart");
     return redirect("/login");
