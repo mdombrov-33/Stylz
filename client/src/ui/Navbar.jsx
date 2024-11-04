@@ -4,6 +4,7 @@ import { Form, Link, NavLink } from "react-router-dom";
 import brand from "../assets/brand.svg";
 import themeClick from "../assets/switch.mp3";
 import { BsCart3, BsSunFill, BsMoonFill } from "react-icons/bs";
+import { getAuthToken } from "@/utils/auth";
 
 const audio = new Audio(themeClick);
 
@@ -18,7 +19,8 @@ const getThemeLocalStorage = () => {
 
 function Navbar() {
   const [theme, setTheme] = useState(getThemeLocalStorage);
-  const token = localStorage.getItem("access_token");
+
+  const token = getAuthToken();
 
   const handleTheme = () => {
     const newTheme =
