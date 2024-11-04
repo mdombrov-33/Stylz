@@ -12,7 +12,7 @@ function ErrorPage() {
         We couldn&apos;t find the page you&apos;re looking for
       </p>
       <div className="flex justify-center">
-        <ReturnBtn />
+        <ReturnBtn to={-1} />
       </div>
     </>
   );

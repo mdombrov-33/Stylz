@@ -88,7 +88,7 @@ function Login() {
           </Link>
         </p>
         <div className="mt-12">
-          <ReturnBtn />
+          <ReturnBtn to={"/"} />
         </div>
       </div>
 

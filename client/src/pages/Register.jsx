@@ -92,7 +92,7 @@ function Register() {
         </Form>
 
         <div className="mt-14">
-          <ReturnBtn />
+          <ReturnBtn to={-1} />
         </div>
       </div>
     </section>
