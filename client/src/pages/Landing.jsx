@@ -1,5 +1,5 @@
-import hero1 from "../assets/hero1.jpg";
-import hero2 from "../assets/hero2.jpg";
+// import hero1 from "../assets/hero1.jpg";
+// import hero2 from "../assets/hero2.jpg";
 
 import { FaArrowDown } from "react-icons/fa";
 import Collab from "@/features/home/Collab";
@@ -11,7 +11,9 @@ function Landing() {
       <section className="grid h-[80svh] overflow-hidden lg:grid-cols-2">
         <div
           className="h-full w-full border-b-2 border-stone-950 bg-cover"
-          style={{ backgroundImage: `url(${hero1})` }}
+          style={{
+            backgroundImage: `url(https://res.cloudinary.com/dymitbtl3/image/upload/v1730720452/hero1_aqnkys.jpg)`,
+          }}
         >
           <div className="flex h-full w-full items-center justify-center bg-black bg-opacity-50">
             <div className="text-center text-white">
@@ -23,7 +25,9 @@ function Landing() {
         </div>
         <div
           className="hidden h-full w-full border-t-2 border-stone-950 bg-cover lg:grid lg:grid-rows-1 lg:border-l-2 lg:border-t-0 lg:border-stone-950"
-          style={{ backgroundImage: `url(${hero2})` }}
+          style={{
+            backgroundImage: `url(https://res.cloudinary.com/dymitbtl3/image/upload/v1730720460/hero2_o03fe3.jpg)`,
+          }}
         >
           <div className="relative flex h-full w-full items-center bg-black bg-opacity-50">
             <div className="text-white">
