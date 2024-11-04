@@ -18,6 +18,7 @@ function ShopNew() {
     refetchInterval: 1000 * 60 * 15, // 15 minutes
     retry: 3,
   });
+  console.log(data);
 
   if (isLoading) {
     return <Loader />;
@@ -42,6 +43,8 @@ function ShopNew() {
             altImage={item.altImage}
             price={item.price}
             description={item.description}
+            category={item.category}
+            sizes={item.sizes}
           />
         ))}
       </section>
