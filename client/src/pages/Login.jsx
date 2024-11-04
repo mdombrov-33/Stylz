@@ -120,6 +120,9 @@ export async function action({ request }) {
     );
     const access_token = response.data.access_token;
     localStorage.setItem("access_token", access_token);
+    const expiration = new Date();
+    expiration.setHours(expiration.getHours() + 2);
+    localStorage.setItem("expiration", expiration.toISOString());
     toast.success("Login successful!");
     return redirect("/");
   } catch (err) {
