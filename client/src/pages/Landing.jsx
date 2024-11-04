@@ -1,6 +1,3 @@
-// import hero1 from "../assets/hero1.jpg";
-// import hero2 from "../assets/hero2.jpg";
-
 import { FaArrowDown } from "react-icons/fa";
 import Collab from "@/features/home/Collab";
 import Showcase from "@/features/home/Showcase";

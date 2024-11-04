@@ -1,7 +1,6 @@
 import { FaGoogle } from "react-icons/fa";
 
 import ReturnBtn from "@/components/ReturnBtn";
-// import loginImg from "../assets/login.jpg";
 import { Form, Link, useNavigation, redirect } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import axios from "axios";
