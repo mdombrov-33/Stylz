@@ -18,9 +18,14 @@ function CatalogItem({ isAvailable, price, name, image, altImage }) {
         </figure>
         <section className="card-body">
           <h2 className="card-title">{name}</h2>
-          <p className="text-2xl pt-10 font-bold">{price}$</p>
+          <p className="text-2xl pt-10 font-bold">
+            {isAvailable ? price : "Out of Stock"}
+          </p>
           <section className="card-actions justify-end">
-            <button className=" uppercase btn btn-accent font-bold font-redHatDisplay text-lg">
+            <button
+              className="uppercase btn btn-accent font-bold font-redHatDisplay text-lg"
+              disabled={isAvailable ? false : true}
+            >
               Check Details
             </button>
           </section>
