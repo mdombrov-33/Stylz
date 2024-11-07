@@ -1,20 +1,19 @@
+import { useEffect, useState } from "react";
 import CatalogItem from "@/features/catalog/CatalogItem";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Loader from "@/components/Loader";
 import CatalogNavigation from "@/features/catalog/CatalogNavigation";
-import { useState } from "react";
 
 function Catalog() {
   const [page, setPage] = useState(1);
-  const limit = 10; // Define the items per page
 
   const fetchCatalogItems = async ({ queryKey }) => {
     const [, { page }] = queryKey;
     const response = await axios.get(
       "https://stylz-shop.onrender.com/api/catalog",
       {
-        params: { page, limit },
+        params: { page },
       }
     );
     return response.data;
@@ -30,6 +29,16 @@ function Catalog() {
     retry: 3,
     keepPreviousData: true, // Keeps previous page data while fetching the new page
   });
+
+  console.log(data);
+
+  // Scroll to the top of the page when the page number changes
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [page]);
 
   const handleNextPage = () => {
     if (page < data.totalPages) setPage((prevPage) => prevPage + 1);
@@ -61,7 +70,14 @@ function Catalog() {
         {/* Catalog Items */}
         <section className="grid 2xl:grid-cols-4 gap-4 px-4">
           {data.items.map((item) => (
-            <CatalogItem key={item.id} {...item} />
+            <CatalogItem
+              key={item.id}
+              isAvailable={item.isAvailable}
+              price={item.price}
+              name={item.name}
+              image={item.image}
+              altImage={item.altImage}
+            />
           ))}
         </section>
 

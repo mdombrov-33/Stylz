@@ -1,22 +1,32 @@
-function CatalogItem() {
+import { useState } from "react";
+
+function CatalogItem({ isAvailable, price, name, image, altImage }) {
+  const baseURL = "https://stylz-shop.onrender.com";
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <>
-      <div className="card  w-96">
+    <main>
+      <section className="card w-96">
         <figure>
           <img
-            src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-            alt="car!"
+            className="max-h-96 w-full object-cover"
+            src={`${baseURL}/${isHovered ? altImage : image}`}
+            alt={name}
+            onMouseLeave={() => setIsHovered(false)}
+            onMouseEnter={() => setIsHovered(true)}
           />
         </figure>
-        <div className="card-body">
-          <h2 className="card-title">Life hack</h2>
-          <p>How to park your car at your garage?</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Learn now!</button>
-          </div>
-        </div>
-      </div>
-    </>
+        <section className="card-body">
+          <h2 className="card-title">{name}</h2>
+          <p className="text-2xl pt-10 font-bold">{price}$</p>
+          <section className="card-actions justify-end">
+            <button className=" uppercase btn btn-accent font-bold font-redHatDisplay text-lg">
+              Check Details
+            </button>
+          </section>
+        </section>
+      </section>
+    </main>
   );
 }
 

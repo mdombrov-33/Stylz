@@ -24,10 +24,10 @@ function ShopNewItems({
           alt={name}
         />
       </figure>
-      <div className="card-body">
+      <section className="card-body">
         <h2 className="card-title">{name}</h2>
         <p>{description}</p>
-        <div className="mt-6">
+        <section className="mt-6">
           <p className="uppercase font-bold">{category}</p>
           <p className="uppercase font-bold">{gender}</p>
           <p className="uppercase font-bold text-2xl pt-6">
@@ -38,14 +38,14 @@ function ShopNewItems({
             ))}
           </p>
           <p className="text-2xl pt-10 font-bold">{price}$</p>
-        </div>
-      </div>
+        </section>
+      </section>
 
-      <div className="card-actions justify-end py-6 px-6">
+      <section className="card-actions justify-end py-6 px-6">
         <button className="btn font-redHatDisplay font-bold text-lg btn-accent">
           Add to Cart
         </button>
-      </div>
+      </section>
     </main>
   );
 }

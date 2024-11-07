@@ -35,7 +35,7 @@ const getNanoid = async () => {
   const newItems = [
     {
       id: nanoid(),
-      name: "Brushed Houndstooth Hendrik Overcoat",
+      name: "Brushed Houndstooth Overcoat",
       sizes: ["S", "M", "L", "XL"],
       category: "coats",
       price: 249.99,
@@ -178,7 +178,7 @@ const getNanoid = async () => {
   const catalogItems = [
     {
       id: nanoid(),
-      name: "Brushed Houndstooth Hendrik Overcoat",
+      name: "Brushed Houndstooth Overcoat",
       sizes: ["S", "M", "L", "XL"],
       category: "coats",
       price: 249.99,
