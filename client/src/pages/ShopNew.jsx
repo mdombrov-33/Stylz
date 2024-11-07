@@ -18,7 +18,6 @@ function ShopNew() {
     refetchInterval: 1000 * 60 * 15, // 15 minutes
     retry: 3,
   });
-  console.log(data);
 
   if (isLoading) {
     return <Loader />;
