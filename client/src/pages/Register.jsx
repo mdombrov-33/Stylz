@@ -1,12 +1,14 @@
 import ReturnBtn from "@/components/ReturnBtn";
 import axios from "axios";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { toast } from "react-hot-toast";
 
 import { Form, redirect, useNavigation } from "react-router-dom";
 
 function Register() {
   const navigation = useNavigation();
+  const [passwordErr, setPasswordErr] = useState(null);
+  const [confirmPasswordErr, setConfirmPasswordErr] = useState(null);
 
   const passwordRef = useRef(null);
   const confirmPasswordRef = useRef(null);
@@ -14,7 +16,25 @@ function Register() {
   const handleFormSubmit = async (event) => {
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
       event.preventDefault(); // Prevent form submission if passwords don't match
-      toast.error("Passwords do not match.");
+      toast.error("Passwords do not match");
+    }
+  };
+
+  const handlePasswordBlur = () => {
+    if (passwordRef.current.value.length < 8) {
+      setPasswordErr("Password must be at least 8 characters long");
+    } else if (passwordRef.current.value.length > 64) {
+      setPasswordErr("Password must be at most 64 characters long");
+    } else {
+      setPasswordErr("");
+    }
+  };
+
+  const handleConfirmPasswordBlur = () => {
+    if (confirmPasswordRef.current.value !== passwordRef.current.value) {
+      setConfirmPasswordErr("Passwords do not match");
+    } else {
+      setConfirmPasswordErr("");
     }
   };
 
@@ -77,7 +97,11 @@ function Register() {
               autoComplete="new-password"
               required
               ref={passwordRef}
+              onBlur={handlePasswordBlur}
             />
+            {passwordErr && (
+              <p className="text-red-500 text-sm">{passwordErr}</p>
+            )}
             <label
               className="w-96 justify-start font-redHatDisplay font-bold"
               htmlFor="confirm_password"
@@ -93,7 +117,12 @@ function Register() {
               autoComplete="new-password"
               required
               ref={confirmPasswordRef}
+              onBlur={handleConfirmPasswordBlur}
             />
+            {confirmPasswordErr && (
+              <p className="text-red-500 text-sm">{confirmPasswordErr}</p>
+            )}
+
             <button
               type="submit"
               className="btn my-2 w-full rounded-lg bg-accent py-2 text-lg text-white"
