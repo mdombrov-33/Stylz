@@ -419,7 +419,7 @@ const getNanoid = async () => {
 
     // Convert to numbers
     const pageNumber = parseInt(page, 10);
-    const limitNumber = parseInt(limit, 10);
+    const limitNumber = parseInt(limit, 12);
 
     // Validate page and limit
     if (pageNumber < 1 || limitNumber < 1) {
