@@ -18,9 +18,7 @@ function CatalogNavigation() {
             women
           </button>
         </li>
-        <div className="divider divider-neutral mt-8">
-          <p className="uppercase text-2xl font-semibold">Categories</p>
-        </div>
+        <div className="divider divider-neutral mt-8"></div>
         <li className="mt-4">
           <button className="uppercase text-2xl font-semibold btn btn-outline">
             shirts
