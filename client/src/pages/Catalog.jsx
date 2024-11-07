@@ -59,7 +59,7 @@ function Catalog() {
   return (
     <main className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col items-center justify-start py-6">
+      <section className="drawer-content flex flex-col items-center justify-start py-6">
         <label
           htmlFor="my-drawer-2"
           className="btn btn-primary drawer-button lg:hidden uppercase btn-ghost text-2xl font-delaGothicOne"
@@ -68,7 +68,7 @@ function Catalog() {
         </label>
 
         {/* Catalog Items */}
-        <section className="grid 2xl:grid-cols-4 gap-4 px-4">
+        <section className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 gap-4 px-4">
           {data.items.map((item) => (
             <CatalogItem
               key={item.id}
@@ -82,7 +82,7 @@ function Catalog() {
         </section>
 
         {/* Pagination Controls */}
-        <div className="join grid grid-cols-2 mt-4">
+        <section className="join grid grid-cols-2 mt-4">
           <button
             onClick={handlePrevPage}
             disabled={page === 1}
@@ -97,11 +97,11 @@ function Catalog() {
           >
             Next page
           </button>
-        </div>
+        </section>
         <p className="mt-2">
           Page {page} of {data.totalPages}
         </p>
-      </div>
+      </section>
 
       {/* Sidebar Navigation */}
       <CatalogNavigation />

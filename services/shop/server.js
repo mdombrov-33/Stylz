@@ -35,7 +35,7 @@ const getNanoid = async () => {
   const newItems = [
     {
       id: nanoid(),
-      name: "Brushed Houndstooth Overcoat",
+      name: "Brushed Houndstooth Hendrik Overcoat",
       sizes: ["S", "M", "L", "XL"],
       category: "coats",
       price: 249.99,
@@ -178,10 +178,11 @@ const getNanoid = async () => {
   const catalogItems = [
     {
       id: nanoid(),
-      name: "Brushed Houndstooth Overcoat",
+      name: "Brushed Houndstooth  Overcoat",
       sizes: ["S", "M", "L", "XL"],
       category: "coats",
       price: 249.99,
+      isAvailable: true,
       gender: "men",
       description:
         "This classically-cut overcoat wears like a tailored suit. Two pockets on the exterior and two more on the interior of the coat make for lots of storage to wear this out for the day and have everything you could ever need. The coat is also cut with extra room to fit comfortably over a suit, with a beautiful gray virgin wool to complement anything underneath it.",
@@ -197,6 +198,7 @@ const getNanoid = async () => {
       category: "sweaters",
       price: 89.99,
       gender: "men",
+      isAvailable: true,
       description:
         "At the core of every winter wardrobe is a great turtleneck. The Ronnie Turtleneck is ours. It’s made from soft Italian cashmere wool, and features textured ribs at the sleeve, neck, and bottom, so make sure that the sweater highlights your best features while wearing it.",
       image: "images/new/ronnie-turtleneck.jpg",
@@ -210,6 +212,7 @@ const getNanoid = async () => {
       sizes: ["S", "M"],
       category: "jackets",
       price: 149.99,
+      isAvailable: true,
       gender: "women",
       description:
         "An archival style from over a decade ago - the Classic Moto is an iconic, customer-favorite piece. It’s crafted from soft and supple, washed lambskin that gets better with wear and is finished with luxe details like antique brass closures and zippers. Perfect with your favorite worn-in jeans or over a drapey dress - there is no wrong way to wear a leather jacket.",
@@ -224,6 +227,7 @@ const getNanoid = async () => {
       sizes: ["S", "M", "L", "XL"],
       category: "pants",
       price: 149.99,
+      isAvailable: true,
       gender: "men",
       description:
         "These sleek trousers feel as comfortable as our iconic moleskin jean, with the sophisticated cut of a trouser pant. It’s a fabric update on our other icon, the flat front trouser, made with a fabric that will only get better with age. With an option in black and oak brown, the pants are made to suit a variety of wardrobe choices from suit separates to being paired with a polished-looking sweater.",
@@ -238,6 +242,7 @@ const getNanoid = async () => {
       sizes: ["S", "M", "L"],
       category: "sweaters",
       price: 119.99,
+      isAvailable: true,
       gender: "men",
       description:
         "The Abstract Ribbon Cardigan is a modern take on the classic cardigan. The ribbons are woven into the fabric, creating a unique texture that is both visually interesting and soft to the touch. The cardigan is made from a blend of wool and cashmere, making it warm and comfortable to wear.",
@@ -252,6 +257,7 @@ const getNanoid = async () => {
       sizes: ["S", "M", "L"],
       category: "pants",
       price: 129.99,
+      isAvailable: true,
       gender: "women",
       description:
         "The Flat Front Trouser is a classic, tailored pant that is perfect for any occasion. The pant is made from a soft, stretchy fabric that is comfortable to wear all day long. The pant features a flat front, side pockets, and a straight leg that is flattering on all body types. The pant is available in a range of colors, and is perfect for both casual and formal occasions.",
@@ -266,6 +272,7 @@ const getNanoid = async () => {
       sizes: ["S", "M", "L", "XL"],
       category: "sweaters",
       price: 99.99,
+      isAvailable: true,
       gender: "men",
       description:
         "This patterned, zip-up sweater is meant to be the one you reach for all through the winter season. With a subtle, dark plaid, and cord zipper pull, it’s easy to get on and off. The fabric is a mix of cotton and alpaca yarn, to make sure that the garment is warm, but always soft on the skin.",
@@ -279,6 +286,7 @@ const getNanoid = async () => {
       name: "Oak Street x Billy Reid Trench Boot",
       sizes: ["8", "9", "10", "11"],
       category: "shoes",
+      isAvailable: true,
       price: 299.99,
       gender: "men",
       description:
@@ -293,6 +301,7 @@ const getNanoid = async () => {
       name: "Melange Yellowhammer Tuscumbia Shirt Button-Down",
       sizes: ["S", "M", "L", "XL"],
       category: "shirts",
+      isAvailable: true,
       price: 79.99,
       gender: "men",
       description:
@@ -307,6 +316,7 @@ const getNanoid = async () => {
       name: "Corded Plaid Tuscumbia Shirt Button Down",
       sizes: ["S", "M", "L", "XL"],
       category: "shirts",
+      isAvailable: true,
       price: 159.99,
       gender: "men",
       description:

@@ -42,7 +42,7 @@ function ShopNewItems({
       </section>
 
       <section className="card-actions justify-end py-6 px-6">
-        <button className="btn font-redHatDisplay font-bold text-lg btn-accent">
+        <button className="btn font-redHatDisplay font-bold text-lg btn-accent uppercase">
           Add to Cart
         </button>
       </section>
