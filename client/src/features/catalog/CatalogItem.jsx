@@ -3,10 +3,17 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Loader from "@/components/Loader";
 import ReturnBtn from "@/components/ReturnBtn";
+import { FaPlus } from "react-icons/fa";
+import { FaMinus } from "react-icons/fa";
+import { useState } from "react";
 
 function ProductPage() {
   const { id } = useParams();
   const baseURL = "https://stylz-shop.onrender.com";
+
+  const [isCollapsedOrigin, setIsCollapsedOrigin] = useState(true);
+  const [isCollapsedFabric, setIsCollapsedFabric] = useState(true);
+  const [isCollapsedCare, setIsCollapsedCare] = useState(true);
 
   // Fetch product details
   const fetchProductDetails = async () => {
@@ -34,7 +41,17 @@ function ProductPage() {
   if (isLoading) return <Loader />;
   if (error) return <div>Error: {error.message}</div>;
 
-  const randomRating = Math.floor(Math.random() * 5) + 1;
+  const toggleCollapseOrigin = () => {
+    setIsCollapsedOrigin((prev) => !prev);
+  };
+
+  const toggleCollapseFabric = () => {
+    setIsCollapsedFabric((prev) => !prev);
+  };
+
+  const toggleCollapseCare = () => {
+    setIsCollapsedCare((prev) => !prev);
+  };
 
   return (
     <main className="grid xl:grid-cols-2">
@@ -131,7 +148,58 @@ function ProductPage() {
             disabled="true"
           />
         </div>
-        <p className="mt-2 text-pretty">Based on {randomRating} reviews</p>
+
+        <p className="mt-2 text-pretty">Based on 5 reviews</p>
+
+        {/* Collapsed */}
+        <section className="mt-12 flex w-96 flex-col gap-2 pb-12">
+          <div className="collapse bg-base-200">
+            <input type="checkbox" onChange={toggleCollapseOrigin} />
+            <div className="collapse-title flex items-center text-xl font-medium uppercase">
+              <p>origin</p>
+              {isCollapsedOrigin ? (
+                <FaPlus className="ml-auto" />
+              ) : (
+                <FaMinus className="ml-auto" />
+              )}
+            </div>
+            <div className="collapse-content">
+              <p>{product.origin}</p>
+            </div>
+          </div>
+          <div className="collapse bg-base-200">
+            <input type="checkbox" onChange={toggleCollapseFabric} />
+            <div className="collapse-title flex items-center text-xl font-medium uppercase">
+              <p>fabric</p>
+
+              {isCollapsedFabric ? (
+                <FaPlus className="ml-auto" />
+              ) : (
+                <FaMinus className="ml-auto" />
+              )}
+            </div>
+            <div className="collapse-content">
+              <p>{product.fabric}</p>
+            </div>
+          </div>
+          <div className="collapse bg-base-200">
+            <input type="checkbox" onChange={toggleCollapseCare} />
+            <div className="collapse-title flex items-center text-xl font-medium uppercase">
+              <p>care</p>
+              {isCollapsedCare ? (
+                <FaPlus className="ml-auto" />
+              ) : (
+                <FaMinus className="ml-auto" />
+              )}
+            </div>
+            <div className="collapse-content">
+              <p>{product.care}</p>
+            </div>
+          </div>
+        </section>
+        <section className="mt-12 pb-6">
+          <ReturnBtn />
+        </section>
       </section>
     </main>
   );
