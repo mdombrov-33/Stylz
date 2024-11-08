@@ -132,7 +132,9 @@ function Catalog() {
             </button>
           </section>
         )}
-        <p className="text-center">{`Page ${page} of ${data.totalPages}`}</p>
+        {filteredItems.length > 0 && (
+          <p className="text-center">{`Page ${page} of ${data.totalPages}`}</p>
+        )}
       </section>
 
       {/* Sidebar Navigation */}
