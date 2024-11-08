@@ -40,12 +40,12 @@ function Catalog() {
   console.log(data);
 
   // Scroll to the top of the page when the page number changes
-  // useEffect(() => {
-  //   window.scrollTo({
-  //     top: 0,
-  //     behavior: "smooth",
-  //   });
-  // }, [page]);
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [page, category]);
 
   const handleNextPage = () => {
     if (page < data.totalPages) setPage((prevPage) => prevPage + 1);
@@ -79,7 +79,7 @@ function Catalog() {
         {/* Catalog Items */}
         <section className="flex flex-col items-center justify-start py-6">
           <section className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 gap-4 px-4 mt-6">
-            {data.items.map((item) => (
+            {data.totalItems.map((item) => (
               <CatalogItem
                 key={item.id}
                 isAvailable={item.isAvailable}
