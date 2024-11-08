@@ -454,7 +454,7 @@ const getNanoid = async () => {
 
     // Prepare the response
     const response = {
-      totalItems: filteredItems.length,
+      totalItems: filteredItems,
       totalPages: Math.ceil(filteredItems.length / limitNumber),
       currentPage: pageNumber,
       items: paginatedItems,
