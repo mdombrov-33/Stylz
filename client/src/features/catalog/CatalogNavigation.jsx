@@ -49,6 +49,9 @@ function CatalogNavigation() {
             coats
           </button>
         </li>
+        <button className="mt-6 uppercase font-extrabold tracking-tight font-redHatDisplay btn  btn-accent text-2xl">
+          search
+        </button>
       </ul>
     </aside>
   );

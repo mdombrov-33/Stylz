@@ -41,9 +41,7 @@ function ShopNew() {
             image={item.image}
             altImage={item.altImage}
             price={item.price}
-            description={item.description}
             category={item.category}
-            sizes={item.sizes}
           />
         ))}
       </section>
