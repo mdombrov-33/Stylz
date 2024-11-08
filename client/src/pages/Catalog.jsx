@@ -90,7 +90,7 @@ function Catalog() {
             htmlFor="my-drawer-2"
             className="btn btn-primary drawer-button lg:hidden uppercase btn-ghost text-2xl font-delaGothicOne fixed top-26 z-10"
           >
-            <BiSolidCategory className="inline-block mr-2 text-3xl" />
+            <BiSolidCategory className="inline-block mr-4 text-4xl" />
           </label>
         </section>
 
@@ -110,10 +110,10 @@ function Catalog() {
           </section>
         </section>
 
-        {/* //No items found  */}
+        {/* No items found  */}
         {filteredItems.length === 0 && (
           <section className="flex items-center justify-center h-96">
-            <h1 className="text-4xl font-bold mt-10">
+            <h1 className="text-2xl xl:text-3xl font-bold mt-10">
               No items found for current filters
             </h1>
           </section>
