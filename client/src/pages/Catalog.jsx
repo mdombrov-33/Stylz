@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CatalogItem from "@/features/catalog/CatalogItem";
+import CatalogItem from "@/features/catalog/CatalogContent";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Loader from "@/components/Loader";
@@ -100,11 +100,13 @@ function Catalog() {
             {filteredItems.map((item) => (
               <CatalogItem
                 key={item.id}
+                id={item.id}
                 isAvailable={item.isAvailable}
                 price={item.price}
                 name={item.name}
                 image={item.image}
                 altImage={item.altImage}
+                filteredItems={filteredItems}
               />
             ))}
           </section>
