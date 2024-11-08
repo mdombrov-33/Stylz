@@ -423,6 +423,17 @@ const getNanoid = async () => {
     res.json(newItems);
   });
 
+  app.get("/api/catalog/:id", (req, res) => {
+    const itemId = req.params.id;
+    const item = catalogItems.find((item) => item.id === itemId);
+
+    if (item) {
+      res.json(item);
+    } else {
+      res.status(404).json({ message: "Item not found" });
+    }
+  });
+
   // API endpoint to get the catalog items with pagination
   app.get("/api/catalog", (req, res) => {
     const { page = 1, limit = 10, category, gender } = req.query;
