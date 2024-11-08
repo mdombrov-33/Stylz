@@ -1,4 +1,4 @@
-function CatalogNavigation() {
+function CatalogNavigation({ setSelectedCategory, setSelectedGender }) {
   return (
     <aside className="drawer-side">
       <label
@@ -7,51 +7,72 @@ function CatalogNavigation() {
         className="drawer-overlay"
       ></label>
       <ul className="menu bg-base-200 text-base-content mt-[105px] w-80 p-4">
-        {/* Sidebar content here */}
+        {/* Sidebar content*/}
         <li>
-          <button className="uppercase text-2xl font-semibold btn btn-outline">
+          <button
+            onClick={() => setSelectedGender("men")}
+            className="uppercase text-2xl font-semibold btn btn-outline"
+          >
             men
           </button>
         </li>
         <li className="mt-4">
-          <button className="uppercase text-2xl font-semibold btn btn-outline">
+          <button
+            onClick={() => setSelectedGender("women")}
+            className="uppercase text-2xl font-semibold btn btn-outline"
+          >
             women
           </button>
         </li>
         <div className="divider divider-neutral mt-8"></div>
         <li className="mt-4">
-          <button className="uppercase text-2xl font-semibold btn btn-outline">
+          <button
+            onClick={() => setSelectedCategory("shirts")}
+            className="uppercase text-2xl font-semibold btn btn-outline"
+          >
             shirts
           </button>
         </li>
         <li className="mt-4">
-          <button className="uppercase text-2xl font-semibold btn btn-outline">
+          <button
+            onClick={() => setSelectedCategory("jackets")}
+            className="uppercase text-2xl font-semibold btn btn-outline"
+          >
             jackets
           </button>
         </li>
         <li className="mt-4">
-          <button className="uppercase text-2xl font-semibold btn btn-outline">
+          <button
+            onClick={() => setSelectedCategory("pants")}
+            className="uppercase text-2xl font-semibold btn btn-outline"
+          >
             pants
           </button>
         </li>
         <li className="mt-4">
-          <button className="uppercase text-2xl font-semibold btn btn-outline">
+          <button
+            onClick={() => setSelectedCategory("sweaters")}
+            className="uppercase text-2xl font-semibold btn btn-outline"
+          >
             sweaters
           </button>
         </li>
         <li className="mt-4">
-          <button className="uppercase text-2xl font-semibold btn btn-outline">
+          <button
+            onClick={() => setSelectedCategory("shoes")}
+            className="uppercase text-2xl font-semibold btn btn-outline"
+          >
             shoes
           </button>
         </li>
         <li className="mt-4">
-          <button className="uppercase text-2xl font-semibold btn btn-outline">
+          <button
+            onClick={() => setSelectedCategory("coats")}
+            className="uppercase text-2xl font-semibold btn btn-outline"
+          >
             coats
           </button>
         </li>
-        <button className="mt-6 uppercase font-extrabold tracking-tight font-redHatDisplay btn  btn-accent text-2xl">
-          search
-        </button>
       </ul>
     </aside>
   );

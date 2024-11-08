@@ -454,7 +454,7 @@ const getNanoid = async () => {
     const endIndex = startIndex + limitNumber;
 
     // Get paginated items
-    const paginatedItems = catalogItems.slice(startIndex, endIndex);
+    const paginatedItems = filteredItems.slice(startIndex, endIndex);
 
     // Prepare the response
     const response = {
