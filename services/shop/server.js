@@ -336,7 +336,7 @@ const getNanoid = async () => {
       price: 499.99,
       gender: "men",
       description:
-        "The tiger is one of our favorite motifs at Billy Reid. It’s part of the history of Shindig, our annual celebration in the Shoals, as one of the early mascots of sorts. Since it first appeared for Shindig, people have been asking us to bring it back. We’re doing so as a textured—but not too heavy—sweater with an intarsia stitch, a true sign of craftsmanship. It’s knit from a warm alpaca blend, and features a slouchy, boyfriend fit with the design that wraps from front to back.",
+        "This classic flight jacket is made from soft, supple leather and features a shearling collar for added warmth. The jacket has a zip front closure, two front pockets, and ribbed cuffs and hem. It is fully lined and has a relaxed fit that is perfect for layering over sweaters and shirts.",
       image: "images/catalog/leather-flight-jacket.jpg",
       altImage: "images/catalog/leather-flight-jacket-hover.jpg",
       altImage2: "images/catalog/leather-flight-jacket-2.jpg",
@@ -351,7 +351,7 @@ const getNanoid = async () => {
       price: 99.99,
       gender: "women",
       description:
-        "This cozy sweater features a tiger graphic on the front and is made from a soft, stretchy fabric. It has a crew neck and long sleeves. The sweater is available in a range of sizes and colors.",
+        "The tiger is one of our favorite motifs at Billy Reid. It’s part of the history of Shindig, our annual celebration in the Shoals, as one of the early mascots of sorts. Since it first appeared for Shindig, people have been asking us to bring it back. We’re doing so as a textured—but not too heavy—sweater with an intarsia stitch, a true sign of craftsmanship. It’s knit from a warm alpaca blend, and features a slouchy, boyfriend fit with the design that wraps from front to back.",
       image: "images/catalog/tiger-sweater.jpg",
       altImage: "images/catalog/tiger-sweater-hover.jpg",
       altImage2: "images/catalog/tiger-sweater-2.jpg",

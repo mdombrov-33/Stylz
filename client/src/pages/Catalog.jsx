@@ -123,7 +123,7 @@ function Catalog() {
 
         {/* Pagination */}
         {filteredItems.length > 0 && (
-          <section className="join mt-4 grid w-full grid-cols-2 items-center justify-center p-6">
+          <section className="join mt-4 flex w-full grid-cols-2 items-center justify-center p-6">
             <button
               onClick={handlePrevPage}
               disabled={page === 1}

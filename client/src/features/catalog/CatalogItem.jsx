@@ -60,7 +60,7 @@ function ProductPage() {
       </section>
 
       <section className="mt-6 flex flex-col items-center">
-        <h2 className="font-redHatDisplay text-3xl font-bold">
+        <h2 className="px-6 font-redHatDisplay text-3xl font-bold">
           {product.name}
         </h2>
         <p className="mt-4 text-2xl">{product.price}$</p>
@@ -71,7 +71,7 @@ function ProductPage() {
         <section className="pb-6">
           <select className="select select-bordered w-full max-w-xs">
             <option disabled selected>
-              <p>AVAILABLE SIZES</p>
+              AVAILABLE SIZES
             </option>
             {product?.sizes.map((size) => (
               <option key={size} value={size}>
