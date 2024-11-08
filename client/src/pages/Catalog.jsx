@@ -18,7 +18,7 @@ function Catalog() {
       "https://stylz-shop.onrender.com/api/catalog",
       {
         params: { page, category, gender },
-      }
+      },
     );
     return response.data;
   };
@@ -85,18 +85,18 @@ function Catalog() {
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <section className="drawer-content">
         {/* Drawer for category selection */}
-        <section className="flex justify-end -mr-7">
+        <section className="-mr-7 flex justify-end">
           <label
             htmlFor="my-drawer-2"
-            className="btn btn-primary drawer-button lg:hidden uppercase btn-ghost text-2xl font-delaGothicOne fixed top-26 z-10"
+            className="top-26 btn btn-ghost btn-primary drawer-button fixed z-10 font-delaGothicOne text-2xl uppercase lg:hidden"
           >
-            <BiSolidCategory className="inline-block mr-4 text-4xl" />
+            <BiSolidCategory className="mr-4 inline-block text-4xl" />
           </label>
         </section>
 
         {/* Catalog Items */}
         <section className="flex flex-col items-center justify-start py-6">
-          <section className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 gap-4 px-4 mt-6">
+          <section className="mt-6 grid gap-4 px-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
             {filteredItems.map((item) => (
               <CatalogItem
                 key={item.id}
@@ -114,8 +114,8 @@ function Catalog() {
 
         {/* No items found  */}
         {filteredItems.length === 0 && (
-          <section className="flex items-center justify-center h-96">
-            <h1 className="text-2xl xl:text-3xl font-bold mt-10">
+          <section className="flex h-96 items-center justify-center">
+            <h1 className="mt-10 text-2xl font-bold xl:text-3xl">
               No items found for current filters
             </h1>
           </section>
@@ -123,18 +123,18 @@ function Catalog() {
 
         {/* Pagination */}
         {filteredItems.length > 0 && (
-          <section className="join grid grid-cols-2 mt-4 items-center justify-center p-6 w-full">
+          <section className="join mt-4 grid w-full grid-cols-2 items-center justify-center p-6">
             <button
               onClick={handlePrevPage}
               disabled={page === 1}
-              className="join-item btn btn-outline"
+              className="btn btn-outline join-item"
             >
               Previous page
             </button>
             <button
               onClick={handleNextPage}
               disabled={page === data.totalPages}
-              className="join-item btn btn-outline"
+              className="btn btn-outline join-item"
             >
               Next page
             </button>

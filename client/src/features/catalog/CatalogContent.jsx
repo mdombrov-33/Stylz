@@ -7,7 +7,7 @@ function CatalogContent({ id, isAvailable, price, name, image, altImage }) {
 
   return (
     <main>
-      <section className="card shadow-xl h-full min-h-96 min-w-96 w-full ">
+      <section className="card h-full min-h-96 w-full min-w-96 shadow-xl">
         <figure>
           <img
             className="max-h-96 w-full object-cover"
@@ -19,13 +19,13 @@ function CatalogContent({ id, isAvailable, price, name, image, altImage }) {
         </figure>
         <section className="card-body">
           <h2 className="card-title">{name}</h2>
-          <p className="text-2xl pt-10 font-bold">
+          <p className="pt-10 text-2xl font-bold">
             {isAvailable ? price + "$" : "Out of Stock"}
           </p>
-          <section className="card-actions items-end justify-end ">
+          <section className="card-actions items-end justify-end">
             <Link to={`/catalog/${id}`}>
               <button
-                className="uppercase btn btn-accent font-bold font-redHatDisplay text-lg "
+                className="btn btn-accent font-redHatDisplay text-lg font-bold uppercase"
                 disabled={isAvailable ? false : true}
               >
                 Check Details

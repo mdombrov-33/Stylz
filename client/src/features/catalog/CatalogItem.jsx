@@ -11,7 +11,7 @@ function ProductPage() {
   // Fetch product details
   const fetchProductDetails = async () => {
     const response = await axios.get(
-      `https://stylz-shop.onrender.com/api/catalog/${id}`
+      `https://stylz-shop.onrender.com/api/catalog/${id}`,
     );
     return response.data;
   };
@@ -54,22 +54,22 @@ function ProductPage() {
         <img
           src={`${baseURL}/${product.image}`}
           className="h-full w-full object-cover"
-          alt={name}
+          alt={product.name}
         />
         <img
           src={`${baseURL}/${product.altImage}`}
-          className="h-full object-cover  w-full"
-          alt={name}
+          className="h-full w-full border-l-2 border-stone-950 object-cover"
+          alt={product.name}
         />
         <img
           src={`${baseURL}/${product.altImage2}`}
-          className="h-full object-cover  w-full"
-          alt={name}
+          className="h-full w-full border-t-2 border-stone-950 object-cover"
+          alt={product.name}
         />
         <img
           src={`${baseURL}/${product.altImage3}`}
-          className="h-full object-cover  w-full"
-          alt={name}
+          className="h-full w-full border-l-2 border-stone-950 object-cover"
+          alt={product.name}
         />
       </section>
       aboba

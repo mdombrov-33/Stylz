@@ -29,10 +29,10 @@ function ShopNew() {
 
   return (
     <>
-      <h1 className="uppercase font-bold text-center mt-6 text-2xl font-redHatDisplay">
+      <h1 className="mt-6 text-center font-redHatDisplay text-2xl font-bold uppercase">
         New Arrivals
       </h1>
-      <section className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-6 gap-20 justify-center ">
+      <section className="grid justify-center gap-20 p-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {data.map((item) => (
           <ShopNewItems
             key={item.id}

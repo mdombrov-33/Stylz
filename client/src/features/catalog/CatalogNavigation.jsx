@@ -21,12 +21,12 @@ function CatalogNavigation({
         aria-label="close sidebar"
         className="drawer-overlay"
       ></label>
-      <ul className="menu bg-base-200 text-base-content mt-[105px] w-80 p-4">
+      <ul className="menu mt-[105px] w-80 bg-base-200 p-4 text-base-content">
         {/* Gender Filter Buttons */}
         <li>
           <button
             onClick={() => handleGenderClick("men")}
-            className={`uppercase text-2xl font-semibold btn ${
+            className={`btn text-2xl font-semibold uppercase ${
               selectedGender === "men" ? "btn-neutral" : "btn-outline"
             }`}
           >
@@ -36,7 +36,7 @@ function CatalogNavigation({
         <li className="mt-4">
           <button
             onClick={() => handleGenderClick("women")}
-            className={`uppercase text-2xl font-semibold btn ${
+            className={`btn text-2xl font-semibold uppercase ${
               selectedGender === "women" ? "btn-neutral" : "btn-outline"
             }`}
           >
@@ -49,7 +49,7 @@ function CatalogNavigation({
         <li className="mt-4">
           <button
             onClick={() => handleCategoryClick("shirts")}
-            className={`uppercase text-2xl font-semibold btn ${
+            className={`btn text-2xl font-semibold uppercase ${
               selectedCategory === "shirts" ? "btn-neutral" : "btn-outline"
             }`}
           >
@@ -59,7 +59,7 @@ function CatalogNavigation({
         <li className="mt-4">
           <button
             onClick={() => handleCategoryClick("jackets")}
-            className={`uppercase text-2xl font-semibold btn ${
+            className={`btn text-2xl font-semibold uppercase ${
               selectedCategory === "jackets" ? "btn-neutral" : "btn-outline"
             }`}
           >
@@ -69,7 +69,7 @@ function CatalogNavigation({
         <li className="mt-4">
           <button
             onClick={() => handleCategoryClick("pants")}
-            className={`uppercase text-2xl font-semibold btn ${
+            className={`btn text-2xl font-semibold uppercase ${
               selectedCategory === "pants" ? "btn-neutral" : "btn-outline"
             }`}
           >
@@ -79,7 +79,7 @@ function CatalogNavigation({
         <li className="mt-4">
           <button
             onClick={() => handleCategoryClick("sweaters")}
-            className={`uppercase text-2xl font-semibold btn ${
+            className={`btn text-2xl font-semibold uppercase ${
               selectedCategory === "sweaters" ? "btn-neutral" : "btn-outline"
             }`}
           >
@@ -89,7 +89,7 @@ function CatalogNavigation({
         <li className="mt-4">
           <button
             onClick={() => handleCategoryClick("coats")}
-            className={`uppercase text-2xl font-semibold btn ${
+            className={`btn text-2xl font-semibold uppercase ${
               selectedCategory === "coats" ? "btn-neutral" : "btn-outline"
             }`}
           >
@@ -99,7 +99,7 @@ function CatalogNavigation({
         <li className="mt-4">
           <button
             onClick={() => handleCategoryClick("shoes")}
-            className={`uppercase text-2xl font-semibold btn ${
+            className={`btn text-2xl font-semibold uppercase ${
               selectedCategory === "shoes" ? "btn-neutral" : "btn-outline"
             }`}
           >

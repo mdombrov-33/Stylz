@@ -147,7 +147,7 @@ function Navbar() {
       <div className="navbar-end">
         {token ? (
           <Form action="/logout" method="post">
-            <button className="pr-2 font-delaGothicOne font-light uppercase sm:text-2xl btn-ghost btn mr-6">
+            <button className="btn btn-ghost mr-6 pr-2 font-delaGothicOne font-light uppercase sm:text-2xl">
               logout
             </button>
           </Form>
@@ -180,7 +180,7 @@ function Navbar() {
       </div>
 
       {!isOnNewRoute && (
-        <Link to="/new" className=" btn bg-base-content">
+        <Link to="/new" className="btn bg-base-content">
           <button
             className={`${theme === themes.lemonade ? "hover:text-base-content" : "hover:text-base-content"} uppercase text-base-100 hover:text-accent`}
           >

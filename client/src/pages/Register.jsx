@@ -100,7 +100,7 @@ function Register() {
               onBlur={handlePasswordBlur}
             />
             {passwordErr && (
-              <p className="text-red-500 text-sm">{passwordErr}</p>
+              <p className="text-sm text-red-500">{passwordErr}</p>
             )}
             <label
               className="w-96 justify-start font-redHatDisplay font-bold"
@@ -120,7 +120,7 @@ function Register() {
               onBlur={handleConfirmPasswordBlur}
             />
             {confirmPasswordErr && (
-              <p className="text-red-500 text-sm">{confirmPasswordErr}</p>
+              <p className="text-sm text-red-500">{confirmPasswordErr}</p>
             )}
 
             <button
@@ -161,7 +161,7 @@ export async function action({ request }) {
         headers: {
           "Content-Type": "application/json",
         },
-      }
+      },
     );
     toast.success("Account created successfully!");
     return redirect("/login");

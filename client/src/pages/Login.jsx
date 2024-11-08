@@ -117,7 +117,7 @@ export async function action({ request }) {
         headers: {
           "Content-Type": "application/json",
         },
-      }
+      },
     );
 
     const access_token = response.data.access_token;
