@@ -184,6 +184,9 @@ const getNanoid = async () => {
       price: 249.99,
       isAvailable: true,
       gender: "men",
+      origin: "Made in USA",
+      care: "Professional leather clean only",
+      fabric: "100% Leather",
       description:
         "This classically-cut overcoat wears like a tailored suit. Two pockets on the exterior and two more on the interior of the coat make for lots of storage to wear this out for the day and have everything you could ever need. The coat is also cut with extra room to fit comfortably over a suit, with a beautiful gray virgin wool to complement anything underneath it.",
       image: "images/new/brushed-houndstooth-overcoat.jpg",
@@ -199,6 +202,9 @@ const getNanoid = async () => {
       price: 89.99,
       gender: "men",
       isAvailable: true,
+      origin: "Made in USA",
+      care: "Machine wash cold, tumble dry low",
+      fabric: "100% Cashmere",
       description:
         "At the core of every winter wardrobe is a great turtleneck. The Ronnie Turtleneck is ours. It’s made from soft Italian cashmere wool, and features textured ribs at the sleeve, neck, and bottom, so make sure that the sweater highlights your best features while wearing it.",
       image: "images/new/ronnie-turtleneck.jpg",
@@ -213,6 +219,9 @@ const getNanoid = async () => {
       category: "jackets",
       price: 149.99,
       isAvailable: true,
+      origin: "Made in USA",
+      care: "Professional leather clean only",
+      fabric: "100% Leather",
       gender: "women",
       description:
         "An archival style from over a decade ago - the Classic Moto is an iconic, customer-favorite piece. It’s crafted from soft and supple, washed lambskin that gets better with wear and is finished with luxe details like antique brass closures and zippers. Perfect with your favorite worn-in jeans or over a drapey dress - there is no wrong way to wear a leather jacket.",
@@ -228,6 +237,9 @@ const getNanoid = async () => {
       category: "pants",
       price: 149.99,
       isAvailable: true,
+      origin: "Made in USA",
+      care: "Machine wash cold, tumble dry low",
+      fabric: "100% Polyester",
       gender: "men",
       description:
         "These sleek trousers feel as comfortable as our iconic moleskin jean, with the sophisticated cut of a trouser pant. It’s a fabric update on our other icon, the flat front trouser, made with a fabric that will only get better with age. With an option in black and oak brown, the pants are made to suit a variety of wardrobe choices from suit separates to being paired with a polished-looking sweater.",
@@ -243,6 +255,9 @@ const getNanoid = async () => {
       category: "sweaters",
       price: 119.99,
       isAvailable: true,
+      origin: "Made in USA",
+      care: "Machine wash cold, tumble dry low",
+      fabric: "90% Wool, 10% Cashmere",
       gender: "men",
       description:
         "The Abstract Ribbon Cardigan is a modern take on the classic cardigan. The ribbons are woven into the fabric, creating a unique texture that is both visually interesting and soft to the touch. The cardigan is made from a blend of wool and cashmere, making it warm and comfortable to wear.",
@@ -258,6 +273,9 @@ const getNanoid = async () => {
       category: "pants",
       price: 129.99,
       isAvailable: true,
+      origin: "Made in USA",
+      care: "Machine wash cold, tumble dry low",
+      fabric: "100% Polyester",
       gender: "women",
       description:
         "The Flat Front Trouser is a classic, tailored pant that is perfect for any occasion. The pant is made from a soft, stretchy fabric that is comfortable to wear all day long. The pant features a flat front, side pockets, and a straight leg that is flattering on all body types. The pant is available in a range of colors, and is perfect for both casual and formal occasions.",
@@ -273,6 +291,9 @@ const getNanoid = async () => {
       category: "sweaters",
       price: 99.99,
       isAvailable: true,
+      origin: "Made in USA",
+      care: "Machine wash cold, tumble dry low",
+      fabric: "100% Cotton",
       gender: "men",
       description:
         "This patterned, zip-up sweater is meant to be the one you reach for all through the winter season. With a subtle, dark plaid, and cord zipper pull, it’s easy to get on and off. The fabric is a mix of cotton and alpaca yarn, to make sure that the garment is warm, but always soft on the skin.",
@@ -288,6 +309,9 @@ const getNanoid = async () => {
       category: "shoes",
       isAvailable: true,
       price: 299.99,
+      origin: "Made in USA",
+      care: "Professional leather clean only",
+      fabric: "100% Leather",
       gender: "men",
       description:
         "The Oak Street x Billy Reid Trench Boot is a collaboration between two American brands known for their quality and craftsmanship. The boot is made from Horween Chromexcel leather, and features a Goodyear welt construction, making it durable and long-lasting. The boot is handcrafted in the USA, and is available in both black and brown.",
@@ -303,6 +327,9 @@ const getNanoid = async () => {
       category: "shirts",
       isAvailable: true,
       price: 79.99,
+      origin: "Made in USA",
+      care: "Machine wash cold, tumble dry low",
+      fabric: "100% Cotton",
       gender: "men",
       description:
         "The Melange Yellowhammer Tuscumbia Shirt Button-Down is a classic button-down shirt with a modern twist. The shirt is made from a soft, melange cotton fabric, and features a button-down collar and a chest pocket. The shirt is available in a range of colors, and is perfect for both casual and formal occasions.",
@@ -318,6 +345,9 @@ const getNanoid = async () => {
       category: "shirts",
       isAvailable: true,
       price: 159.99,
+      origin: "Made in USA",
+      care: "Machine wash cold, tumble dry low",
+      fabric: "100% Cotton",
       gender: "men",
       description:
         "Our best-selling Tuscumbia shirt is the cornerstone of lived-in luxury. This version is cut in a standard fit, providing ease of movement and ultimate comfort. It’s 100% cotton, but with a brushed finish to the exterior giving it a little more weight and a super soft feel.  It's constructed with a button-down collar, barrel cuffs, and a tonal thread throughout the body. Thoughtfully finished with smoke mother of pearl buttons, a left-side chest pocket, and a subtle detail: our heirloom ribbon applied to the bottom of the under-placket.",
@@ -334,6 +364,9 @@ const getNanoid = async () => {
       category: "jackets",
       isAvailable: true,
       price: 499.99,
+      origin: "Made in USA",
+      care: "Professional leather clean only",
+      fabric: "100% Leather",
       gender: "men",
       description:
         "This classic flight jacket is made from soft, supple leather and features a shearling collar for added warmth. The jacket has a zip front closure, two front pockets, and ribbed cuffs and hem. It is fully lined and has a relaxed fit that is perfect for layering over sweaters and shirts.",
@@ -349,6 +382,9 @@ const getNanoid = async () => {
       category: "sweaters",
       isAvailable: true,
       price: 99.99,
+      origin: "Made in USA",
+      care: "Dry clean only",
+      fabric: "70% Alpaca, 30% Wool",
       gender: "women",
       description:
         "The tiger is one of our favorite motifs at Billy Reid. It’s part of the history of Shindig, our annual celebration in the Shoals, as one of the early mascots of sorts. Since it first appeared for Shindig, people have been asking us to bring it back. We’re doing so as a textured—but not too heavy—sweater with an intarsia stitch, a true sign of craftsmanship. It’s knit from a warm alpaca blend, and features a slouchy, boyfriend fit with the design that wraps from front to back.",
@@ -364,6 +400,9 @@ const getNanoid = async () => {
       category: "pants",
       isAvailable: false,
       price: 79.99,
+      origin: "Made in USA",
+      care: "Machine wash cold, tumble dry low",
+      fabric: "100% Polyester",
       gender: "women",
       description:
         "These wide-leg pants are made from a soft, stretchy fabric and feature a high waist and wide legs. They have a zip fly and button closure and are available in a range of sizes and colors.",
@@ -379,6 +418,9 @@ const getNanoid = async () => {
       category: "shirts",
       isAvailable: true,
       price: 49.99,
+      origin: "Made in USA",
+      care: "Machine wash cold, tumble dry low",
+      fabric: "100% Cotton",
       gender: "men",
       description:
         "This classic crew neck design was crafted by Japanese artisans. It’s got the same raglan style as our other crewneck options, but made with a Japanese floating flamme textile that gives a pebble-like texture to the garment. Wear it layered over an oxford shirt or on its own under a sport coat.",
@@ -394,6 +436,9 @@ const getNanoid = async () => {
       category: "jackets",
       isAvailable: false,
       price: 129.99,
+      origin: "Made in USA",
+      care: "Machine wash cold, tumble dry low",
+      fabric: "100% Polyester",
       gender: "men",
       description:
         "This is the perfect fall layering garment. It’s insulating, without overheating anything. The baffle fabric is woven in channels, rather than the traditional top-stitching, making it not only durable, but water-resistant. With a slight puff to it, it’s easy to look modern, so we topped it off with our favorite antique brass snaps so that it still feels like a timeless piece you’ve had for years. It’s also offered in “Billy’s Brown” the go-to shade this autumn.",
@@ -410,6 +455,9 @@ const getNanoid = async () => {
       isAvailable: true,
       gender: "women",
       price: 249.99,
+      origin: "Made in USA",
+      care: "Machine wash cold, tumble dry low",
+      fabric: "98% Cotton, 2% Spandex",
       description:
         "Our Isola features an easy mid-rise with an ultra-flattering top block in a true-to-size fit. Designed with a slim fit to the knee into a 26 inseam - this pair can be styled with just about everything. It features a bright indigo with heavy fading, whiskering, and finished hems. Incredibly soft and with a just-right stretch, yet designed to hold its shape all day long.",
       image: "images/catalog/citizens-of-humanity-jeans.jpg",

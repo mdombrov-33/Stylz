@@ -34,6 +34,8 @@ function ProductPage() {
   if (isLoading) return <Loader />;
   if (error) return <div>Error: {error.message}</div>;
 
+  const randomRating = Math.floor(Math.random() * 5) + 1;
+
   return (
     <main className="grid xl:grid-cols-2">
       <section className="grid grid-cols-2">
@@ -68,7 +70,7 @@ function ProductPage() {
           {product.description}
         </p>
 
-        <section className="pb-6">
+        <section className="mt-8 pb-6">
           <select className="select select-bordered w-full max-w-xs">
             <option disabled selected>
               AVAILABLE SIZES
@@ -83,6 +85,53 @@ function ProductPage() {
             <p className="mt-2 font-bold underline">What size should i buy?</p>
           </Link>
         </section>
+        <section className="flex flex-col gap-8 py-12">
+          <button className="btn btn-neutral w-96 text-xl font-bold uppercase">
+            add to cart
+          </button>
+          <button className="btn btn-outline w-96 text-xl font-normal uppercase">
+            try before you buy
+          </button>
+        </section>
+        <p className="-mt-10 pb-6">
+          Try up to 6 items at home for 7 days. Powered by{" "}
+          <span className="font-delaGothicOne">trynow</span>
+        </p>
+
+        <div className="rating mt-12">
+          <input
+            type="radio"
+            name="rating-1"
+            className="mask mask-star"
+            disabled="true"
+          />
+          <input
+            type="radio"
+            name="rating-1"
+            className="mask mask-star"
+            disabled="true"
+          />
+          <input
+            type="radio"
+            name="rating-1"
+            className="mask mask-star"
+            disabled="true"
+            defaultChecked
+          />
+          <input
+            type="radio"
+            name="rating-1"
+            className="mask mask-star"
+            disabled="true"
+          />
+          <input
+            type="radio"
+            name="rating-1"
+            className="mask mask-star"
+            disabled="true"
+          />
+        </div>
+        <p className="mt-2 text-pretty">Based on {randomRating} reviews</p>
       </section>
     </main>
   );
