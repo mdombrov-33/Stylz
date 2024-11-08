@@ -102,7 +102,7 @@ function CatalogItem() {
             try before you buy
           </button>
         </section>
-        <p className="-mt-10 pb-6">
+        <p className="-mt-10 pb-6 text-sm">
           Try up to 6 items at home for 7 days. Powered by{" "}
           <span className="font-delaGothicOne">trynow</span>
         </p>
