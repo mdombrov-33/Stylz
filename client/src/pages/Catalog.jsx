@@ -8,20 +8,26 @@ import { BiSolidCategory } from "react-icons/bi";
 
 function Catalog() {
   const [page, setPage] = useState(1);
+  const [category, setCategory] = useState(""); // New state for category
 
   const fetchCatalogItems = async ({ queryKey }) => {
     const [, { page }] = queryKey;
     const response = await axios.get(
       "https://stylz-shop.onrender.com/api/catalog",
       {
-        params: { page },
+        params: { page, category },
       }
     );
     return response.data;
   };
 
+  const handleSearch = (selectedCategory) => {
+    setCategory(selectedCategory);
+    setPage(1); // Reset to first page on new search
+  };
+
   const { data, isLoading, error } = useQuery({
-    queryKey: ["catalogItems", { page }],
+    queryKey: ["catalogItems", { page, category }],
     queryFn: fetchCatalogItems,
     staleTime: 1000 * 60 * 10, // 10 minutes
     cacheTime: 1000 * 60 * 60, // 1 hour
@@ -34,12 +40,12 @@ function Catalog() {
   console.log(data);
 
   // Scroll to the top of the page when the page number changes
-  // useEffect(() => {
-  //   window.scrollTo({
-  //     top: 0,
-  //     behavior: "smooth",
-  //   });
-  // }, [page]);
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [page, category]);
 
   const handleNextPage = () => {
     if (page < data.totalPages) setPage((prevPage) => prevPage + 1);
@@ -70,9 +76,10 @@ function Catalog() {
           </label>
         </section>
 
+        {/* Catalog Items */}
         <section className="flex flex-col items-center justify-start py-6">
           <section className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 gap-4 px-4 mt-6">
-            {data.items.map((item) => (
+            {data.totalItems.map((item) => (
               <CatalogItem
                 key={item.id}
                 isAvailable={item.isAvailable}
@@ -84,10 +91,8 @@ function Catalog() {
             ))}
           </section>
         </section>
-        {/* Catalog Items */}
 
         {/* Pagination Controls */}
-
         <section className="join grid grid-cols-2 mt-4 items-center justify-center p-6 w-full">
           <button
             onClick={handlePrevPage}
@@ -110,7 +115,7 @@ function Catalog() {
       </section>
 
       {/* Sidebar Navigation */}
-      <CatalogNavigation />
+      <CatalogNavigation onSearch={handleSearch} />
     </main>
   );
 }
