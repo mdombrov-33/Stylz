@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Loader from "@/components/Loader";
@@ -31,48 +31,59 @@ function ProductPage() {
     enabled: true, // Always enabled for continuous fetching
   });
 
-  console.log(product);
-  //   const {
-  //     image,
-  //     altImage,
-  //     altImage2,
-  //     altImage3,
-  //     category,
-  //     description,
-  //     gender,
-  //     name,
-  //     price,
-  //     sizes,
-  //   } = product;
-
   if (isLoading) return <Loader />;
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <main className="grid grid-cols-2">
+    <main className="grid xl:grid-cols-2">
       <section className="grid grid-cols-2">
         <img
           src={`${baseURL}/${product.image}`}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover contrast-50 saturate-100"
           alt={product.name}
         />
         <img
           src={`${baseURL}/${product.altImage}`}
-          className="h-full w-full border-l-2 border-stone-950 object-cover"
+          className="b-r-2 h-full w-full border-l-2 border-r-2 border-stone-950 object-cover contrast-50 saturate-100"
           alt={product.name}
         />
         <img
           src={`${baseURL}/${product.altImage2}`}
-          className="h-full w-full border-t-2 border-stone-950 object-cover"
+          className="h-full w-full border-t-2 border-stone-950 object-cover contrast-50 saturate-100"
           alt={product.name}
         />
         <img
           src={`${baseURL}/${product.altImage3}`}
-          className="h-full w-full border-l-2 border-stone-950 object-cover"
+          className="h-full w-full border-l-2 border-r-2 border-t-2 border-stone-950 object-cover contrast-50 saturate-100"
           alt={product.name}
         />
       </section>
-      aboba
+
+      <section className="mt-6 flex flex-col items-center">
+        <h2 className="font-redHatDisplay text-3xl font-bold">
+          {product.name}
+        </h2>
+        <p className="mt-4 text-2xl">{product.price}$</p>
+        <p className="mt-2 text-pretty p-6 font-redHatDisplay text-xl">
+          {product.description}
+        </p>
+
+        <section className="pb-6">
+          <select className="select select-bordered w-full max-w-xs">
+            <option disabled selected>
+              <p>AVAILABLE SIZES</p>
+            </option>
+            {product?.sizes.map((size) => (
+              <option key={size} value={size}>
+                {size}
+              </option>
+            ))}
+          </select>
+          <Link to="/contact/sizeguide">
+            <p className="mt-2 font-bold underline">What size should i buy?</p>
+          </Link>
+        </section>
+      </section>
     </main>
   );
 }

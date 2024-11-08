@@ -336,7 +336,7 @@ const getNanoid = async () => {
       price: 499.99,
       gender: "men",
       description:
-        "This classic leather flight jacket is made from premium cowhide leather and features a shearling collar. The jacket is lined with a quilted polyester lining for added warmth and comfort. It has two front pockets and a zippered chest pocket for storage. The jacket is available in black and brown.",
+        "The tiger is one of our favorite motifs at Billy Reid. It’s part of the history of Shindig, our annual celebration in the Shoals, as one of the early mascots of sorts. Since it first appeared for Shindig, people have been asking us to bring it back. We’re doing so as a textured—but not too heavy—sweater with an intarsia stitch, a true sign of craftsmanship. It’s knit from a warm alpaca blend, and features a slouchy, boyfriend fit with the design that wraps from front to back.",
       image: "images/catalog/leather-flight-jacket.jpg",
       altImage: "images/catalog/leather-flight-jacket-hover.jpg",
       altImage2: "images/catalog/leather-flight-jacket-2.jpg",
@@ -381,7 +381,7 @@ const getNanoid = async () => {
       price: 49.99,
       gender: "men",
       description:
-        "This long sleeve tuck terry crew is made from 100% cotton and features a crew neck and long sleeves. It has a relaxed fit and is available in a range of sizes and colors.",
+        "This classic crew neck design was crafted by Japanese artisans. It’s got the same raglan style as our other crewneck options, but made with a Japanese floating flamme textile that gives a pebble-like texture to the garment. Wear it layered over an oxford shirt or on its own under a sport coat.",
       image: "images/catalog/long-sleeve-crew.jpg",
       altImage: "images/catalog/long-sleeve-crew-hover.jpg",
       altImage2: "images/catalog/long-sleeve-crew-2.jpg",
@@ -396,7 +396,7 @@ const getNanoid = async () => {
       price: 129.99,
       gender: "men",
       description:
-        "This baffle shirt jacket is made from a soft, stretchy fabric and features a button front and long sleeves. It has a relaxed fit and is available in a range of sizes and colors.",
+        "This is the perfect fall layering garment. It’s insulating, without overheating anything. The baffle fabric is woven in channels, rather than the traditional top-stitching, making it not only durable, but water-resistant. With a slight puff to it, it’s easy to look modern, so we topped it off with our favorite antique brass snaps so that it still feels like a timeless piece you’ve had for years. It’s also offered in “Billy’s Brown” the go-to shade this autumn.",
       image: "images/catalog/baffle-shirt-jacket.jpg",
       altImage: "images/catalog/baffle-shirt-jacket-hover.jpg",
       altImage2: "images/catalog/baffle-shirt-jacket-2.jpg",
@@ -411,7 +411,7 @@ const getNanoid = async () => {
       gender: "women",
       price: 249.99,
       description:
-        "These straight crop jeans are made from a soft, stretchy fabric and feature a high waist and straight legs. They have a zip fly and button closure and are available in a range of sizes and colors.",
+        "Our Isola features an easy mid-rise with an ultra-flattering top block in a true-to-size fit. Designed with a slim fit to the knee into a 26 inseam - this pair can be styled with just about everything. It features a bright indigo with heavy fading, whiskering, and finished hems. Incredibly soft and with a just-right stretch, yet designed to hold its shape all day long.",
       image: "images/catalog/citizens-of-humanity-jeans.jpg",
       altImage: "images/catalog/citizens-of-humanity-jeans-hover.jpg",
       altImage2: "images/catalog/citizens-of-humanity-jeans-2.jpg",
