@@ -20,6 +20,7 @@ function Catalog() {
         params: { page, category, gender },
       }
     );
+
     return response.data;
   };
 
@@ -63,6 +64,19 @@ function Catalog() {
     return <div>Error: {error.message}</div>;
   }
 
+  console.log(selectedCategory, selectedGender);
+
+  const filteredItems = data.items.filter((item) => {
+    const isCategoryMatch = selectedCategory
+      ? item.category === selectedCategory
+      : true;
+    const isGenderMatch = selectedGender
+      ? item.gender === selectedGender
+      : true;
+
+    return isCategoryMatch && isGenderMatch;
+  });
+
   return (
     <main className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -75,11 +89,10 @@ function Catalog() {
             <BiSolidCategory className="inline-block mr-2 text-3xl" />
           </label>
         </section>
-
         {/* Catalog Items */}
         <section className="flex flex-col items-center justify-start py-6">
           <section className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 gap-4 px-4 mt-6">
-            {data.totalItems.map((item) => (
+            {filteredItems.map((item) => (
               <CatalogItem
                 key={item.id}
                 isAvailable={item.isAvailable}
@@ -91,33 +104,42 @@ function Catalog() {
             ))}
           </section>
         </section>
-
         {/* Pagination Controls */}
-        <section className="join grid grid-cols-2 mt-4 items-center justify-center p-6 w-full">
-          <button
-            onClick={handlePrevPage}
-            disabled={page === 1}
-            className="join-item btn btn-outline"
-          >
-            Previous page
-          </button>
-          <button
-            onClick={handleNextPage}
-            disabled={page === data.totalPages}
-            className="join-item btn btn-outline"
-          >
-            Next page
-          </button>
-        </section>
-        <p className="mt-2 text-center">
-          Page {page} of {data.totalPages}
-        </p>
+
+        {filteredItems.length === 0 ? (
+          <section className="flex items-center justify-center h-96">
+            <h1 className="text-4xl font-bold mt-10">
+              No items found for current filters
+            </h1>
+          </section>
+        ) : null}
+
+        {filteredItems.length > 0 && (
+          <section className="join grid grid-cols-2 mt-4 items-center justify-center p-6 w-full">
+            <button
+              onClick={handlePrevPage}
+              disabled={page === 1}
+              className="join-item btn btn-outline"
+            >
+              Previous page
+            </button>
+            <button
+              onClick={handleNextPage}
+              disabled={page === data.totalPages}
+              className="join-item btn btn-outline"
+            >
+              Next page
+            </button>
+          </section>
+        )}
+        <p className="text-center">{`Page ${page} of ${data.totalPages}`}</p>
       </section>
 
       {/* Sidebar Navigation */}
       <CatalogNavigation
         setSelectedCategory={setSelectedCategory}
         setSelectedGender={setSelectedGender}
+        selectedGender={selectedGender}
       />
     </main>
   );
