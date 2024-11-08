@@ -6,7 +6,7 @@ function CatalogItem({ isAvailable, price, name, image, altImage }) {
 
   return (
     <main>
-      <section className="card w-96">
+      <section className="card  shadow-xl h-full w-full ">
         <figure>
           <img
             className="max-h-96 w-full object-cover"
@@ -19,11 +19,11 @@ function CatalogItem({ isAvailable, price, name, image, altImage }) {
         <section className="card-body">
           <h2 className="card-title">{name}</h2>
           <p className="text-2xl pt-10 font-bold">
-            {isAvailable ? price : "Out of Stock"}
+            {isAvailable ? price + "$" : "Out of Stock"}
           </p>
-          <section className="card-actions justify-end">
+          <section className="card-actions items-end justify-end ">
             <button
-              className="uppercase btn btn-accent font-bold font-redHatDisplay text-lg"
+              className="uppercase btn btn-accent font-bold font-redHatDisplay text-lg "
               disabled={isAvailable ? false : true}
             >
               Check Details

@@ -34,12 +34,12 @@ function Catalog() {
   console.log(data);
 
   // Scroll to the top of the page when the page number changes
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }, [page]);
+  // useEffect(() => {
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: "smooth",
+  //   });
+  // }, [page]);
 
   const handleNextPage = () => {
     if (page < data.totalPages) setPage((prevPage) => prevPage + 1);
@@ -61,16 +61,16 @@ function Catalog() {
     <main className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <section className="drawer-content ">
-        <div className="flex justify-end">
+        <section className="flex justify-end -mr-7">
           <label
             htmlFor="my-drawer-2"
             className="btn btn-primary drawer-button lg:hidden uppercase btn-ghost text-2xl font-delaGothicOne fixed top-26 z-10"
           >
             <BiSolidCategory className="inline-block mr-2 text-3xl" />
           </label>
-        </div>
+        </section>
 
-        <div className="flex flex-col items-center justify-start py-6">
+        <section className="flex flex-col items-center justify-start py-6">
           <section className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 gap-4 px-4 mt-6">
             {data.items.map((item) => (
               <CatalogItem
@@ -83,11 +83,12 @@ function Catalog() {
               />
             ))}
           </section>
-        </div>
+        </section>
         {/* Catalog Items */}
 
         {/* Pagination Controls */}
-        <section className="join grid grid-cols-2 mt-4">
+
+        <section className="join grid grid-cols-2 mt-4 items-center justify-center p-6 w-full">
           <button
             onClick={handlePrevPage}
             disabled={page === 1}
@@ -103,7 +104,7 @@ function Catalog() {
             Next page
           </button>
         </section>
-        <p className="mt-2">
+        <p className="mt-2 text-center">
           Page {page} of {data.totalPages}
         </p>
       </section>
