@@ -76,6 +76,7 @@ function Catalog() {
           </label>
         </section>
 
+        {/* Catalog Items */}
         <section className="flex flex-col items-center justify-start py-6">
           <section className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 gap-4 px-4 mt-6">
             {data.totalItems.map((item) => (
@@ -90,10 +91,8 @@ function Catalog() {
             ))}
           </section>
         </section>
-        {/* Catalog Items */}
 
         {/* Pagination Controls */}
-
         <section className="join grid grid-cols-2 mt-4 items-center justify-center p-6 w-full">
           <button
             onClick={handlePrevPage}

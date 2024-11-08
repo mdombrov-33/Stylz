@@ -458,7 +458,7 @@ const getNanoid = async () => {
 
     // Prepare the response
     const response = {
-      totalItems: filteredItems.length,
+      totalItems: filteredItems,
       totalPages: Math.ceil(filteredItems.length / limitNumber),
       currentPage: pageNumber,
       items: paginatedItems,
@@ -469,6 +469,6 @@ const getNanoid = async () => {
 
   // Start the server
   app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`Server running on port: ${PORT}`);
   });
 })();
