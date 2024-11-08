@@ -55,11 +55,6 @@ function Catalog() {
     }
   }, [fetchTrigger, data]);
 
-  // Reset page to 1 when filters change
-  useEffect(() => {
-    setPage(1);
-  }, [selectedCategory, selectedGender]);
-
   // Scroll to the top of the page when the page number changes
   useEffect(() => {
     window.scrollTo({
@@ -76,7 +71,7 @@ function Catalog() {
     if (page > 1) setPage((prevPage) => prevPage - 1);
   };
 
-  if (isLoading) {
+  if (isLoading && !data) {
     return <Loader />;
   }
 
