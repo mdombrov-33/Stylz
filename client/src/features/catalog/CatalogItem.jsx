@@ -6,7 +6,7 @@ function CatalogItem({ isAvailable, price, name, image, altImage }) {
 
   return (
     <main>
-      <section className="card  shadow-xl h-full w-full ">
+      <section className="card shadow-xl h-full min-h-96 min-w-96 w-full ">
         <figure>
           <img
             className="max-h-96 w-full object-cover"

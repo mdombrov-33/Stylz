@@ -3,18 +3,15 @@ function CatalogNavigation({
   setSelectedCategory,
   selectedGender,
   setSelectedGender,
-  setFetchTrigger,
 }) {
   const handleGenderClick = (gender) => {
     // Toggle selection for gender
     setSelectedGender(selectedGender === gender ? null : gender);
-    setFetchTrigger(true);
   };
 
   const handleCategoryClick = (category) => {
     // Toggle selection for category
     setSelectedCategory(selectedCategory === category ? null : category);
-    setFetchTrigger(true);
   };
 
   return (

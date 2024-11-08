@@ -8,11 +8,10 @@ import { BiSolidCategory } from "react-icons/bi";
 
 function Catalog() {
   const [page, setPage] = useState(1);
-
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedGender, setSelectedGender] = useState(null);
-  const [fetchTrigger, setFetchTrigger] = useState(true);
 
+  // Fetch catalog items based on the current page and filters
   const fetchCatalogItems = async ({ queryKey }) => {
     const [, { page, category, gender }] = queryKey;
     const response = await axios.get(
@@ -21,10 +20,10 @@ function Catalog() {
         params: { page, category, gender },
       }
     );
-
     return response.data;
   };
 
+  // Query setup to fetch catalog items with pagination and filters
   const { data, isLoading, error } = useQuery({
     queryKey: [
       "catalogItems",
@@ -36,42 +35,31 @@ function Catalog() {
     refetchOnWindowFocus: true,
     refetchInterval: 1000 * 60 * 15, // 15 minutes
     retry: 3,
-    enabled: fetchTrigger,
+    enabled: true, // Always enabled for continuous fetching
     keepPreviousData: true, // Keeps previous page data while fetching the new page
   });
-  console.log(data);
 
-  // Refetch when category or gender change
+  // Reset page to 1 when filters change
   useEffect(() => {
-    if (selectedCategory !== null || selectedGender !== null) {
-      setFetchTrigger(true);
-    }
+    setPage(1); // Reset page when filters change
+  }, [selectedCategory, selectedGender]);
+
+  // Scroll to top when page or filters changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [selectedCategory, selectedGender, page]);
 
-  // Reset fetchTrigger to false after the first fetch
-  useEffect(() => {
-    if (fetchTrigger && data) {
-      setFetchTrigger(false);
-    }
-  }, [fetchTrigger, data]);
-
-  // Scroll to the top of the page when the page number changes
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }, [page, selectedCategory, selectedGender]);
-
+  // Handle pagination controls
   const handleNextPage = () => {
-    if (page < data.totalPages) setPage((prevPage) => prevPage + 1);
+    if (data && page < data.totalPages) setPage((prevPage) => prevPage + 1);
   };
 
   const handlePrevPage = () => {
     if (page > 1) setPage((prevPage) => prevPage - 1);
   };
 
-  if (isLoading && !data) {
+  // Handle loader and errors
+  if (isLoading) {
     return <Loader />;
   }
 
@@ -79,9 +67,7 @@ function Catalog() {
     return <div>Error: {error.message}</div>;
   }
 
-  console.log(selectedCategory, selectedGender);
-
-  // Handle cases where data or data.items might be undefined
+  // Filter items based on selected filters
   const filteredItems =
     data?.items?.filter((item) => {
       const isCategoryMatch = selectedCategory
@@ -97,7 +83,8 @@ function Catalog() {
   return (
     <main className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <section className="drawer-content ">
+      <section className="drawer-content">
+        {/* Drawer for category selection */}
         <section className="flex justify-end -mr-7">
           <label
             htmlFor="my-drawer-2"
@@ -110,33 +97,30 @@ function Catalog() {
         {/* Catalog Items */}
         <section className="flex flex-col items-center justify-start py-6">
           <section className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 gap-4 px-4 mt-6">
-            {data &&
-              filteredItems.map((item) => (
-                <CatalogItem
-                  key={item.id}
-                  isAvailable={item.isAvailable}
-                  price={item.price}
-                  name={item.name}
-                  image={item.image}
-                  altImage={item.altImage}
-                />
-              ))}
+            {filteredItems.map((item) => (
+              <CatalogItem
+                key={item.id}
+                isAvailable={item.isAvailable}
+                price={item.price}
+                name={item.name}
+                image={item.image}
+                altImage={item.altImage}
+              />
+            ))}
           </section>
         </section>
 
-        {/* Pagination Controls */}
-
-        {/* No items found */}
-        {data && filteredItems.length === 0 ? (
+        {/* //No items found  */}
+        {filteredItems.length === 0 && (
           <section className="flex items-center justify-center h-96">
             <h1 className="text-4xl font-bold mt-10">
               No items found for current filters
             </h1>
           </section>
-        ) : null}
+        )}
 
         {/* Pagination */}
-        {data && filteredItems.length > 0 && (
+        {filteredItems.length > 0 && (
           <section className="join grid grid-cols-2 mt-4 items-center justify-center p-6 w-full">
             <button
               onClick={handlePrevPage}
@@ -156,7 +140,7 @@ function Catalog() {
         )}
 
         {/* Track Pages */}
-        {data && filteredItems.length > 0 && (
+        {filteredItems.length > 0 && (
           <p className="text-center">{`Page ${page} of ${data.totalPages}`}</p>
         )}
       </section>
@@ -167,7 +151,6 @@ function Catalog() {
         setSelectedGender={setSelectedGender}
         selectedGender={selectedGender}
         selectedCategory={selectedCategory}
-        setFetchTrigger={setFetchTrigger}
       />
     </main>
   );
