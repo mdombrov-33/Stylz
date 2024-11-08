@@ -7,13 +7,12 @@ import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
 import { useState } from "react";
 
-function ProductPage() {
+function CatalogItem() {
   const { id } = useParams();
   const baseURL = "https://stylz-shop.onrender.com";
 
-  const [isCollapsedOrigin, setIsCollapsedOrigin] = useState(true);
-  const [isCollapsedFabric, setIsCollapsedFabric] = useState(true);
-  const [isCollapsedCare, setIsCollapsedCare] = useState(true);
+  // State to track which section is open (null means none are open)
+  const [openSection, setOpenSection] = useState(null);
 
   // Fetch product details
   const fetchProductDetails = async () => {
@@ -41,16 +40,9 @@ function ProductPage() {
   if (isLoading) return <Loader />;
   if (error) return <div>Error: {error.message}</div>;
 
-  const toggleCollapseOrigin = () => {
-    setIsCollapsedOrigin((prev) => !prev);
-  };
-
-  const toggleCollapseFabric = () => {
-    setIsCollapsedFabric((prev) => !prev);
-  };
-
-  const toggleCollapseCare = () => {
-    setIsCollapsedCare((prev) => !prev);
+  // Function to toggle which section is open
+  const toggleCollapse = (section) => {
+    setOpenSection((prev) => (prev === section ? null : section)); // Close if same section is clicked again, otherwise open the new one
   };
 
   return (
@@ -58,22 +50,22 @@ function ProductPage() {
       <section className="grid grid-cols-2">
         <img
           src={`${baseURL}/${product.image}`}
-          className="h-full w-full object-cover contrast-50 saturate-100"
+          className="h-full w-full shrink-0 object-cover contrast-50 saturate-100"
           alt={product.name}
         />
         <img
           src={`${baseURL}/${product.altImage}`}
-          className="b-r-2 h-full w-full border-l-2 border-r-2 border-stone-950 object-cover contrast-50 saturate-100"
+          className="b-r-2 h-full w-full shrink-0 border-l-2 border-r-2 border-stone-950 object-cover contrast-50 saturate-100"
           alt={product.name}
         />
         <img
           src={`${baseURL}/${product.altImage2}`}
-          className="h-full w-full border-t-2 border-stone-950 object-cover contrast-50 saturate-100"
+          className="h-full w-full shrink-0 border-t-2 border-stone-950 object-cover contrast-50 saturate-100"
           alt={product.name}
         />
         <img
           src={`${baseURL}/${product.altImage3}`}
-          className="h-full w-full border-l-2 border-r-2 border-t-2 border-stone-950 object-cover contrast-50 saturate-100"
+          className="h-full w-full shrink-0 border-l-2 border-r-2 border-t-2 border-stone-950 object-cover contrast-50 saturate-100"
           alt={product.name}
         />
       </section>
@@ -153,43 +145,59 @@ function ProductPage() {
 
         {/* Collapsed */}
         <section className="mt-12 flex w-96 flex-col gap-2 pb-12">
+          {/* Origin Section */}
           <div className="collapse bg-base-200">
-            <input type="checkbox" onChange={toggleCollapseOrigin} />
+            <input
+              type="checkbox"
+              checked={openSection === "origin"}
+              onChange={() => toggleCollapse("origin")}
+            />
             <div className="collapse-title flex items-center text-xl font-medium uppercase">
               <p>origin</p>
-              {isCollapsedOrigin ? (
-                <FaPlus className="ml-auto" />
-              ) : (
+              {openSection === "origin" ? (
                 <FaMinus className="ml-auto" />
+              ) : (
+                <FaPlus className="ml-auto" />
               )}
             </div>
             <div className="collapse-content">
               <p>{product.origin}</p>
             </div>
           </div>
+
+          {/* Fabric Section */}
           <div className="collapse bg-base-200">
-            <input type="checkbox" onChange={toggleCollapseFabric} />
+            <input
+              type="checkbox"
+              checked={openSection === "fabric"}
+              onChange={() => toggleCollapse("fabric")}
+            />
             <div className="collapse-title flex items-center text-xl font-medium uppercase">
               <p>fabric</p>
-
-              {isCollapsedFabric ? (
-                <FaPlus className="ml-auto" />
-              ) : (
+              {openSection === "fabric" ? (
                 <FaMinus className="ml-auto" />
+              ) : (
+                <FaPlus className="ml-auto" />
               )}
             </div>
             <div className="collapse-content">
               <p>{product.fabric}</p>
             </div>
           </div>
+
+          {/* Care Section */}
           <div className="collapse bg-base-200">
-            <input type="checkbox" onChange={toggleCollapseCare} />
+            <input
+              type="checkbox"
+              checked={openSection === "care"}
+              onChange={() => toggleCollapse("care")}
+            />
             <div className="collapse-title flex items-center text-xl font-medium uppercase">
               <p>care</p>
-              {isCollapsedCare ? (
-                <FaPlus className="ml-auto" />
-              ) : (
+              {openSection === "care" ? (
                 <FaMinus className="ml-auto" />
+              ) : (
+                <FaPlus className="ml-auto" />
               )}
             </div>
             <div className="collapse-content">
@@ -197,12 +205,13 @@ function ProductPage() {
             </div>
           </div>
         </section>
+
         <section className="mt-12 pb-6">
-          <ReturnBtn />
+          <ReturnBtn to={-1} />
         </section>
       </section>
     </main>
   );
 }
 
-export default ProductPage;
+export default CatalogItem;
