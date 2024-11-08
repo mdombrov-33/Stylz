@@ -425,7 +425,7 @@ const getNanoid = async () => {
 
   // API endpoint to get the catalog items with pagination
   app.get("/api/catalog", (req, res) => {
-    const { page = 1, limit = 10, category } = req.query;
+    const { page = 1, limit = 10, category, gender } = req.query;
 
     // Convert to numbers
     const pageNumber = parseInt(page, 10);
@@ -443,6 +443,10 @@ const getNanoid = async () => {
     // Filter by category
     if (category) {
       filteredItems = catalogItems.filter((item) => item.category === category);
+    }
+
+    if (gender) {
+      filteredItems = filteredItems.filter((item) => item.gender === gender);
     }
 
     // Calculate start index and end index for slicing the items
