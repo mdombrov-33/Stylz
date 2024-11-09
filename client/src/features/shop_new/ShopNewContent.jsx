@@ -1,7 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function ShopNewItems({ name, price, image, altImage, gender, category, id }) {
+function ShopNewContent({
+  name,
+  price,
+  image,
+  altImage,
+  gender,
+  category,
+  id,
+}) {
   const baseURL = "https://stylz-shop.onrender.com";
   const [isHovered, setIsHovered] = useState(false);
 
@@ -37,4 +45,4 @@ function ShopNewItems({ name, price, image, altImage, gender, category, id }) {
   );
 }
 
-export default ShopNewItems;
+export default ShopNewContent;

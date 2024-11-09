@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Loader from "@/components/Loader";
-import ShopNewItems from "@/features/shop_new/ShopNewItem";
+import ShopNewItems from "@/features/shop_new/ShopNewContent";
 
 async function fetchNewItems() {
-  const response = await axios("https://stylz-shop.onrender.com/api/new");
+  const response = await axios("https://stylz-shop.onrender.com/api/catalog");
   return response.data;
 }
 
@@ -27,13 +27,15 @@ function ShopNew() {
     return <div>Error: {error.message}</div>;
   }
 
+  const newItems = data.totalItems.filter((item) => item.newItem === true);
+
   return (
     <>
       <h1 className="mt-6 text-center font-redHatDisplay text-2xl font-bold uppercase">
         New Arrivals
       </h1>
       <section className="grid justify-center gap-20 p-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {data.map((item) => (
+        {newItems.map((item) => (
           <ShopNewItems
             id={item.id}
             key={item.id}
