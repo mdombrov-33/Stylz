@@ -6,10 +6,16 @@ import ReturnBtn from "@/components/ReturnBtn";
 import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
 import { useState } from "react";
+import { useCartStore } from "@/store/cart-store";
 
 function CatalogItem() {
   const { id } = useParams();
   const baseURL = "https://stylz-shop.onrender.com";
+
+  // Cart store
+  const addToCart = useCartStore((state) => state.addToCart);
+  const { cart } = useCartStore();
+  console.log(cart);
 
   // State to track which section is open
   const [openSection, setOpenSection] = useState(null);
@@ -81,9 +87,7 @@ function CatalogItem() {
 
         <section className="mt-8 pb-6">
           <select className="select select-bordered w-full max-w-xs">
-            <option disabled selected>
-              AVAILABLE SIZES
-            </option>
+            <option disabled>AVAILABLE SIZES</option>
             {product?.sizes.map((size) => (
               <option key={size} value={size}>
                 {size}
@@ -95,7 +99,10 @@ function CatalogItem() {
           </Link>
         </section>
         <section className="flex flex-col gap-8 py-12">
-          <button className="btn btn-neutral w-96 text-xl font-bold uppercase">
+          <button
+            onClick={() => addToCart(product)}
+            className="btn btn-neutral w-96 text-xl font-bold uppercase"
+          >
             add to cart
           </button>
           <button className="btn btn-outline w-96 text-xl font-normal uppercase">
@@ -112,32 +119,32 @@ function CatalogItem() {
             type="radio"
             name="rating-1"
             className="mask mask-star"
-            disabled="true"
+            disabled={true}
           />
           <input
             type="radio"
             name="rating-1"
             className="mask mask-star"
-            disabled="true"
+            disabled={true}
           />
           <input
             type="radio"
             name="rating-1"
             className="mask mask-star"
-            disabled="true"
+            disabled={true}
             defaultChecked
           />
           <input
             type="radio"
             name="rating-1"
             className="mask mask-star"
-            disabled="true"
+            disabled={true}
           />
           <input
             type="radio"
             name="rating-1"
             className="mask mask-star"
-            disabled="true"
+            disabled={true}
           />
         </div>
 
