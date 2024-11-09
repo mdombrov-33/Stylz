@@ -38,7 +38,6 @@ const useCartStore = create((set) => ({
         (item) => !(item.id === id && item.size === size),
       ),
     })),
-  clearCart: () => set({ cart: [] }),
 }));
 
 export default useCartStore;
