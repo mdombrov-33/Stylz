@@ -1,3 +1,4 @@
+import ReturnBtn from "@/components/ReturnBtn";
 import useCartStore from "@/store/cart-store";
 
 function Cart() {
@@ -15,45 +16,64 @@ function Cart() {
   }
 
   return (
-    <main className="flex overflow-x-auto p-6">
-      <table className="table">
-        <thead>
-          <tr>
-            <th className="font-delaGothicOne md:text-2xl">Item</th>
-            <th className="font-delaGothicOne md:text-2xl">Size</th>
-            <th className="font-delaGothicOne md:text-2xl">Price</th>
-            <th className="font-delaGothicOne md:text-2xl">Quantity</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cart.map((item) => (
-            <tr key={`${item.id}-${item.size}`} className="hover">
-              <td className="font-redHatDisplay md:text-2xl">
-                {item.name}
-                <img
-                  className="h-12 w-12 sm:h-28 sm:w-28 md:h-36 md:w-36 lg:h-48 lg:w-48"
-                  src={`${baseURL}/${item.image}`}
-                  alt=""
-                />
-              </td>
-              <td className="font-redHatDisplay md:text-2xl">{item.size}</td>
-              <td className="font-redHatDisplay md:text-2xl">{item.price}</td>
-              <td className="font-redHatDisplay md:text-2xl">
-                {item.quantity}
-              </td>
-              <td>
-                <button
-                  onClick={() => removeFromCart(item.id, item.size)}
-                  className="btn btn-ghost font-redHatDisplay md:text-2xl"
-                >
-                  Remove
-                </button>
-              </td>
+    <>
+      <main className="flex overflow-x-auto p-6">
+        <table className="table">
+          <thead>
+            <tr>
+              <th className="font-delaGothicOne md:text-2xl">Item</th>
+              <th className="font-delaGothicOne md:text-2xl">Size</th>
+              <th className="font-delaGothicOne md:text-2xl">Price</th>
+              <th className="font-delaGothicOne md:text-2xl">Quantity</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </main>
+          </thead>
+          <tbody>
+            {cart.map((item) => (
+              <tr key={`${item.id}-${item.size}`} className="hover">
+                <td className="font-redHatDisplay md:text-2xl">
+                  {item.name}
+                  <img
+                    className="h-12 w-12 saturate-50 sm:h-28 sm:w-28 md:h-36 md:w-36 lg:h-48 lg:w-48"
+                    src={`${baseURL}/${item.image}`}
+                    alt=""
+                  />
+                </td>
+                <td className="font-redHatDisplay md:text-2xl">{item.size}</td>
+                <td className="font-redHatDisplay md:text-2xl">{item.price}</td>
+                <td className="font-redHatDisplay md:text-2xl">
+                  {item.quantity}
+                </td>
+                <td>
+                  <button
+                    onClick={() => removeFromCart(item.id, item.size)}
+                    className="btn btn-ghost font-redHatDisplay md:text-2xl"
+                  >
+                    Remove
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </main>
+
+      <section>
+        <h2 className="text-center text-2xl font-bold">
+          Total Price:{" "}
+          {cart
+            .reduce((acc, item) => acc + item.price * item.quantity, 0)
+            .toFixed(2)}
+          $
+        </h2>
+      </section>
+
+      <section className="flex justify-around pb-4 pl-10 pt-6">
+        <ReturnBtn to={-1} />
+        <button className="btn btn-success font-redHatDisplay text-3xl font-bold">
+          Checkout
+        </button>
+      </section>
+    </>
   );
 }
 export default Cart;
