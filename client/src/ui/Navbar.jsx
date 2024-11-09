@@ -190,7 +190,7 @@ function Navbar() {
       {!isOnShopNewRoute && (
         <Link to="/new">
           <button
-            className={`${theme === themes.lemonade ? "hover:text-black" : "hover:text-white"} btn mr-16 bg-base-content uppercase text-base-300`}
+            className={`${theme === themes.lemonade ? "hover:text-black" : "hover:text-white"} btn mr-16 bg-base-content font-redHatDisplay uppercase text-base-300`}
           >
             shop all new
           </button>
