@@ -19,14 +19,16 @@ function Cart() {
         <thead>
           <tr>
             <th className="font-delaGothicOne md:text-2xl">Item</th>
+            <th className="font-delaGothicOne md:text-2xl">Size</th>
             <th className="font-delaGothicOne md:text-2xl">Price</th>
             <th className="font-delaGothicOne md:text-2xl">Quantity</th>
           </tr>
         </thead>
         <tbody>
           {cart.map((item) => (
-            <tr key={item.id} className="hover">
+            <tr key={`${item.id}-${item.size}`} className="hover">
               <td className="font-redHatDisplay md:text-2xl">{item.name}</td>
+              <td className="font-redHatDisplay md:text-2xl">{item.size}</td>
               <td className="font-redHatDisplay md:text-2xl">{item.price}</td>
               <td className="font-redHatDisplay md:text-2xl">
                 {item.quantity}

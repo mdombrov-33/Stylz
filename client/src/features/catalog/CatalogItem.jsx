@@ -7,13 +7,25 @@ import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
 import { useState } from "react";
 import useCartStore from "@/store/cart-store";
+import toast from "react-hot-toast";
 
 function CatalogItem() {
   const { id } = useParams();
   const baseURL = "https://stylz-shop.onrender.com";
 
+  // State to track selected size
+  const [selectedSize, setSelectedSize] = useState("hui");
+  console.log(selectedSize);
+
+  const showErrorToast = () => {
+    if (selectedSize == "null" || selectedSize === "AVAILABLE SIZES") {
+      toast.error("Please select a size to add to cart");
+    }
+  };
+
   // Cart store
   const addToCart = useCartStore((state) => state.addToCart);
+
   // State to track which section is open
   const [openSection, setOpenSection] = useState(null);
 
@@ -83,7 +95,11 @@ function CatalogItem() {
         </p>
 
         <section className="mt-8 pb-6">
-          <select className="select select-bordered w-full max-w-xs">
+          <select
+            className="select select-bordered w-full max-w-xs"
+            value={selectedSize}
+            onChange={(e) => setSelectedSize(e.target.value)}
+          >
             <option disabled>AVAILABLE SIZES</option>
             {product?.sizes.map((size) => (
               <option key={size} value={size}>
@@ -97,13 +113,19 @@ function CatalogItem() {
         </section>
         <section className="flex flex-col gap-8 py-12">
           <button
-            onClick={() => addToCart(product)}
+            onClick={() => {
+              addToCart(product, selectedSize);
+              showErrorToast();
+            }}
             className="btn btn-neutral w-96 text-xl font-bold uppercase"
           >
             add to cart
           </button>
           <button
-            onClick={() => addToCart(product)}
+            onClick={() => {
+              addToCart(product, selectedSize);
+              showErrorToast();
+            }}
             className="btn btn-outline w-96 text-xl font-normal uppercase"
           >
             try before you buy

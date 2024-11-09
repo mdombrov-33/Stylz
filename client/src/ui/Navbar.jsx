@@ -33,6 +33,7 @@ function Navbar() {
   }, [theme]);
 
   return (
+    // MOBILE NAVIGATION
     <nav className="navbar sticky top-0 z-10 border-b-2 border-t-2 border-stone-950 bg-base-100">
       <div className="navbar-start">
         <div className="dropdown">
@@ -87,6 +88,8 @@ function Navbar() {
             </li>
           </ul>
         </div>
+
+        {/* DESKTOP & BIG MOBILE NAVIGATION */}
         <div className="btn btn-ghost hidden font-delaGothicOne text-xl font-bold uppercase sm:flex">
           <img src={brand} className="hidden h-12 sm:block" alt="" />
           <Link to="/" className="hidden font-delaGothicOne uppercase sm:block">
@@ -138,6 +141,8 @@ function Navbar() {
           </li>
         </ul>
       </div>
+
+      {/* BUTTONS */}
       <div className="navbar-end">
         {token ? (
           <Form action="/logout" method="post">
