@@ -2,6 +2,7 @@ import useCartStore from "@/store/cart-store";
 
 function Cart() {
   const { cart, removeFromCart } = useCartStore((state) => state);
+  const baseURL = "https://stylz-shop.onrender.com";
 
   if (cart.length === 0) {
     return (
@@ -27,7 +28,14 @@ function Cart() {
         <tbody>
           {cart.map((item) => (
             <tr key={`${item.id}-${item.size}`} className="hover">
-              <td className="font-redHatDisplay md:text-2xl">{item.name}</td>
+              <td className="font-redHatDisplay md:text-2xl">
+                {item.name}
+                <img
+                  className="h-12 w-12 sm:h-28 sm:w-28 md:h-36 md:w-36 lg:h-48 lg:w-48"
+                  src={`${baseURL}/${item.image}`}
+                  alt=""
+                />
+              </td>
               <td className="font-redHatDisplay md:text-2xl">{item.size}</td>
               <td className="font-redHatDisplay md:text-2xl">{item.price}</td>
               <td className="font-redHatDisplay md:text-2xl">
@@ -35,7 +43,7 @@ function Cart() {
               </td>
               <td>
                 <button
-                  onClick={() => removeFromCart(item.id)}
+                  onClick={() => removeFromCart(item.id, item.size)}
                   className="btn btn-ghost font-redHatDisplay md:text-2xl"
                 >
                   Remove

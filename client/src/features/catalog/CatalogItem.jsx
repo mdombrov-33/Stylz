@@ -14,11 +14,11 @@ function CatalogItem() {
   const baseURL = "https://stylz-shop.onrender.com";
 
   // State to track selected size
-  const [selectedSize, setSelectedSize] = useState("hui");
+  const [selectedSize, setSelectedSize] = useState("");
   console.log(selectedSize);
 
   const showErrorToast = () => {
-    if (selectedSize == "null" || selectedSize === "AVAILABLE SIZES") {
+    if (selectedSize == "null" || selectedSize === "") {
       toast.error("Please select a size to add to cart");
     }
   };
@@ -100,7 +100,7 @@ function CatalogItem() {
             value={selectedSize}
             onChange={(e) => setSelectedSize(e.target.value)}
           >
-            <option disabled>AVAILABLE SIZES</option>
+            <option disabled={selectedSize !== ""}>AVAILABLE SIZES</option>
             {product?.sizes.map((size) => (
               <option key={size} value={size}>
                 {size}
@@ -113,6 +113,7 @@ function CatalogItem() {
         </section>
         <section className="flex flex-col gap-8 py-12">
           <button
+            disabled={selectedSize === "" || selectedSize === "null"}
             onClick={() => {
               addToCart(product, selectedSize);
               showErrorToast();
@@ -122,6 +123,7 @@ function CatalogItem() {
             add to cart
           </button>
           <button
+            disabled={selectedSize === "" || selectedSize === "null"}
             onClick={() => {
               addToCart(product, selectedSize);
               showErrorToast();

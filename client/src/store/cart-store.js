@@ -32,9 +32,11 @@ const useCartStore = create((set) => ({
         };
       }
     }),
-  removeFromCart: (id) =>
+  removeFromCart: (id, size) =>
     set((state) => ({
-      cart: state.cart.filter((item) => item.id !== id),
+      cart: state.cart.filter(
+        (item) => !(item.id === id && item.size === size),
+      ),
     })),
   clearCart: () => set({ cart: [] }),
 }));
