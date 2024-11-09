@@ -31,17 +31,21 @@ function Cart() {
             {cart.map((item) => (
               <tr key={`${item.id}-${item.size}`} className="hover">
                 <td className="font-redHatDisplay md:text-2xl">
-                  {item.name}
+                  <h2 className="pb-6">{item.name}</h2>
                   <img
                     className="h-12 w-12 saturate-50 sm:h-28 sm:w-28 md:h-36 md:w-36 lg:h-48 lg:w-48"
                     src={`${baseURL}/${item.image}`}
                     alt=""
                   />
                 </td>
-                <td className="font-redHatDisplay md:text-2xl">{item.size}</td>
-                <td className="font-redHatDisplay md:text-2xl">{item.price}</td>
                 <td className="font-redHatDisplay md:text-2xl">
-                  {item.quantity}
+                  <h3>{item.size}</h3>
+                </td>
+                <td className="font-redHatDisplay md:text-2xl">
+                  <h3>{item.price}</h3>
+                </td>
+                <td className="font-redHatDisplay md:text-2xl">
+                  <h3>{item.quantity}</h3>
                 </td>
                 <td>
                   <button
