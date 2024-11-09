@@ -35,6 +35,7 @@ function ShopNew() {
       <section className="grid justify-center gap-20 p-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {data.map((item) => (
           <ShopNewItems
+            id={item.id}
             key={item.id}
             name={item.name}
             gender={item.gender}

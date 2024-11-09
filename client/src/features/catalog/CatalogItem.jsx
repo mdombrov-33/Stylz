@@ -11,7 +11,7 @@ function CatalogItem() {
   const { id } = useParams();
   const baseURL = "https://stylz-shop.onrender.com";
 
-  // State to track which section is open (null means none are open)
+  // State to track which section is open
   const [openSection, setOpenSection] = useState(null);
 
   // Fetch product details
