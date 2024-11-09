@@ -50,22 +50,22 @@ function CatalogItem() {
       <section className="grid grid-cols-2">
         <img
           src={`${baseURL}/${product.image}`}
-          className="h-full w-full shrink-0 object-cover contrast-50 saturate-100"
+          className="h-full w-full shrink-0 object-cover contrast-75 saturate-100"
           alt={product.name}
         />
         <img
           src={`${baseURL}/${product.altImage}`}
-          className="b-r-2 h-full w-full shrink-0 border-l-2 border-r-2 border-stone-950 object-cover contrast-50 saturate-100"
+          className="b-r-2 h-full w-full shrink-0 border-l-2 border-r-2 border-stone-950 object-cover contrast-75 saturate-100"
           alt={product.name}
         />
         <img
           src={`${baseURL}/${product.altImage2}`}
-          className="h-full w-full shrink-0 border-t-2 border-stone-950 object-cover contrast-50 saturate-100"
+          className="h-full w-full shrink-0 border-t-2 border-stone-950 object-cover contrast-75 saturate-100"
           alt={product.name}
         />
         <img
           src={`${baseURL}/${product.altImage3}`}
-          className="h-full w-full shrink-0 border-l-2 border-r-2 border-t-2 border-stone-950 object-cover contrast-50 saturate-100"
+          className="h-full w-full shrink-0 border-l-2 border-r-2 border-t-2 border-stone-950 object-cover contrast-75 saturate-100"
           alt={product.name}
         />
       </section>
@@ -141,7 +141,7 @@ function CatalogItem() {
           />
         </div>
 
-        <p className="mt-2 text-pretty">Based on 5 reviews</p>
+        <p className="mt-2 text-pretty text-sm">Based on 5 reviews</p>
 
         {/* Collapsed */}
         <section className="mt-12 flex w-96 flex-col gap-2 pb-12">

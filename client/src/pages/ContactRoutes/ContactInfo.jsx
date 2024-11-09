@@ -35,7 +35,7 @@ function ContactInfo() {
           {/* RIGHT SIDE */}
           <div>
             <h2 className="text-2xl font-bold uppercase">Main office</h2>
-            <h3 className="py-8 font-redHatDisplay">StylzMc, Inc.</h3>
+            <h3 className="py-4 font-redHatDisplay">StylzMc, Inc.</h3>
             <p>123 Fashion Ave, Suite 456, New York/</p>
             <p>NY 10001, USA</p>
             <h3 className="font-redHatDisplay uppercase">StylzMc limited</h3>
@@ -43,7 +43,7 @@ function ContactInfo() {
             <p>sales@stylzmc.com</p>
             <p>Organization number 987654321</p>
             <p>VAT Number: US123456789 </p>
-            <h3 className="my-6 text-2xl font-bold uppercase">
+            <h3 className="py-4 text-2xl font-bold uppercase">
               stylzmc limited
             </h3>
             <p>123 Fashion Ave, Suite 456, New York</p>
@@ -51,7 +51,7 @@ function ContactInfo() {
             <p>United States of America</p>
             <p>sales@stylzmc.com</p>
             <p>Organization number 987654321</p>
-            <p>VAT Number: US123456789 </p>
+            <p className="pb-4">VAT Number: US123456789 </p>
           </div>
         </div>
       </section>

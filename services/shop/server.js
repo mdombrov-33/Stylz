@@ -387,7 +387,7 @@ const getNanoid = async () => {
       fabric: "70% Alpaca, 30% Wool",
       gender: "women",
       description:
-        "The tiger is one of our favorite motifs at Billy Reid. It’s part of the history of Shindig, our annual celebration in the Shoals, as one of the early mascots of sorts. Since it first appeared for Shindig, people have been asking us to bring it back. We’re doing so as a textured—but not too heavy—sweater with an intarsia stitch, a true sign of craftsmanship. It’s knit from a warm alpaca blend, and features a slouchy, boyfriend fit with the design that wraps from front to back.",
+        "The tiger is one of our favorite motifs. It’s part of the history of Shindig, our annual celebration in the Shoals, as one of the early mascots of sorts. Since it first appeared for Shindig, people have been asking us to bring it back. We’re doing so as a textured—but not too heavy—sweater with an intarsia stitch, a true sign of craftsmanship. It’s knit from a warm alpaca blend, and features a slouchy, boyfriend fit with the design that wraps from front to back.",
       image: "images/catalog/tiger-sweater.jpg",
       altImage: "images/catalog/tiger-sweater-hover.jpg",
       altImage2: "images/catalog/tiger-sweater-2.jpg",

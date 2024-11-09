@@ -127,14 +127,14 @@ function Catalog() {
             <button
               onClick={handlePrevPage}
               disabled={page === 1}
-              className="btn btn-outline join-item"
+              className="btn btn-outline join-item w-44"
             >
               Previous page
             </button>
             <button
               onClick={handleNextPage}
               disabled={page === data.totalPages}
-              className="btn btn-outline join-item"
+              className="btn btn-outline join-item w-44"
             >
               Next page
             </button>
