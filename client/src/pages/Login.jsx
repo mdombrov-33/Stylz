@@ -16,8 +16,8 @@ function Login() {
   }, [theme]);
 
   return (
-    <section className="grid h-screen justify-center md:grid-cols-2">
-      <div className="mt-20 flex flex-col items-center justify-center">
+    <main className="grid h-screen justify-center md:grid-cols-2">
+      <section className="mt-20 flex flex-col items-center justify-center">
         <h3 className="font-redHatDisplay text-4xl font-bold uppercase">
           Welcome Back
         </h3>
@@ -56,7 +56,7 @@ function Login() {
               required
             />
 
-            <div className="mt-2 flex w-96 items-center justify-between">
+            <section className="mt-2 flex w-96 items-center justify-between">
               <div className="flex items-center justify-center">
                 <input
                   type="checkbox"
@@ -74,7 +74,7 @@ function Login() {
               <a href="/" className="font-bold text-gray-500 hover:underline">
                 Forgot password?
               </a>
-            </div>
+            </section>
             <button className="btn my-2 w-full rounded-lg bg-accent py-2 text-lg text-white">
               {navigation.state === "submitting" ? (
                 <span className="loading loading-spinner loading-md"></span>
@@ -97,14 +97,14 @@ function Login() {
         <div className="mt-12">
           <ReturnBtn to={"/"} />
         </div>
-      </div>
+      </section>
 
       <img
         className="hidden h-screen w-full object-cover grayscale md:block"
         src="https://res.cloudinary.com/dymitbtl3/image/upload/v1730720462/login_thpwpu.jpg"
         alt="Picture of a person leaning against a brick wall, face is not visible"
       />
-    </section>
+    </main>
   );
 }
 

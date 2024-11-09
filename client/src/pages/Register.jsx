@@ -46,7 +46,7 @@ function Register() {
   }, [theme]);
 
   return (
-    <section className="flex h-screen items-center justify-center">
+    <main className="flex h-screen items-center justify-center">
       <div className="mt-20 flex flex-col items-center justify-center">
         <h2 className="font-redHatDisplay text-3xl font-bold uppercase">
           Create your account
@@ -144,11 +144,11 @@ function Register() {
           </fieldset>
         </Form>
 
-        <div className="mt-14">
+        <section className="mt-14">
           <ReturnBtn to={-1} />
-        </div>
+        </section>
       </div>
-    </section>
+    </main>
   );
 }
 

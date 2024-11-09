@@ -34,7 +34,7 @@ function ShopNew() {
       <h1 className="mt-6 text-center font-redHatDisplay text-2xl font-bold uppercase">
         New Arrivals
       </h1>
-      <section className="grid justify-center gap-20 p-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <main className="grid justify-center gap-20 p-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {newItems.map((item) => (
           <ShopNewItems
             id={item.id}
@@ -47,7 +47,7 @@ function ShopNew() {
             category={item.category}
           />
         ))}
-      </section>
+      </main>
     </>
   );
 }
