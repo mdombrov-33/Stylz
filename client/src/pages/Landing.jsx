@@ -46,9 +46,9 @@ function Landing() {
             </div>
           </div>
           <div className="flex h-20 place-items-center justify-between border-b-2 border-t-2 border-stone-950 bg-accent px-4 font-redHatDisplay font-bold uppercase">
-            <span>Scroll Down</span>
+            <span className="text-black">Scroll Down</span>
             <a href="#scroll-down">
-              <FaArrowDown />
+              <FaArrowDown className="text-black" />
             </a>
           </div>
         </div>
