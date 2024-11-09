@@ -223,7 +223,7 @@ const getNanoid = async () => {
       altImage2: "images/new/corded-plaid-shirt-2.jpg",
       altImage3: "images/new/corded-plaid-shirt-3.jpg",
     },
-    ////////////////////
+
     {
       id: nanoid(),
       name: "Leather Flight Jacket with Shearling Collar",

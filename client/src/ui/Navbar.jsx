@@ -69,25 +69,25 @@ function Navbar() {
                 home
               </NavLink>
             </li>
-            <li></li>
+            <div className="border-b-2 border-neutral-content"></div>
             <li>
               <NavLink to="/catalog" className="text-base-content">
                 catalog
               </NavLink>
             </li>
-            <li></li>
+            <div className="border-b-2 border-neutral-content"></div>
             <li>
               <NavLink to="/about" className="text-base-content">
                 about brand
               </NavLink>
             </li>
-            <li></li>
+            <div className="border-b-2 border-neutral-content"></div>
             <li>
               <NavLink to="/blog" className="text-base-content">
                 blog
               </NavLink>
             </li>
-            <li></li>
+            <div className="border-b-2 border-neutral-content"></div>
             <li>
               <NavLink to="/contact/contactinfo" className="text-base-content">
                 contact
@@ -188,11 +188,11 @@ function Navbar() {
 
       {/* Shop all new button */}
       {!isOnShopNewRoute && (
-        <Link to="/new" className="btn bg-base-content">
+        <Link to="/new">
           <button
-            className={`${theme === themes.lemonade ? "hover:text-base-content" : "hover:text-base-content"} uppercase text-base-100 hover:text-accent`}
+            className={`${theme === themes.lemonade ? "hover:text-black" : "hover:text-white"} btn mr-16 bg-base-content uppercase text-base-300`}
           >
-            <span className="font-redHatDisplay">shop all new</span>
+            shop all new
           </button>
         </Link>
       )}
