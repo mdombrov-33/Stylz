@@ -2,10 +2,13 @@ import ReturnBtn from "@/components/ReturnBtn";
 import axios from "axios";
 import { useRef, useState } from "react";
 import { toast } from "react-hot-toast";
+import { useEffect } from "react";
+import useThemeStore from "@/store/theme-store";
 
 import { Form, redirect, useNavigation } from "react-router-dom";
 
 function Register() {
+  const { theme } = useThemeStore((state) => state);
   const navigation = useNavigation();
   const [passwordErr, setPasswordErr] = useState(null);
   const [confirmPasswordErr, setConfirmPasswordErr] = useState(null);
@@ -37,6 +40,10 @@ function Register() {
       setConfirmPasswordErr("");
     }
   };
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
 
   return (
     <section className="flex h-screen items-center justify-center">

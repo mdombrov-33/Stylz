@@ -4,9 +4,16 @@ import ReturnBtn from "@/components/ReturnBtn";
 import { Form, Link, useNavigation, redirect } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import useThemeStore from "@/store/theme-store";
+import { useEffect } from "react";
 
 function Login() {
   const navigation = useNavigation();
+  const { theme } = useThemeStore((state) => state);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
 
   return (
     <section className="grid h-screen justify-center md:grid-cols-2">
