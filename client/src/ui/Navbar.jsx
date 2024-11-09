@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { Form, Link, NavLink, useLocation } from "react-router-dom";
 
 import brand from "../assets/brand.svg";
-import themeClick from "../assets/switch.mp3";
+// import themeClick from "../assets/switch.mp3";
 import { BsCart3, BsSunFill, BsMoonFill } from "react-icons/bs";
 import { getAuthToken } from "@/utils/auth";
 import useCartStore from "@/store/cart-store";
 
-const audio = new Audio(themeClick);
+// const audio = new Audio(themeClick);
 
 const themes = {
   lemonade: "lemonade",
@@ -31,7 +31,7 @@ function Navbar() {
     const newTheme =
       theme === themes.lemonade ? themes.sunset : themes.lemonade;
     document.documentElement.setAttribute("data-theme", theme);
-    audio.play();
+    // audio.play();
     setTheme(newTheme);
   };
 

@@ -104,7 +104,10 @@ function CatalogItem() {
           >
             add to cart
           </button>
-          <button className="btn btn-outline w-96 text-xl font-normal uppercase">
+          <button
+            onClick={() => addToCart(product)}
+            className="btn btn-outline w-96 text-xl font-normal uppercase"
+          >
             try before you buy
           </button>
         </section>
