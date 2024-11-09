@@ -2,8 +2,11 @@ import { FaArrowDown } from "react-icons/fa";
 import Collab from "@/features/home/Collab";
 import Showcase from "@/features/home/Showcase";
 import { Link } from "react-router-dom";
+import useThemeStore from "@/store/theme-store";
 
 function Landing() {
+  const { theme } = useThemeStore((state) => state);
+
   return (
     <>
       <main className="grid h-[80svh] overflow-hidden lg:grid-cols-2">
@@ -16,7 +19,9 @@ function Landing() {
           <section className="flex h-full w-full items-center justify-center bg-black bg-opacity-50">
             <div className="text-center text-white">
               <Link to="/new">
-                <button className="btn mt-16 border-black bg-accent font-redHatDisplay font-bold uppercase lg:text-2xl">
+                <button
+                  className={`${theme === "lemonade" ? "hover:text-black" : "hover:text-white"} btn mt-16 border-black bg-accent font-redHatDisplay font-bold uppercase text-black lg:text-2xl`}
+                >
                   check new arrivals
                 </button>
               </Link>
