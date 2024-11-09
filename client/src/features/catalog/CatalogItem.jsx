@@ -14,8 +14,6 @@ function CatalogItem() {
 
   // Cart store
   const addToCart = useCartStore((state) => state.addToCart);
-  const cart = useCartStore((state) => state.cart);
-  console.log(cart);
   // State to track which section is open
   const [openSection, setOpenSection] = useState(null);
 

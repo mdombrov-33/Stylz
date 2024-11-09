@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Form, Link, NavLink, useLocation } from "react-router-dom";
 
 import brand from "../assets/brand.svg";
@@ -6,6 +6,7 @@ import brand from "../assets/brand.svg";
 import { BsCart3, BsSunFill, BsMoonFill } from "react-icons/bs";
 import { getAuthToken } from "@/utils/auth";
 import useCartStore from "@/store/cart-store";
+import useThemeStore from "@/store/theme-store";
 
 // const audio = new Audio(themeClick);
 
@@ -14,30 +15,21 @@ const themes = {
   sunset: "sunset",
 };
 
-const getThemeLocalStorage = () => {
-  return localStorage.getItem("theme") || themes.lemonade;
-};
-
 function Navbar() {
   const cart = useCartStore((state) => state.cart);
-  const location = useLocation();
-  const isOnShopNewRoute = location.pathname === "/new";
-
-  const [theme, setTheme] = useState(getThemeLocalStorage);
+  const { theme, toggleTheme } = useThemeStore((state) => state);
 
   const token = getAuthToken();
+  const location = useLocation();
+
+  const isOnShopNewRoute = location.pathname === "/new";
 
   const handleTheme = () => {
-    const newTheme =
-      theme === themes.lemonade ? themes.sunset : themes.lemonade;
-    document.documentElement.setAttribute("data-theme", theme);
-    // audio.play();
-    setTheme(newTheme);
+    toggleTheme();
   };
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
   }, [theme]);
 
   return (

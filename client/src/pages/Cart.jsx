@@ -3,8 +3,6 @@ import useCartStore from "@/store/cart-store";
 function Cart() {
   const { cart, removeFromCart } = useCartStore((state) => state);
 
-  console.log(cart);
-
   if (cart.length === 0) {
     return (
       <main className="flex h-96 items-center justify-center">
@@ -20,7 +18,7 @@ function Cart() {
       <table className="table">
         <thead>
           <tr>
-            <th className="font-delaGothicOne md:text-2xl">Product</th>
+            <th className="font-delaGothicOne md:text-2xl">Item</th>
             <th className="font-delaGothicOne md:text-2xl">Price</th>
             <th className="font-delaGothicOne md:text-2xl">Quantity</th>
           </tr>
