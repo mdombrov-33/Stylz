@@ -143,7 +143,7 @@ function Catalog() {
 
         {/* Track Pages */}
         {filteredItems.length > 0 && (
-          <p className="text-center">{`Page ${page} of ${data.totalPages}`}</p>
+          <p className="pb-4 text-center">{`Page ${page} of ${data.totalPages}`}</p>
         )}
       </section>
 
