@@ -5,6 +5,7 @@ import brand from "../assets/brand.svg";
 import themeClick from "../assets/switch.mp3";
 import { BsCart3, BsSunFill, BsMoonFill } from "react-icons/bs";
 import { getAuthToken } from "@/utils/auth";
+import { useCartStore } from "@/store/cart-store";
 
 const audio = new Audio(themeClick);
 
@@ -18,8 +19,9 @@ const getThemeLocalStorage = () => {
 };
 
 function Navbar() {
+  const cart = useCartStore((state) => state.cart);
   const location = useLocation();
-  const isOnNewRoute = location.pathname === "/new";
+  const isOnShopNewRoute = location.pathname === "/new";
 
   const [theme, setTheme] = useState(getThemeLocalStorage);
 
@@ -162,24 +164,29 @@ function Navbar() {
           </Link>
         )}
         <label className="swap swap-rotate">
-          <input type="checkbox" onChange={handleTheme} />
+          <input type="checkbox" onChange={handleTheme} className="ml-12" />
           <BsSunFill className="swap-on h-4 w-4" />
           <BsMoonFill className="swap-off h-4 w-4" />
         </label>
-        <NavLink
-          to="/cart"
-          className="btn btn-circle btn-ghost btn-md ml-4 mr-3"
-        >
-          <div className="indicator">
-            <BsCart3 className="h-6 w-6" />
-            <span className="badge indicator-item badge-accent badge-sm">
-              4
-            </span>
-          </div>
-        </NavLink>
+
+        {/* Cart icon */}
+        {cart.length > 0 ? (
+          <NavLink
+            to="/cart"
+            className="btn btn-circle btn-ghost btn-md ml-4 mr-3"
+          >
+            <div className="indicator">
+              <BsCart3 className="h-6 w-6" />
+              <span className="badge indicator-item badge-accent badge-sm">
+                {cart.length}
+              </span>
+            </div>
+          </NavLink>
+        ) : null}
       </div>
 
-      {!isOnNewRoute && (
+      {/* Shop all new button */}
+      {!isOnShopNewRoute && (
         <Link to="/new" className="btn bg-base-content">
           <button
             className={`${theme === themes.lemonade ? "hover:text-base-content" : "hover:text-base-content"} uppercase text-base-100 hover:text-accent`}
