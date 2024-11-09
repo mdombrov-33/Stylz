@@ -44,7 +44,7 @@ export function logoutAction() {
 export function checkAuthLoader() {
   const token = getAuthToken();
   if (!token) {
-    toast.error("You need to login to access cart");
+    toast.error("You need to login to access this page");
     return redirect("/login");
   }
   return null;

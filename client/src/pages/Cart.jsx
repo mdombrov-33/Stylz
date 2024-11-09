@@ -1,4 +1,4 @@
-import ReturnBtn from "@/components/ReturnBtn";
+import CartButtons from "@/features/cart/CartButtons";
 import useCartStore from "@/store/cart-store";
 
 function Cart() {
@@ -66,13 +66,7 @@ function Cart() {
           $
         </h2>
       </section>
-
-      <section className="flex justify-around pb-4 pl-10 pt-6">
-        <ReturnBtn to={-1} />
-        <button className="btn btn-success font-redHatDisplay text-3xl font-bold">
-          Checkout
-        </button>
-      </section>
+      <CartButtons />
     </>
   );
 }

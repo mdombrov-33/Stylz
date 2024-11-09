@@ -15,6 +15,7 @@ const ErrorPage = lazy(() => import("./pages/ErrorPage"));
 const Landing = lazy(() => import("./pages/Landing"));
 const Login = lazy(() => import("./pages/Login"));
 const Register = lazy(() => import("./pages/Register"));
+const Checkout = lazy(() => import("./pages/Checkout"));
 
 const FAQs = lazy(() => import("./pages/ContactRoutes/FAQs"));
 const Feedback = lazy(() => import("./pages/ContactRoutes/Feedback"));
@@ -110,6 +111,11 @@ const router = createBrowserRouter([
       {
         path: "cart",
         element: <Cart />,
+        loader: checkAuthLoader,
+      },
+      {
+        path: "checkout",
+        element: <Checkout />,
         loader: checkAuthLoader,
       },
     ],
