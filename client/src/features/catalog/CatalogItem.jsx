@@ -6,7 +6,7 @@ import ReturnBtn from "@/components/ReturnBtn";
 import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
 import { useState } from "react";
-import { useCartStore } from "@/store/cart-store";
+import useCartStore from "@/store/cart-store";
 
 function CatalogItem() {
   const { id } = useParams();
@@ -14,9 +14,8 @@ function CatalogItem() {
 
   // Cart store
   const addToCart = useCartStore((state) => state.addToCart);
-  const { cart } = useCartStore();
+  const cart = useCartStore((state) => state.cart);
   console.log(cart);
-
   // State to track which section is open
   const [openSection, setOpenSection] = useState(null);
 

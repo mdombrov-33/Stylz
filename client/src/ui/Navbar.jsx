@@ -5,7 +5,7 @@ import brand from "../assets/brand.svg";
 import themeClick from "../assets/switch.mp3";
 import { BsCart3, BsSunFill, BsMoonFill } from "react-icons/bs";
 import { getAuthToken } from "@/utils/auth";
-import { useCartStore } from "@/store/cart-store";
+import useCartStore from "@/store/cart-store";
 
 const audio = new Audio(themeClick);
 
@@ -178,7 +178,8 @@ function Navbar() {
             <div className="indicator">
               <BsCart3 className="h-6 w-6" />
               <span className="badge indicator-item badge-accent badge-sm">
-                {cart.length}
+                {cart.reduce((total, item) => total + item.quantity, 0)}{" "}
+                {/* Total quantity */}
               </span>
             </div>
           </NavLink>
@@ -191,7 +192,7 @@ function Navbar() {
           <button
             className={`${theme === themes.lemonade ? "hover:text-base-content" : "hover:text-base-content"} uppercase text-base-100 hover:text-accent`}
           >
-            shop all new
+            <span className="font-redHatDisplay">shop all new</span>
           </button>
         </Link>
       )}
