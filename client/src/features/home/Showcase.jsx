@@ -1,6 +1,6 @@
 function Showcase() {
   return (
-    <div className="grid w-full grid-cols-4">
+    <section className="grid w-full grid-cols-4">
       <img
         src="https://res.cloudinary.com/dymitbtl3/image/upload/v1730721044/showcase2_nxb38b.jpg"
         className="h-full min-h-96 w-full border-b-2 border-r-2 border-stone-950 object-cover object-center brightness-75"
@@ -25,7 +25,7 @@ function Showcase() {
         alt="Picture of black woman with short hair, she is wearing a white top and looking at the camera"
         loading="lazy"
       />
-    </div>
+    </section>
   );
 }
 

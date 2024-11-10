@@ -10,11 +10,6 @@ import useThemeStore from "@/store/theme-store";
 
 // const audio = new Audio(themeClick);
 
-const themes = {
-  lemonade: "lemonade",
-  sunset: "sunset",
-};
-
 function Navbar() {
   const cart = useCartStore((state) => state.cart);
   const { theme, toggleTheme } = useThemeStore((state) => state);
@@ -143,7 +138,7 @@ function Navbar() {
       </div>
 
       {/* BUTTONS */}
-      <div className="navbar-end flex justify-end">
+      <div className="navbar-end">
         {token ? (
           <Form action="/logout" method="post">
             <button className="btn btn-ghost mr-6 pr-2 font-delaGothicOne font-light uppercase sm:text-2xl">
@@ -178,18 +173,18 @@ function Navbar() {
             </div>
           </NavLink>
         ) : null}
-      </div>
 
-      {/* Shop all new button */}
-      {!isOnShopNewRoute && (
-        <Link to="/new">
-          <button
-            className={`${theme === themes.lemonade ? "hover:text-black" : "hover:text-white"} btn mr-16 bg-base-content font-redHatDisplay uppercase text-base-300`}
-          >
-            shop all new
-          </button>
-        </Link>
-      )}
+        {/* Shop all new button */}
+        {!isOnShopNewRoute && (
+          <Link to="/new">
+            <button
+              className={`${theme === "lemonade" ? "hover:text-black" : "hover:text-white"} btn w-36 bg-base-content font-redHatDisplay uppercase text-base-300`}
+            >
+              shop all new
+            </button>
+          </Link>
+        )}
+      </div>
     </nav>
   );
 }

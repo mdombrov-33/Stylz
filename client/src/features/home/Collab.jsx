@@ -1,6 +1,6 @@
 function Collab() {
   return (
-    <footer
+    <section
       className="flex h-[72px] items-center justify-around bg-info-content uppercase text-neutral-content"
       id="scroll-down"
     >
@@ -11,7 +11,7 @@ function Collab() {
         selected
       </span>
       <span className="text-white md:text-2xl lg:text-4xl">season 2024</span>
-    </footer>
+    </section>
   );
 }
 
