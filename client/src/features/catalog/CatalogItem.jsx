@@ -8,19 +8,24 @@ import { FaMinus } from "react-icons/fa";
 import { useState } from "react";
 import useCartStore from "@/store/cart-store";
 import toast from "react-hot-toast";
+import useThemeStore from "@/store/theme-store";
 
 function CatalogItem() {
   const { id } = useParams();
   const baseURL = "https://stylz-shop.onrender.com";
+  const { theme } = useThemeStore((state) => state);
 
   // State to track selected size
   const [selectedSize, setSelectedSize] = useState("");
-  console.log(selectedSize);
 
   const showErrorToast = () => {
     if (selectedSize == "null" || selectedSize === "") {
       toast.error("Please select a size to add to cart");
     }
+  };
+
+  const showSuccessToast = () => {
+    toast.success(`${product.name} added to cart`);
   };
 
   // Cart store
@@ -65,22 +70,22 @@ function CatalogItem() {
       <section className="grid grid-cols-2">
         <img
           src={`${baseURL}/${product.image}`}
-          className="saturate-75 h-full w-full shrink-0 object-cover contrast-50"
+          className={`${theme === "lemonade" ? "brightness-100 saturate-100" : "brightness-50 saturate-150"} h-full w-full shrink-0 object-cover`}
           alt={product.name}
         />
         <img
           src={`${baseURL}/${product.altImage}`}
-          className="b-r-2 h-full w-full shrink-0 border-l-2 border-r-2 border-stone-950 object-cover contrast-50 backdrop-saturate-150"
+          className={`${theme === "lemonade" ? "brightness-100 saturate-100" : "brightness-50 saturate-150"} b-r-2 h-full w-full shrink-0 border-l-2 border-r-2 border-stone-950 object-cover`}
           alt={product.name}
         />
         <img
           src={`${baseURL}/${product.altImage2}`}
-          className="h-full w-full shrink-0 border-t-2 border-stone-950 object-cover contrast-50 saturate-100"
+          className={`${theme === "lemonade" ? "brightness-100 saturate-100" : "brightness-50 saturate-150"} h-full w-full shrink-0 border-b-2 border-t-2 border-stone-950 object-cover saturate-150`}
           alt={product.name}
         />
         <img
           src={`${baseURL}/${product.altImage3}`}
-          className="h-full w-full shrink-0 border-l-2 border-r-2 border-t-2 border-stone-950 object-cover contrast-50 saturate-100"
+          className={`${theme === "lemonade" ? "brightness-100 saturate-100" : "brightness-50 saturate-150"} h-full w-full shrink-0 border-b-2 border-l-2 border-r-2 border-t-2 border-stone-950 object-cover`}
           alt={product.name}
         />
       </section>
@@ -89,7 +94,7 @@ function CatalogItem() {
         <h2 className="px-6 font-redHatDisplay text-3xl font-bold">
           {product.name}
         </h2>
-        <p className="mt-4 text-2xl">{product.price}$</p>
+        <p className="mt-2 text-2xl">{product.price}$</p>
         <p className="mt-2 text-pretty p-6 font-redHatDisplay text-xl">
           {product.description}
         </p>
@@ -117,6 +122,7 @@ function CatalogItem() {
             onClick={() => {
               addToCart(product, selectedSize);
               showErrorToast();
+              showSuccessToast();
             }}
             className="btn btn-neutral w-96 text-xl font-bold uppercase"
           >
@@ -127,6 +133,7 @@ function CatalogItem() {
             onClick={() => {
               addToCart(product, selectedSize);
               showErrorToast();
+              showSuccessToast();
             }}
             className="btn btn-outline w-96 text-xl font-normal uppercase"
           >
