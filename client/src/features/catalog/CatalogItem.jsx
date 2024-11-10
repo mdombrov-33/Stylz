@@ -40,12 +40,15 @@ function CatalogItem() {
 
   // Fetch product details
   const fetchProductDetails = async () => {
-    const response = await axios.get(
-      `https://stylz-shop.onrender.com/api/catalog/${id}`,
-    );
-    return response.data;
+    try {
+      const response = await axios.get(
+        `https://stylz-shop.onrender.com/api/catalog/${id}`,
+      );
+      return response.data;
+    } catch (err) {
+      toast.error(err.response.data);
+    }
   };
-
   // Query setup to fetch product details
   const {
     data: product,

@@ -2,10 +2,15 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Loader from "@/components/Loader";
 import ShopNewContent from "@/features/shop_new/ShopNewContent";
+import toast from "react-hot-toast";
 
 async function fetchNewItems() {
-  const response = await axios("https://stylz-shop.onrender.com/api/catalog");
-  return response.data;
+  try {
+    const response = await axios("https://stylz-shop.onrender.com/api/catalog");
+    return response.data;
+  } catch (err) {
+    toast.error(err.response.data);
+  }
 }
 
 function ShopNew() {
