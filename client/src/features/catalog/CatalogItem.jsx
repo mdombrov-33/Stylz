@@ -25,7 +25,7 @@ function CatalogItem() {
   };
 
   const showSuccessToast = () => {
-    toast.success(`${product.name} - ${selectedSize} added to cart`);
+    toast.success(`${product.name} - Size ${selectedSize} added to cart`);
   };
 
   // Cart store
