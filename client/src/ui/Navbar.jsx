@@ -168,10 +168,7 @@ function Navbar() {
 
         {/* Cart icon */}
         {cart.length > 0 ? (
-          <NavLink
-            to="/cart"
-            className="btn btn-circle btn-ghost btn-md ml-4 mr-3"
-          >
+          <NavLink to="/cart" className="btn btn-circle btn-ghost btn-md mr-2">
             <div className="indicator">
               <BsCart3 className="h-6 w-6" />
               <span className="badge indicator-item badge-accent badge-sm">
