@@ -36,7 +36,9 @@ export function logoutAction() {
   localStorage.removeItem("expiration");
   sessionStorage.removeItem("access_token");
   sessionStorage.removeItem("expiration");
-  redirect("/login");
+  window.location.reload();
+  redirect("/");
+  toast.success("You have been logged out");
   return null;
 }
 
