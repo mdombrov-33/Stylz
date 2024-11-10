@@ -20,7 +20,6 @@ function HomeLayout() {
     }
 
     const tokenDuration = getAuthTokenDuration();
-    console.log(tokenDuration);
 
     const timer = setTimeout(() => {
       handleLogout();
@@ -30,7 +29,6 @@ function HomeLayout() {
   }, [token]);
 
   const handleLogout = () => {
-    // Clear storage and submit logout action
     localStorage.removeItem("access_token");
     localStorage.removeItem("expiration");
     sessionStorage.removeItem("access_token");
