@@ -1,7 +1,7 @@
 import ReturnBtn from "@/components/ReturnBtn";
 import { Link } from "react-router-dom";
 
-function CartButtons() {
+function CartNavigation() {
   return (
     <section className="flex h-full items-end justify-center gap-12 pb-4 pt-6">
       <ReturnBtn to={-1} />
@@ -15,4 +15,4 @@ function CartButtons() {
   );
 }
 
-export default CartButtons;
+export default CartNavigation;

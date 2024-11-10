@@ -1,10 +1,12 @@
 import useCartStore from "@/store/cart-store";
 import useThemeStore from "@/store/theme-store";
+import CartClearBtn from "@/features/cart/CartClearBtn";
 
 function CartContent() {
-  const { cart, removeFromCart, clearCart } = useCartStore((state) => state);
-  const baseURL = "https://stylz-shop.onrender.com";
+  const { cart, removeFromCart } = useCartStore((state) => state);
   const { theme } = useThemeStore((state) => state);
+
+  const baseURL = "https://stylz-shop.onrender.com";
 
   return (
     <main className="flex overflow-x-auto">
@@ -48,14 +50,7 @@ function CartContent() {
             </tr>
           ))}
         </tbody>
-        <div className="flex p-4">
-          <button
-            onClick={clearCart}
-            className="btn h-12 font-redHatDisplay text-xl"
-          >
-            Clear Cart
-          </button>
-        </div>
+        <CartClearBtn />
       </table>
     </main>
   );

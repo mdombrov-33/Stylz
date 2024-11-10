@@ -1,4 +1,4 @@
-import CartButtons from "@/features/cart/CartButtons";
+import CartNavigation from "@/features/cart/CartNavigation";
 import CartContent from "@/features/cart/CartContent";
 import CartPrice from "@/features/cart/CartPrice";
 import useCartStore from "@/store/cart-store";
@@ -17,7 +17,7 @@ function Cart() {
       <section>
         <CartContent />
         <CartPrice />
-        <CartButtons />
+        <CartNavigation />
       </section>
     );
   }
