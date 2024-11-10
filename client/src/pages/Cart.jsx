@@ -1,9 +1,12 @@
 import CartButtons from "@/features/cart/CartButtons";
 import useCartStore from "@/store/cart-store";
+import useThemeStore from "@/store/theme-store";
 
 function Cart() {
   const { cart, removeFromCart } = useCartStore((state) => state);
   const baseURL = "https://stylz-shop.onrender.com";
+
+  const { theme } = useThemeStore((state) => state);
 
   if (cart.length === 0) {
     return (
@@ -17,7 +20,7 @@ function Cart() {
 
   return (
     <>
-      <main className="flex overflow-x-auto p-6">
+      <main className="flex overflow-x-auto">
         <table className="table">
           <thead>
             <tr>
@@ -33,7 +36,7 @@ function Cart() {
                 <td className="font-redHatDisplay md:text-2xl">
                   <h2 className="pb-6">{item.name}</h2>
                   <img
-                    className="h-12 w-12 saturate-50 sm:h-28 sm:w-28 md:h-36 md:w-36 lg:h-48 lg:w-48"
+                    className={`${theme === "lemonade" ? "brightness-100 saturate-100" : "brightness-75 saturate-150"} h-16 w-16 sm:h-28 sm:w-28 md:h-36 md:w-36 lg:h-48 lg:w-48`}
                     src={`${baseURL}/${item.image}`}
                     alt=""
                   />
@@ -62,7 +65,7 @@ function Cart() {
       </main>
 
       <section>
-        <h2 className="text-center text-2xl font-bold">
+        <h2 className="mt-6 text-center text-2xl font-bold">
           Total Price:{" "}
           {cart
             .reduce((acc, item) => acc + item.price * item.quantity, 0)
