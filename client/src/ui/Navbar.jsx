@@ -143,7 +143,7 @@ function Navbar() {
       </div>
 
       {/* BUTTONS */}
-      <div className="navbar-end">
+      <div className="navbar-end flex justify-end">
         {token ? (
           <Form action="/logout" method="post">
             <button className="btn btn-ghost mr-6 pr-2 font-delaGothicOne font-light uppercase sm:text-2xl">
@@ -161,7 +161,7 @@ function Navbar() {
           </Link>
         )}
         <label className="swap swap-rotate">
-          <input type="checkbox" onChange={handleTheme} className="ml-6" />
+          <input type="checkbox" onChange={handleTheme} className="ml-10" />
           <BsSunFill className="swap-on h-4 w-4" />
           <BsMoonFill className="swap-off h-4 w-4" />
         </label>
