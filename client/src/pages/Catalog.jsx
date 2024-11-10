@@ -5,6 +5,7 @@ import axios from "axios";
 import Loader from "@/components/Loader";
 import CatalogNavigation from "@/features/catalog/CatalogNavigation";
 import { BiSolidCategory } from "react-icons/bi";
+import toast from "react-hot-toast";
 
 function Catalog() {
   const [page, setPage] = useState(1);
@@ -14,13 +15,17 @@ function Catalog() {
   // Fetch catalog items based on the current page and filters
   const fetchCatalogItems = async ({ queryKey }) => {
     const [, { page, category, gender }] = queryKey;
-    const response = await axios.get(
-      "https://stylz-shop.onrender.com/api/catalog",
-      {
-        params: { page, category, gender },
-      },
-    );
-    return response.data;
+    try {
+      const response = await axios.get(
+        "https://stylz-shop.onrender.com/api/catalog",
+        {
+          params: { page, category, gender },
+        },
+      );
+      return response.data;
+    } catch (err) {
+      toast.error(err.response.data);
+    }
   };
 
   // Query setup to fetch catalog items with pagination and filters

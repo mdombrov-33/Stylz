@@ -3,7 +3,7 @@ import useCartStore from "@/store/cart-store";
 import useThemeStore from "@/store/theme-store";
 
 function Cart() {
-  const { cart, removeFromCart } = useCartStore((state) => state);
+  const { cart, removeFromCart, clearCart } = useCartStore((state) => state);
   const baseURL = "https://stylz-shop.onrender.com";
 
   const { theme } = useThemeStore((state) => state);
@@ -61,6 +61,14 @@ function Cart() {
               </tr>
             ))}
           </tbody>
+          <div className="flex p-6">
+            <button
+              onClick={clearCart}
+              className="btn h-12 font-redHatDisplay text-xl"
+            >
+              Clear Cart
+            </button>
+          </div>
         </table>
       </main>
 
