@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Loader from "@/components/Loader";
-import ShopNewItems from "@/features/shop_new/ShopNewContent";
+import ShopNewContent from "@/features/shop_new/ShopNewContent";
 
 async function fetchNewItems() {
   const response = await axios("https://stylz-shop.onrender.com/api/catalog");
@@ -36,7 +36,7 @@ function ShopNew() {
       </h1>
       <main className="grid justify-center gap-20 p-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {newItems.map((item) => (
-          <ShopNewItems
+          <ShopNewContent
             id={item.id}
             key={item.id}
             name={item.name}
@@ -45,6 +45,7 @@ function ShopNew() {
             altImage={item.altImage}
             price={item.price}
             category={item.category}
+            sizes={item.sizes}
           />
         ))}
       </main>

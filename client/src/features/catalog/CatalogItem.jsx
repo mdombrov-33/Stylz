@@ -25,7 +25,7 @@ function CatalogItem() {
   };
 
   const showSuccessToast = () => {
-    toast.success(`${product.name} added to cart`);
+    toast.success(`${product.name} - ${selectedSize} added to cart`);
   };
 
   // Cart store
@@ -101,7 +101,7 @@ function CatalogItem() {
 
         <section className="mt-8 pb-6">
           <select
-            className="select select-bordered w-full max-w-xs"
+            className="select select-bordered w-full max-w-xs font-redHatDisplay"
             value={selectedSize}
             onChange={(e) => setSelectedSize(e.target.value)}
           >
@@ -182,7 +182,7 @@ function CatalogItem() {
         <p className="mt-2 text-pretty text-sm">Based on 5 reviews</p>
 
         {/* Collapsed */}
-        <section className="mt-12 flex w-96 flex-col gap-2 pb-12">
+        <section className="mt-24 flex w-96 flex-col gap-2 pb-12">
           {/* Origin Section */}
           <div className="collapse bg-base-200">
             <input

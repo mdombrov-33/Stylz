@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useThemeStore from "@/store/theme-store";
 
 function CatalogContent({ id, isAvailable, price, name, image, altImage }) {
   const baseURL = "https://stylz-shop.onrender.com";
   const [isHovered, setIsHovered] = useState(false);
+  const { theme } = useThemeStore((state) => state);
 
   return (
     <main>
       <section className="card h-full min-h-96 w-full min-w-96 shadow-xl">
         <figure>
           <img
-            className="max-h-96 w-full object-cover"
+            className={`${theme === "lemonade" ? "brightness-75 saturate-100" : "brightness-50 saturate-100"} max-h-96 w-full object-cover`}
             src={`${baseURL}/${isHovered ? altImage : image}`}
             alt={name}
             onMouseLeave={() => setIsHovered(false)}
@@ -18,8 +20,8 @@ function CatalogContent({ id, isAvailable, price, name, image, altImage }) {
           />
         </figure>
         <section className="card-body">
-          <h2 className="card-title">{name}</h2>
-          <p className="pt-10 text-2xl font-bold">
+          <h2 className="card-title font-redHatDisplay">{name}</h2>
+          <p className="pt-10 font-redHatDisplay text-2xl font-bold">
             {isAvailable ? price + "$" : "Out of Stock"}
           </p>
           <section className="card-actions items-end justify-end">

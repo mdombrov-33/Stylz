@@ -97,7 +97,7 @@ function Navbar() {
           </Link>
         </div>
       </div>
-      <div className="navbar-center ml-4 hidden lg:flex">
+      <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 font-redHatDisplay font-bold uppercase">
           <li className="lg:border-l-2 lg:border-stone-950">
             <NavLink

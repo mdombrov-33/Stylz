@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CatalogItem from "@/features/catalog/CatalogContent";
+import CatalogContent from "@/features/catalog/CatalogContent";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Loader from "@/components/Loader";
@@ -98,7 +98,7 @@ function Catalog() {
         <section className="flex flex-col items-center justify-start py-6">
           <section className="mt-6 grid gap-4 px-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
             {filteredItems.map((item) => (
-              <CatalogItem
+              <CatalogContent
                 key={item.id}
                 id={item.id}
                 isAvailable={item.isAvailable}

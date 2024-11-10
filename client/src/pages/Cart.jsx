@@ -65,7 +65,7 @@ function Cart() {
       </main>
 
       <section>
-        <h2 className="mt-6 text-center text-2xl font-bold md:text-4xl">
+        <h2 className="mt-6 text-center font-redHatDisplay text-2xl font-bold md:text-4xl">
           Total Price:{" "}
           {cart
             .reduce((acc, item) => acc + item.price * item.quantity, 0)
