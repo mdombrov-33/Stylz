@@ -30,9 +30,9 @@ function ShopNew() {
 
   if (error)
     return (
-      <div className="flex items-center justify-center text-2xl font-bold">
+      <p className="flex items-center justify-center text-2xl font-bold">
         Something went wrong...
-      </div>
+      </p>
     );
 
   const newItems = data.totalItems.filter((item) => item.newItem === true);

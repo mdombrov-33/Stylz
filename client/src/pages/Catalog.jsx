@@ -70,9 +70,9 @@ function Catalog() {
 
   if (error)
     return (
-      <div className="flex items-center justify-center text-2xl font-bold">
+      <p className="flex items-center justify-center text-2xl font-bold">
         Something went wrong...
-      </div>
+      </p>
     );
 
   // Filter items based on selected filters

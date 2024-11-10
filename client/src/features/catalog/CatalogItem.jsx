@@ -1,35 +1,20 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { FaPlus } from "react-icons/fa";
-import { FaMinus } from "react-icons/fa";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 
-import useCartStore from "@/store/cart-store";
 import Loader from "@/components/Loader";
 import ReturnBtn from "@/components/ReturnBtn";
 import CatalogItemImages from "@/features/catalog/CatalogItemImages";
+import CatalogItemInfo from "@/features/catalog/CatalogItemInfo";
+import CatalogItemBtns from "@/features/catalog/CatalogItemBtns";
+import CatalogItemRating from "@/features/catalog/CatalogItemRating";
+import CatalogItemAccordion from "@/features/catalog/CatalogItemAccordion";
 
 function CatalogItem() {
   const { id } = useParams();
-  const { addToCart } = useCartStore((state) => state);
-  const [openSection, setOpenSection] = useState(null);
   const [selectedSize, setSelectedSize] = useState("");
-
-  const showErrorToast = () => {
-    if (selectedSize == "null" || selectedSize === "") {
-      toast.error("Please select a size to add to cart");
-    }
-  };
-
-  const showSuccessToast = () => {
-    toast.success(`${product.name} - Size ${selectedSize} added to cart`, {
-      duration: 6000,
-      position: "bottom-left",
-      icon: "🛒",
-    });
-  };
 
   const fetchProductDetails = async () => {
     try {
@@ -60,178 +45,28 @@ function CatalogItem() {
 
   if (error)
     return (
-      <div className="flex items-center justify-center text-2xl font-bold">
+      <p className="flex items-center justify-center text-2xl font-bold">
         Something went wrong...
-      </div>
+      </p>
     );
-
-  const toggleCollapse = (section) => {
-    setOpenSection((prev) => (prev === section ? null : section));
-  };
 
   return (
     <main className="grid xl:grid-cols-2">
-      <CatalogItemImages product={product} />
-
-      <section className="mt-6 flex flex-col items-center">
-        <h2 className="px-6 font-redHatDisplay text-3xl font-bold">
-          {product.name}
-        </h2>
-        <p className="mt-2 text-2xl">{product.price}$</p>
-        <p className="mt-2 text-pretty p-6 font-redHatDisplay text-xl">
-          {product.description}
-        </p>
-
-        <section className="mt-8 pb-6">
-          <select
-            className="select select-bordered w-full max-w-xs font-redHatDisplay"
-            value={selectedSize}
-            onChange={(e) => setSelectedSize(e.target.value)}
-          >
-            <option disabled={selectedSize !== ""}>AVAILABLE SIZES</option>
-            {product?.sizes.map((size) => (
-              <option key={size} value={size}>
-                {size}
-              </option>
-            ))}
-          </select>
-          <Link to="/contact/sizeguide">
-            <p className="mt-2 font-redHatDisplay font-bold underline">
-              What size should i buy?
-            </p>
-          </Link>
-        </section>
-        <section className="flex flex-col gap-8 py-12">
-          <button
-            disabled={selectedSize === "" || selectedSize === "null"}
-            onClick={() => {
-              addToCart(product, selectedSize);
-              showErrorToast();
-              showSuccessToast();
-            }}
-            className="btn btn-accent w-96 font-redHatDisplay text-xl font-bold uppercase"
-          >
-            add to cart
-          </button>
-          <button
-            disabled={selectedSize === "" || selectedSize === "null"}
-            onClick={() => {
-              addToCart(product, selectedSize);
-              showErrorToast();
-              showSuccessToast();
-            }}
-            className="btn btn-outline w-96 font-redHatDisplay text-xl font-normal uppercase"
-          >
-            try before you buy
-          </button>
-        </section>
-        <p className="-mt-10 pb-6 text-sm">
-          Try up to 6 items at home for 7 days. Powered by{" "}
-          <span className="font-delaGothicOne">trynow</span>
-        </p>
-
-        <div className="rating mt-12">
-          <input
-            type="radio"
-            name="rating-1"
-            className="mask mask-star"
-            disabled={true}
-          />
-          <input
-            type="radio"
-            name="rating-1"
-            className="mask mask-star"
-            disabled={true}
-          />
-          <input
-            type="radio"
-            name="rating-1"
-            className="mask mask-star"
-            disabled={true}
-            defaultChecked
-          />
-          <input
-            type="radio"
-            name="rating-1"
-            className="mask mask-star"
-            disabled={true}
-          />
-          <input
-            type="radio"
-            name="rating-1"
-            className="mask mask-star"
-            disabled={true}
-          />
+      <section>
+        <CatalogItemImages product={product} />
+      </section>
+      <section>
+        <CatalogItemInfo
+          product={product}
+          selectedSize={selectedSize}
+          setSelectedSize={setSelectedSize}
+        />
+        <CatalogItemBtns product={product} selectedSize={selectedSize} />
+        <CatalogItemRating />
+        <CatalogItemAccordion product={product} />
+        <div className="flex items-center justify-center pb-6">
+          <ReturnBtn />
         </div>
-
-        <p className="mt-2 text-pretty text-sm">Based on 5 reviews</p>
-
-        {/* Collapsed */}
-        <section className="mt-24 flex w-96 flex-col gap-2 pb-12">
-          {/* Origin Section */}
-          <div className="collapse bg-base-200">
-            <input
-              type="checkbox"
-              checked={openSection === "origin"}
-              onChange={() => toggleCollapse("origin")}
-            />
-            <div className="collapse-title flex items-center text-xl font-medium uppercase">
-              <p>origin</p>
-              {openSection === "origin" ? (
-                <FaMinus className="ml-auto" />
-              ) : (
-                <FaPlus className="ml-auto" />
-              )}
-            </div>
-            <div className="collapse-content">
-              <p>{product.origin}</p>
-            </div>
-          </div>
-
-          {/* Fabric Section */}
-          <div className="collapse bg-base-200">
-            <input
-              type="checkbox"
-              checked={openSection === "fabric"}
-              onChange={() => toggleCollapse("fabric")}
-            />
-            <div className="collapse-title flex items-center text-xl font-medium uppercase">
-              <p>fabric</p>
-              {openSection === "fabric" ? (
-                <FaMinus className="ml-auto" />
-              ) : (
-                <FaPlus className="ml-auto" />
-              )}
-            </div>
-            <div className="collapse-content">
-              <p>{product.fabric}</p>
-            </div>
-          </div>
-
-          {/* Care Section */}
-          <div className="collapse bg-base-200">
-            <input
-              type="checkbox"
-              checked={openSection === "care"}
-              onChange={() => toggleCollapse("care")}
-            />
-            <div className="collapse-title flex items-center text-xl font-medium uppercase">
-              <p>care</p>
-              {openSection === "care" ? (
-                <FaMinus className="ml-auto" />
-              ) : (
-                <FaPlus className="ml-auto" />
-              )}
-            </div>
-            <div className="collapse-content">
-              <p>{product.care}</p>
-            </div>
-          </div>
-        </section>
-
-        <section className="mt-12 pb-6">
-          <ReturnBtn to={-1} />
-        </section>
       </section>
     </main>
   );
