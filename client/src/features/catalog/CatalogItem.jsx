@@ -65,7 +65,7 @@ function CatalogItem() {
         <CatalogItemRating />
         <CatalogItemAccordion product={product} />
         <div className="flex items-center justify-center pb-6">
-          <ReturnBtn />
+          <ReturnBtn to={-1} />
         </div>
       </section>
     </main>
