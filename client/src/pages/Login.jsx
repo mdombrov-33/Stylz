@@ -128,15 +128,14 @@ export async function action({ request }) {
     );
 
     const access_token = response.data.access_token;
+    const expiration = new Date();
+    expiration.setHours(expiration.getHours() + 2);
+
     if (remember_me) {
       localStorage.setItem("access_token", access_token);
-      const expiration = new Date();
-      expiration.setHours(expiration.getHours() + 2);
       localStorage.setItem("expiration", expiration.toISOString());
     } else {
       sessionStorage.setItem("access_token", access_token);
-      const expiration = new Date();
-      expiration.setHours(expiration.getHours() + 2);
       sessionStorage.setItem("expiration", expiration.toISOString());
     }
 
@@ -148,5 +147,4 @@ export async function action({ request }) {
     return err;
   }
 }
-
 export default Login;
