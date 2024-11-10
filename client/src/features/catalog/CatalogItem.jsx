@@ -25,7 +25,11 @@ function CatalogItem() {
   };
 
   const showSuccessToast = () => {
-    toast.success(`${product.name} - Size ${selectedSize} added to cart`);
+    toast.success(`${product.name} - Size ${selectedSize} added to cart`, {
+      duration: 6000,
+      position: "bottom-left",
+      icon: "🛒",
+    });
   };
 
   // Cart store

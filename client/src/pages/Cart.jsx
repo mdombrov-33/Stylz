@@ -36,7 +36,7 @@ function Cart() {
                 <td className="font-redHatDisplay md:text-2xl">
                   <h2 className="pb-6">{item.name}</h2>
                   <img
-                    className={`${theme === "lemonade" ? "brightness-100 saturate-100" : "brightness-75 saturate-150"} h-full w-full sm:h-28 sm:w-28 md:h-36 md:w-36 lg:h-96 lg:w-96`}
+                    className={`${theme === "lemonade" ? "brightness-100 saturate-100" : "brightness-75 saturate-150"} h-16 w-16 sm:h-28 sm:w-28 md:h-36 md:w-36 lg:h-44 lg:w-44`}
                     src={`${baseURL}/${item.image}`}
                     alt=""
                   />
