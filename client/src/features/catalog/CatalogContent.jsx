@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
 import useThemeStore from "@/store/theme-store";
 
 function CatalogContent({ id, isAvailable, price, name, image, altImage }) {
-  const baseURL = "https://stylz-shop.onrender.com";
   const [isHovered, setIsHovered] = useState(false);
   const { theme } = useThemeStore((state) => state);
+  const baseURL = "https://stylz-shop.onrender.com";
 
   return (
     <main>

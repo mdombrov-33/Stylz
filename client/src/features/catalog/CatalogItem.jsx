@@ -1,21 +1,20 @@
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import Loader from "@/components/Loader";
-import ReturnBtn from "@/components/ReturnBtn";
 import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
 import { useState } from "react";
-import useCartStore from "@/store/cart-store";
 import toast from "react-hot-toast";
-import useThemeStore from "@/store/theme-store";
+import axios from "axios";
+
+import useCartStore from "@/store/cart-store";
+import Loader from "@/components/Loader";
+import ReturnBtn from "@/components/ReturnBtn";
+import CatalogItemImages from "@/features/catalog/CatalogItemImages";
 
 function CatalogItem() {
   const { id } = useParams();
-  const baseURL = "https://stylz-shop.onrender.com";
-  const { theme } = useThemeStore((state) => state);
-
-  // State to track selected size
+  const { addToCart } = useCartStore((state) => state);
+  const [openSection, setOpenSection] = useState(null);
   const [selectedSize, setSelectedSize] = useState("");
 
   const showErrorToast = () => {
@@ -32,13 +31,6 @@ function CatalogItem() {
     });
   };
 
-  // Cart store
-  const addToCart = useCartStore((state) => state.addToCart);
-
-  // State to track which section is open
-  const [openSection, setOpenSection] = useState(null);
-
-  // Fetch product details
   const fetchProductDetails = async () => {
     try {
       const response = await axios.get(
@@ -50,7 +42,6 @@ function CatalogItem() {
     }
   };
 
-  // Query setup to fetch product details
   const {
     data: product,
     isLoading,
@@ -74,35 +65,13 @@ function CatalogItem() {
       </div>
     );
 
-  // Function to toggle which section is open
   const toggleCollapse = (section) => {
-    setOpenSection((prev) => (prev === section ? null : section)); // Close if same section is clicked again, otherwise open the new one
+    setOpenSection((prev) => (prev === section ? null : section));
   };
 
   return (
     <main className="grid xl:grid-cols-2">
-      <section className="grid grid-cols-2">
-        <img
-          src={`${baseURL}/${product.image}`}
-          className={`${theme === "lemonade" ? "brightness-75 saturate-100" : "brightness-50 saturate-100"} h-full w-full shrink-0 object-cover`}
-          alt={product.name}
-        />
-        <img
-          src={`${baseURL}/${product.altImage}`}
-          className={`${theme === "lemonade" ? "brightness-75 saturate-100" : "brightness-50 saturate-100"} b-r-2 h-full w-full shrink-0 border-l-2 border-r-2 border-stone-950 object-cover`}
-          alt={product.name}
-        />
-        <img
-          src={`${baseURL}/${product.altImage2}`}
-          className={`${theme === "lemonade" ? "brightness-75 saturate-100" : "brightness-50 saturate-100"} h-full w-full shrink-0 border-b-2 border-t-2 border-stone-950 object-cover saturate-150`}
-          alt={product.name}
-        />
-        <img
-          src={`${baseURL}/${product.altImage3}`}
-          className={`${theme === "lemonade" ? "brightness-75 saturate-100" : "brightness-50 saturate-100"} h-full w-full shrink-0 border-b-2 border-l-2 border-r-2 border-t-2 border-stone-950 object-cover`}
-          alt={product.name}
-        />
-      </section>
+      <CatalogItemImages product={product} />
 
       <section className="mt-6 flex flex-col items-center">
         <h2 className="px-6 font-redHatDisplay text-3xl font-bold">
