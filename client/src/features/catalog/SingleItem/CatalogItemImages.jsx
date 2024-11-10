@@ -5,7 +5,7 @@ function CatalogItemImages({ product }) {
   const { theme } = useThemeStore((state) => state);
 
   return (
-    <section className="grid grid-cols-2">
+    <>
       <img
         src={`${baseURL}/${product.image}`}
         className={`${theme === "lemonade" ? "brightness-75 saturate-100" : "brightness-50 saturate-100"} h-full w-full shrink-0 object-cover`}
@@ -26,7 +26,7 @@ function CatalogItemImages({ product }) {
         className={`${theme === "lemonade" ? "brightness-75 saturate-100" : "brightness-50 saturate-100"} h-full w-full shrink-0 border-b-2 border-l-2 border-r-2 border-t-2 border-stone-950 object-cover`}
         alt={product.name}
       />
-    </section>
+    </>
   );
 }
 

@@ -1,7 +1,7 @@
 function CatalogItemRating() {
   return (
     <>
-      <section className="rating mt-12 flex items-center justify-center">
+      <section className="justify- rating flex items-center">
         <input
           type="radio"
           name="rating-1"

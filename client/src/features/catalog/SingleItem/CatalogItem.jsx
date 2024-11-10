@@ -6,11 +6,11 @@ import axios from "axios";
 
 import Loader from "@/components/Loader";
 import ReturnBtn from "@/components/ReturnBtn";
-import CatalogItemImages from "@/features/catalog/CatalogItemImages";
-import CatalogItemInfo from "@/features/catalog/CatalogItemInfo";
-import CatalogItemBtns from "@/features/catalog/CatalogItemBtns";
-import CatalogItemRating from "@/features/catalog/CatalogItemRating";
-import CatalogItemAccordion from "@/features/catalog/CatalogItemAccordion";
+import CatalogItemImages from "@/features/catalog/SingleItem/CatalogItemImages";
+import CatalogItemInfo from "@/features/catalog/SingleItem/CatalogItemInfo";
+import CatalogItemBtns from "@/features/catalog/SingleItem/CatalogItemBtns";
+import CatalogItemRating from "@/features/catalog/SingleItem/CatalogItemRating";
+import CatalogItemAccordion from "@/features/catalog/SingleItem/CatalogItemAccordion";
 
 function CatalogItem() {
   const { id } = useParams();
@@ -52,10 +52,10 @@ function CatalogItem() {
 
   return (
     <main className="grid xl:grid-cols-2">
-      <section>
+      <section className="grid grid-cols-2">
         <CatalogItemImages product={product} />
       </section>
-      <section>
+      <section className="flex flex-col items-center justify-evenly">
         <CatalogItemInfo
           product={product}
           selectedSize={selectedSize}
@@ -64,7 +64,7 @@ function CatalogItem() {
         <CatalogItemBtns product={product} selectedSize={selectedSize} />
         <CatalogItemRating />
         <CatalogItemAccordion product={product} />
-        <div className="flex items-center justify-center pb-6">
+        <div className="flex items-center justify-center py-8">
           <ReturnBtn to={-1} />
         </div>
       </section>
