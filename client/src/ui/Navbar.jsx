@@ -161,7 +161,7 @@ function Navbar() {
           </Link>
         )}
         <label className="swap swap-rotate">
-          <input type="checkbox" onChange={handleTheme} className="ml-12" />
+          <input type="checkbox" onChange={handleTheme} className="ml-6" />
           <BsSunFill className="swap-on h-4 w-4" />
           <BsMoonFill className="swap-off h-4 w-4" />
         </label>
