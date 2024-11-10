@@ -38,7 +38,6 @@ export function logoutAction() {
   sessionStorage.removeItem("expiration");
   window.location.reload();
   redirect("/");
-  toast.success("You have been logged out");
   return null;
 }
 

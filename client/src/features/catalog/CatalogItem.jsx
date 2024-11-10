@@ -49,6 +49,7 @@ function CatalogItem() {
       toast.error(err.response.data);
     }
   };
+
   // Query setup to fetch product details
   const {
     data: product,
@@ -65,7 +66,13 @@ function CatalogItem() {
   });
 
   if (isLoading) return <Loader />;
-  if (error) return <div>Error: {error.message}</div>;
+
+  if (error)
+    return (
+      <div className="flex items-center justify-center text-2xl font-bold">
+        Something went wrong...
+      </div>
+    );
 
   // Function to toggle which section is open
   const toggleCollapse = (section) => {
