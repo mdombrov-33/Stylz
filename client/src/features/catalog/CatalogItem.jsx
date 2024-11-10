@@ -113,7 +113,9 @@ function CatalogItem() {
             ))}
           </select>
           <Link to="/contact/sizeguide">
-            <p className="mt-2 font-bold underline">What size should i buy?</p>
+            <p className="mt-2 font-redHatDisplay font-bold underline">
+              What size should i buy?
+            </p>
           </Link>
         </section>
         <section className="flex flex-col gap-8 py-12">
@@ -124,7 +126,7 @@ function CatalogItem() {
               showErrorToast();
               showSuccessToast();
             }}
-            className="btn btn-neutral w-96 text-xl font-bold uppercase"
+            className="btn btn-accent w-96 font-redHatDisplay text-xl font-bold uppercase"
           >
             add to cart
           </button>
@@ -135,7 +137,7 @@ function CatalogItem() {
               showErrorToast();
               showSuccessToast();
             }}
-            className="btn btn-outline w-96 text-xl font-normal uppercase"
+            className="btn btn-outline w-96 font-redHatDisplay text-xl font-normal uppercase"
           >
             try before you buy
           </button>

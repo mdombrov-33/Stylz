@@ -25,14 +25,20 @@ function CatalogContent({ id, isAvailable, price, name, image, altImage }) {
             {isAvailable ? price + "$" : "Out of Stock"}
           </p>
           <section className="card-actions items-end justify-end">
-            <Link to={`/catalog/${id}`}>
+            {isAvailable ? (
+              <Link to={`/catalog/${id}`}>
+                <button className="btn btn-accent font-redHatDisplay text-lg font-bold uppercase">
+                  Check Details
+                </button>
+              </Link>
+            ) : (
               <button
                 className="btn btn-accent font-redHatDisplay text-lg font-bold uppercase"
-                disabled={isAvailable ? false : true}
+                disabled
               >
                 Check Details
               </button>
-            </Link>
+            )}
           </section>
         </section>
       </section>
