@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function CartButtons() {
   return (
-    <section className="flex h-96 items-end justify-center gap-12 pb-4 pt-6">
+    <section className="flex h-full items-end justify-center gap-12 pb-4 pt-6">
       <ReturnBtn to={-1} />
 
       <Link to="/checkout">
