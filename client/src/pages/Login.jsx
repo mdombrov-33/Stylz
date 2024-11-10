@@ -131,6 +131,8 @@ export async function action({ request }) {
     const expiration = new Date();
     expiration.setHours(expiration.getHours() + 2);
 
+    console.log(access_token, expiration);
+
     if (remember_me) {
       localStorage.setItem("access_token", access_token);
       localStorage.setItem("expiration", expiration.toISOString());

@@ -1,31 +1,44 @@
-import { Outlet, useLoaderData, useSubmit } from "react-router-dom";
+import { Outlet, useLoaderData, useNavigate } from "react-router-dom";
 import Header from "@/ui/Header";
 import Footer from "@/ui/Footer";
 import Navbar from "@/ui/Navbar";
 import ScrollToTop from "@/components/ScrollToTop";
 import { useEffect } from "react";
 import { getAuthTokenDuration } from "@/utils/auth";
+import toast from "react-hot-toast";
 
 function HomeLayout() {
-  // Automatically logs out user after 2 hours
   const token = useLoaderData();
-  const submit = useSubmit();
+  const navigate = useNavigate();
+
   useEffect(() => {
-    if (!token) {
-      return;
-    }
+    if (!token) return;
 
     if (token === "EXPIRED") {
-      submit(null, { action: "/logout", method: "post" });
+      handleLogout();
       return;
     }
 
     const tokenDuration = getAuthTokenDuration();
+    console.log(tokenDuration);
 
-    setTimeout(() => {
-      submit(null, { action: "/logout", method: "post" });
+    const timer = setTimeout(() => {
+      handleLogout();
     }, tokenDuration);
-  }, [token, submit]);
+
+    return () => clearTimeout(timer);
+  }, [token]);
+
+  const handleLogout = () => {
+    // Clear storage and submit logout action
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("expiration");
+    sessionStorage.removeItem("access_token");
+    sessionStorage.removeItem("expiration");
+
+    navigate("/login");
+    toast.error("Session expired. Please login again");
+  };
 
   return (
     <>
