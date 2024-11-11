@@ -18,6 +18,7 @@ function Navbar() {
   const location = useLocation();
 
   const isOnShopNewRoute = location.pathname === "/new";
+  const isOnCartRoute = location.pathname === "/cart";
 
   const handleTheme = () => {
     toggleTheme();
@@ -162,7 +163,7 @@ function Navbar() {
         </label>
 
         {/* Cart icon */}
-        {cart.length > 0 ? (
+        {!isOnCartRoute && cart.length > 0 && (
           <NavLink to="/cart" className="btn btn-circle btn-ghost btn-md mr-2">
             <div className="indicator">
               <BsCart3 className="h-6 w-6" />
@@ -172,7 +173,7 @@ function Navbar() {
               </span>
             </div>
           </NavLink>
-        ) : null}
+        )}
 
         {/* Shop all new button */}
         {!isOnShopNewRoute && (
