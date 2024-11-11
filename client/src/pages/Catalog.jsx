@@ -8,6 +8,7 @@ import CatalogContent from "@/features/catalog/CatalogContent";
 import Loader from "@/components/Loader";
 import CatalogNavigation from "@/features/catalog/CatalogNavigation";
 import CatalogPagination from "@/features/catalog/CatalogPagination";
+import useUserStore from "@/store/user-store";
 
 function Catalog() {
   const [page, setPage] = useState(1);
@@ -15,6 +16,8 @@ function Catalog() {
   const [selectedGender, setSelectedGender] = useState(null);
   const [isIntersecting, setIsIntersecting] = useState(false);
   const drawerRef = useRef(null);
+  const { user } = useUserStore((state) => state);
+  console.log(user);
 
   // Intersection Observer to hide the category drawer when footer is in view
   useEffect(() => {

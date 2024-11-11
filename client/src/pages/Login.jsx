@@ -6,6 +6,7 @@ import { useEffect } from "react";
 
 import ReturnBtn from "@/components/ReturnBtn";
 import useThemeStore from "@/store/theme-store";
+import useUserStore from "@/store/user-store";
 
 function Login() {
   const navigation = useNavigation();
@@ -131,8 +132,6 @@ export async function action({ request }) {
     const expiration = new Date();
     expiration.setHours(expiration.getHours() + 2);
 
-    console.log(access_token, expiration);
-
     if (remember_me) {
       localStorage.setItem("access_token", access_token);
       localStorage.setItem("expiration", expiration.toISOString());
@@ -140,6 +139,10 @@ export async function action({ request }) {
       sessionStorage.setItem("access_token", access_token);
       sessionStorage.setItem("expiration", expiration.toISOString());
     }
+
+    const { email, full_name } = response.data;
+
+    useUserStore.getState().setUser(email, full_name);
 
     toast.success("Login successful!");
     return redirect("/");

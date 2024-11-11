@@ -1,6 +1,8 @@
 import toast from "react-hot-toast";
 import { redirect } from "react-router-dom";
 
+import useUserStore from "@/store/user-store";
+
 // Utility to get the expiration duration
 export function getAuthTokenDuration() {
   const storedExpirationDate =
@@ -37,6 +39,7 @@ export function logoutAction() {
   sessionStorage.removeItem("access_token");
   sessionStorage.removeItem("expiration");
   window.location.reload();
+  useUserStore.getState().clearUser();
   redirect("/");
   return null;
 }
