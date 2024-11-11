@@ -8,8 +8,11 @@ function Cart() {
 
   if (cart.length === 0) {
     return (
-      <div className="flex h-96 items-center justify-center font-bold uppercase">
-        <h1 className="font-redHatDisplay text-3xl">Your cart is empty</h1>
+      <div className="flex h-96 flex-col items-center justify-center gap-2 font-bold">
+        <h1 className="text-center font-redHatDisplay text-3xl">
+          Your cart is empty
+        </h1>
+        <p className="text-sm">Go add some items</p>
       </div>
     );
   } else {

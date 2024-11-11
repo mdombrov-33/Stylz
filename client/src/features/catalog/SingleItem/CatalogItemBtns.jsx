@@ -10,7 +10,7 @@ function CatalogItemBtns({ product, selectedSize }) {
     }
   };
 
-  const showSuccessToast = () => {
+  const toastAddCart = () => {
     toast.success(`${product.name} - Size ${selectedSize} added to cart`, {
       duration: 6000,
       position: "bottom-left",
@@ -25,7 +25,7 @@ function CatalogItemBtns({ product, selectedSize }) {
         onClick={() => {
           addToCart(product, selectedSize);
           showErrorToast();
-          showSuccessToast();
+          toastAddCart();
         }}
         className="btn btn-accent w-96 font-redHatDisplay text-xl font-bold uppercase"
       >
@@ -36,7 +36,7 @@ function CatalogItemBtns({ product, selectedSize }) {
         onClick={() => {
           addToCart(product, selectedSize);
           showErrorToast();
-          showSuccessToast();
+          toastAddCart();
         }}
         className="btn btn-outline w-96 font-redHatDisplay text-xl font-normal uppercase"
       >
