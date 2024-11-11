@@ -2,11 +2,12 @@ import toast from "react-hot-toast";
 import { useRef } from "react";
 
 function Footer() {
-  const emailRef = useRef(null);
+  const emailRef = useRef("");
 
   const handleToastSubscribe = (e) => {
     e.preventDefault();
-    if (emailRef.ref.current.value == null) return;
+
+    if (emailRef.current.value === null) return;
 
     if (emailRef.current.value === "") {
       toast.error("Please enter your email");
@@ -269,7 +270,7 @@ function Footer() {
 
         <div className="mt-16 border-t border-gray-100 pt-6 dark:border-gray-800 sm:flex sm:items-center sm:justify-between">
           <p className="text-center text-sm text-gray-300">
-            Copyright &copy; 2024. All rights reserved.
+            Stylz &copy; 2024. All rights reserved.
           </p>
 
           <ul className="mt-4 flex justify-center gap-6 sm:mt-0 sm:justify-start">
