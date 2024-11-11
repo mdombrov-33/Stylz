@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { Form, Link, NavLink, useLocation } from "react-router-dom";
 
-import brand from "../assets/brand.svg";
 import { BsCart3, BsSunFill, BsMoonFill } from "react-icons/bs";
 import { getAuthToken } from "@/utils/auth";
 import useCartStore from "@/store/cart-store";
@@ -87,7 +86,6 @@ function Navbar() {
 
         {/* DESKTOP & BIG MOBILE NAVIGATION */}
         <div className="btn btn-ghost hidden font-delaGothicOne text-xl font-bold uppercase sm:flex">
-          <img src={brand} className="hidden h-12 sm:block" alt="" />
           <Link to="/" className="hidden font-delaGothicOne uppercase sm:block">
             Stylz
           </Link>
