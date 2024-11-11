@@ -1,20 +1,29 @@
 import toast from "react-hot-toast";
+import { useRef } from "react";
 
 function Footer() {
-  const handleToastSubscribe = (event) => {
-    event.preventDefault(); // Prevents the form from submitting and reloading the page
-    toast.promise(
-      new Promise((resolve) => {
-        // Simulate async operation
-        setTimeout(() => resolve("Subscribed!"), 2000);
-      }),
-      {
-        loading: "Subscribing...",
-        success: "Subscribed!",
-        error: "Error! Please try again.",
-      },
-    );
+  const emailRef = useRef(null);
+
+  const handleToastSubscribe = (e) => {
+    e.preventDefault();
+    if (emailRef.ref.current.value == null) return;
+
+    if (emailRef.current.value === "") {
+      toast.error("Please enter your email");
+    } else {
+      toast.promise(
+        new Promise((resolve) => {
+          setTimeout(() => resolve("Subscribed!"), 2000);
+        }),
+        {
+          loading: "Subscribing...",
+          success: "Subscribed!",
+          error: "Error! Please try again.",
+        },
+      );
+    }
   };
+
   return (
     <footer id="footer" className="bg-info-content">
       <div className="mx-auto max-w-screen-xl px-4 pb-6 pt-16 sm:px-6 lg:px-8">
@@ -51,8 +60,9 @@ function Footer() {
           </div>
 
           <p className="mt-4 max-w-md text-center leading-relaxed text-gray-300 sm:text-left lg:mt-0">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt
-            consequuntur amet culpa cum itaque neque.
+            Stylz is a clothing brand that offers a wide range of products for
+            various occasions. We are committed to providing high-quality
+            products at affordable prices.
           </p>
         </div>
 
@@ -227,9 +237,8 @@ function Footer() {
             <p className="text-lg font-medium text-gray-300">Stay in Touch</p>
 
             <div className="mx-auto mt-8 max-w-md sm:ms-0">
-              <p className="text-center leading-relaxed text-gray-300 ltr:sm:text-left rtl:sm:text-right">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum
-                id, iure consectetur et error hic!
+              <p className="text-pretty text-center leading-relaxed text-gray-300 ltr:sm:text-left rtl:sm:text-right">
+                Subscribe to our newsletter to get the latest news and updates.
               </p>
 
               <form className="mt-4">
@@ -239,9 +248,10 @@ function Footer() {
                   </label>
 
                   <input
-                    className="w-full rounded-full border-gray-200 bg-white px-6 py-3 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                    className="w-full rounded-full border-gray-200 bg-white px-6 py-3 shadow-sm"
                     type="email"
                     placeholder="Enter your email"
+                    ref={emailRef}
                   />
 
                   <button
