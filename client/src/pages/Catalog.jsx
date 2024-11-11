@@ -7,6 +7,7 @@ import axios from "axios";
 import CatalogContent from "@/features/catalog/CatalogContent";
 import Loader from "@/components/Loader";
 import CatalogNavigation from "@/features/catalog/CatalogNavigation";
+import CatalogPagination from "@/features/catalog/CatalogPagination";
 
 function Catalog() {
   const [page, setPage] = useState(1);
@@ -151,38 +152,22 @@ function Catalog() {
         )}
 
         {/* Pagination */}
-        {filteredItems.length > 0 && (
-          <section className="join mt-4 flex h-40 w-full grid-cols-2 items-end justify-center p-6">
-            <button
-              onClick={handlePrevPage}
-              disabled={page === 1}
-              className="btn btn-outline join-item w-44"
-            >
-              Previous page
-            </button>
-            <button
-              onClick={handleNextPage}
-              disabled={page === data.totalPages}
-              className="btn btn-outline join-item w-44"
-            >
-              Next page
-            </button>
-          </section>
-        )}
+        <CatalogPagination
+          filteredItems={filteredItems}
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+          page={page}
+          data={data}
+        />
 
-        {/* Track Pages */}
-        {filteredItems.length > 0 && (
-          <p className="pb-4 text-center">{`Page ${page} of ${data.totalPages}`}</p>
-        )}
+        {/* Sidebar Navigation */}
+        <CatalogNavigation
+          setSelectedCategory={setSelectedCategory}
+          setSelectedGender={setSelectedGender}
+          selectedGender={selectedGender}
+          selectedCategory={selectedCategory}
+        />
       </section>
-
-      {/* Sidebar Navigation */}
-      <CatalogNavigation
-        setSelectedCategory={setSelectedCategory}
-        setSelectedGender={setSelectedGender}
-        selectedGender={selectedGender}
-        selectedCategory={selectedCategory}
-      />
     </main>
   );
 }
