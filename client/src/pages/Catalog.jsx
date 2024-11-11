@@ -156,12 +156,12 @@ function Catalog() {
       </section>
 
       {/* Sidebar Navigation */}
-      <CatalogNavigation
+      {/* <CatalogNavigation
         setSelectedCategory={setSelectedCategory}
         setSelectedGender={setSelectedGender}
         selectedGender={selectedGender}
         selectedCategory={selectedCategory}
-      />
+      /> */}
     </main>
   );
 }
