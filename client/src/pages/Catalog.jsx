@@ -94,7 +94,7 @@ function Catalog() {
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <section className="drawer-content">
         {/* Drawer for category selection */}
-        <section className="flex justify-end">
+        <section className="-mr-7 flex justify-end">
           <label
             htmlFor="my-drawer-2"
             className="top-26 btn btn-ghost btn-primary drawer-button fixed z-10 font-delaGothicOne text-2xl uppercase lg:hidden"
@@ -104,7 +104,7 @@ function Catalog() {
         </section>
 
         {/* Catalog Items */}
-        <section className="flex flex-col items-center justify-start py-6">
+        {/* <section className="flex flex-col items-center justify-start py-6">
           <section className="mt-6 grid gap-4 px-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
             {filteredItems.map((item) => (
               <CatalogContent
@@ -119,7 +119,7 @@ function Catalog() {
               />
             ))}
           </section>
-        </section>
+        </section> */}
 
         {/* No items found  */}
         {filteredItems.length === 0 && (
