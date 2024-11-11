@@ -1,5 +1,5 @@
 import toast from "react-hot-toast";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BiSolidCategory } from "react-icons/bi";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
@@ -12,6 +12,23 @@ function Catalog() {
   const [page, setPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedGender, setSelectedGender] = useState(null);
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const drawerRef = useRef(null);
+
+  // Intersection Observer to hide the category drawer when footer is in view
+  useEffect(() => {
+    const footerElement = document.getElementById("footer");
+    if (!footerElement) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsIntersecting(entry.isIntersecting),
+      { root: null, threshold: 0.4 },
+    );
+
+    observer.observe(footerElement);
+
+    return () => observer.unobserve(footerElement);
+  }, []);
 
   // Fetch catalog items based on the current page and filters
   const fetchCatalogItems = async ({ queryKey }) => {
@@ -21,7 +38,7 @@ function Catalog() {
         "https://stylz-shop.onrender.com/api/catalog",
         {
           params: { page, category, gender },
-        }
+        },
       );
       return response.data;
     } catch (err) {
@@ -97,7 +114,10 @@ function Catalog() {
         <section className="-mr-7 flex justify-end">
           <label
             htmlFor="my-drawer-2"
-            className="top-26 btn btn-ghost btn-primary drawer-button fixed z-10 font-delaGothicOne text-2xl uppercase lg:hidden"
+            className={`top-26 btn btn-ghost btn-primary drawer-button fixed z-10 font-delaGothicOne text-2xl uppercase lg:hidden ${
+              isIntersecting ? "hidden" : ""
+            }`}
+            ref={drawerRef}
           >
             <BiSolidCategory className="mr-4 inline-block text-4xl" />
           </label>
@@ -149,6 +169,7 @@ function Catalog() {
             </button>
           </section>
         )}
+
         {/* Track Pages */}
         {filteredItems.length > 0 && (
           <p className="pb-4 text-center">{`Page ${page} of ${data.totalPages}`}</p>
