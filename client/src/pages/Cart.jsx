@@ -20,7 +20,9 @@ function Cart() {
       <section>
         <CartContent />
         <CartPrice />
-        <CartNavigation />
+        <div className="flex h-96 justify-center">
+          <CartNavigation />
+        </div>
       </section>
     );
   }
