@@ -94,12 +94,12 @@ function Catalog() {
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <section className="drawer-content">
         {/* Drawer for category selection */}
-        <section className="-mr-7 flex justify-end">
+        <section className="flex justify-end">
           <label
             htmlFor="my-drawer-2"
             className="top-26 btn btn-ghost btn-primary drawer-button fixed z-10 font-delaGothicOne text-2xl uppercase lg:hidden"
           >
-            <BiSolidCategory className="inline-block text-4xl" />
+            <BiSolidCategory className="mr-4 inline-block text-4xl" />
           </label>
         </section>
 
@@ -156,12 +156,12 @@ function Catalog() {
       </section>
 
       {/* Sidebar Navigation */}
-      {/* <CatalogNavigation
+      <CatalogNavigation
         setSelectedCategory={setSelectedCategory}
         setSelectedGender={setSelectedGender}
         selectedGender={selectedGender}
         selectedCategory={selectedCategory}
-      /> */}
+      />
     </main>
   );
 }
