@@ -1,11 +1,12 @@
+import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
-import CatalogContent from "@/features/catalog/CatalogContent";
+import { BiSolidCategory } from "react-icons/bi";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+
+import CatalogContent from "@/features/catalog/CatalogContent";
 import Loader from "@/components/Loader";
 import CatalogNavigation from "@/features/catalog/CatalogNavigation";
-import { BiSolidCategory } from "react-icons/bi";
-import toast from "react-hot-toast";
 
 function Catalog() {
   const [page, setPage] = useState(1);

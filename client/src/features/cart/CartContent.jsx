@@ -22,27 +22,31 @@ function CartContent() {
         <tbody>
           {cart.map((item) => (
             <tr key={`${item.id}-${item.size}`} className="hover">
-              <td className="font-redHatDisplay md:text-2xl">
-                <h2 className="pb-6">{item.name}</h2>
+              <td>
+                <h2 className="pb-6 font-redHatDisplay md:text-2xl">
+                  {item.name}
+                </h2>
                 <img
                   className={`${theme === "lemonade" ? "brightness-100 saturate-100" : "brightness-75 saturate-150"} h-16 w-16 sm:h-28 sm:w-28 md:h-36 md:w-36 lg:h-44 lg:w-44`}
                   src={`${baseURL}/${item.image}`}
-                  alt=""
+                  alt={item.name}
                 />
               </td>
-              <td className="font-redHatDisplay md:text-2xl">
-                <h3>{item.size}</h3>
+              <td>
+                <h3 className="font-redHatDisplay md:text-2xl">{item.size}</h3>
               </td>
-              <td className="font-redHatDisplay md:text-2xl">
-                <h3>{item.price}</h3>
+              <td>
+                <h3 className="font-redHatDisplay md:text-2xl">{item.price}</h3>
               </td>
-              <td className="font-redHatDisplay md:text-2xl">
-                <h3>{item.quantity}</h3>
+              <td>
+                <h3 className="font-redHatDisplay md:text-2xl">
+                  {item.quantity}
+                </h3>
               </td>
               <td>
                 <button
                   onClick={() => removeFromCart(item.id, item.size)}
-                  className="btn btn-ghost font-redHatDisplay md:text-2xl"
+                  className="btn btn-ghost w-4 font-redHatDisplay md:w-44 md:text-2xl"
                 >
                   Remove
                 </button>

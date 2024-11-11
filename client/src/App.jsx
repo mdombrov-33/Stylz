@@ -1,8 +1,8 @@
 import { Suspense, lazy } from "react";
 import { Toaster } from "react-hot-toast";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Loader from "@/components/Loader";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Loader from "@/components/Loader";
 
 const About = lazy(() => import("./pages/About"));
 const Blog = lazy(() => import("./pages/Blog"));

@@ -1,40 +1,43 @@
 function CatalogItemRating() {
   return (
     <>
-      <section className="justify- rating flex items-center">
-        <input
-          type="radio"
-          name="rating-1"
-          className="mask mask-star"
-          disabled={true}
-        />
-        <input
-          type="radio"
-          name="rating-1"
-          className="mask mask-star"
-          disabled={true}
-        />
-        <input
-          type="radio"
-          name="rating-1"
-          className="mask mask-star"
-          disabled={true}
-          defaultChecked
-        />
-        <input
-          type="radio"
-          name="rating-1"
-          className="mask mask-star"
-          disabled={true}
-        />
-        <input
-          type="radio"
-          name="rating-1"
-          className="mask mask-star"
-          disabled={true}
-        />
+      <section className="rating flex flex-col items-center justify-center">
+        <div>
+          <input
+            type="radio"
+            name="rating-1"
+            className="mask mask-star"
+            disabled={true}
+          />
+          <input
+            type="radio"
+            name="rating-1"
+            className="mask mask-star"
+            disabled={true}
+          />
+          <input
+            type="radio"
+            name="rating-1"
+            className="mask mask-star"
+            disabled={true}
+            defaultChecked
+          />
+          <input
+            type="radio"
+            name="rating-1"
+            className="mask mask-star"
+            disabled={true}
+          />
+          <input
+            type="radio"
+            name="rating-1"
+            className="mask mask-star"
+            disabled={true}
+          />
+        </div>
+
+        <p className="text-pretty text-center text-sm">Based on 5 reviews</p>
       </section>
-      <p className="mt-2 text-pretty text-center text-sm">Based on 5 reviews</p>
     </>
   );
 }
