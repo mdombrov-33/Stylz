@@ -115,12 +115,12 @@ const router = createBrowserRouter([
         element: <Cart />,
         loader: checkAuthLoader,
       },
-      {
-        path: "checkout",
-        element: <Checkout />,
-        loader: checkAuthLoader,
-      },
     ],
+  },
+  {
+    path: "checkout",
+    element: <Checkout />,
+    loader: checkAuthLoader,
   },
   {
     path: "/login",

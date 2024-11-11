@@ -1,7 +1,7 @@
 function Collab() {
   return (
     <section
-      className="flex h-[72px] items-center justify-around bg-info-content pb-4 uppercase text-neutral-content"
+      className="flex h-[72px] items-center justify-around bg-info-content pb-2 uppercase text-neutral-content md:pb-0"
       id="scroll-down"
     >
       <span className="font-redHatDisplay tracking-wider text-accent md:text-2xl lg:text-4xl">
