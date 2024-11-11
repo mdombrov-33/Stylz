@@ -43,7 +43,7 @@ function CartContent() {
                   {item.quantity}
                 </h3>
               </td>
-              <td className="p-0 pr-4">
+              <td className="p-0">
                 <button
                   onClick={() => removeFromCart(item.id, item.size)}
                   className="btn btn-ghost p-0 font-redHatDisplay md:text-2xl"

@@ -21,7 +21,7 @@ function Catalog() {
         "https://stylz-shop.onrender.com/api/catalog",
         {
           params: { page, category, gender },
-        },
+        }
       );
       return response.data;
     } catch (err) {

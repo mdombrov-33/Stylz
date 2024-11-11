@@ -19,7 +19,7 @@ function CatalogItem() {
   const fetchProductDetails = async () => {
     try {
       const response = await axios.get(
-        `https://stylz-shop.onrender.com/api/catalog/${id}`,
+        `https://stylz-shop.onrender.com/api/catalog/${id}`
       );
       return response.data;
     } catch (err) {
