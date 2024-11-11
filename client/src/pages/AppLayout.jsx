@@ -1,11 +1,12 @@
 import { Outlet, useLoaderData, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
+
+import ScrollToTop from "@/components/ScrollToTop";
 import Header from "@/ui/Header";
 import Footer from "@/ui/Footer";
 import Navbar from "@/ui/Navbar";
-import ScrollToTop from "@/components/ScrollToTop";
-import { useEffect } from "react";
 import { getAuthTokenDuration } from "@/utils/auth";
-import toast from "react-hot-toast";
 
 function HomeLayout() {
   const token = useLoaderData();

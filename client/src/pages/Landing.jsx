@@ -1,7 +1,8 @@
 import { FaArrowDown } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 import Collab from "@/features/home/Collab";
 import Showcase from "@/features/home/Showcase";
-import { Link } from "react-router-dom";
 import useThemeStore from "@/store/theme-store";
 
 function Landing() {

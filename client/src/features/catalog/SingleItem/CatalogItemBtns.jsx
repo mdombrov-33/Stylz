@@ -1,5 +1,6 @@
-import useCartStore from "@/store/cart-store";
 import toast from "react-hot-toast";
+
+import useCartStore from "@/store/cart-store";
 
 function CatalogItemBtns({ product, selectedSize }) {
   const { addToCart } = useCartStore((state) => state);

@@ -2,12 +2,12 @@ import { useEffect } from "react";
 import { Form, Link, NavLink, useLocation } from "react-router-dom";
 
 import brand from "../assets/brand.svg";
-// import themeClick from "../assets/switch.mp3";
 import { BsCart3, BsSunFill, BsMoonFill } from "react-icons/bs";
 import { getAuthToken } from "@/utils/auth";
 import useCartStore from "@/store/cart-store";
 import useThemeStore from "@/store/theme-store";
 
+// import themeClick from "../assets/switch.mp3";
 // const audio = new Audio(themeClick);
 
 function Navbar() {
