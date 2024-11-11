@@ -99,7 +99,7 @@ function Catalog() {
             htmlFor="my-drawer-2"
             className="top-26 btn btn-ghost btn-primary drawer-button fixed z-10 font-delaGothicOne text-2xl uppercase lg:hidden"
           >
-            <BiSolidCategory className="mr-4 inline-block text-4xl" />
+            <BiSolidCategory className="inline-block text-4xl" />
           </label>
         </section>
 
