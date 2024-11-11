@@ -15,7 +15,7 @@ function CartClearBtn() {
     <div className="flex p-4">
       <button
         onClick={handleClearCart}
-        className="btn h-12 font-redHatDisplay text-sm font-bold"
+        className="btn h-12 font-redHatDisplay text-sm font-bold md:text-xl"
       >
         Clear Cart
       </button>
