@@ -121,16 +121,19 @@ const router = createBrowserRouter([
     path: "checkout",
     element: <Checkout />,
     loader: checkAuthLoader,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/login",
     element: <Login />,
     action: loginAction,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/register",
     element: <Register />,
     action: registerAction,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/logout",

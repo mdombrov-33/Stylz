@@ -21,6 +21,7 @@
     "clsx": "^2.1.1",
     "react": "^18.3.1",
     "react-credit-cards-2": "^1.0.3",
+    "react-creditcard": "^1.1.2",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.1",
     "react-hot-toast": "^2.4.1",

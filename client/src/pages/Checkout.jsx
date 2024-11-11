@@ -1,6 +1,6 @@
 import toast from "react-hot-toast";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import ApplePayBtn from "@/features/checkout/ApplePayBtn";
@@ -14,6 +14,9 @@ function Checkout() {
   const { theme } = useThemeStore((state) => state);
   const { user } = useUserStore((state) => state);
 
+  const [selectedCountry, setSelectedCountry] = useState("");
+  const [cities, setCities] = useState([]);
+
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
@@ -23,11 +26,37 @@ function Checkout() {
       const response = await axios.get("https://restcountries.com/v3.1/all");
       return response.data;
     } catch (err) {
-      toast.error(err.response.data);
+      toast.error("Failed to load countries");
+      return err;
     }
   };
 
-  const { data, isLoading, error } = useQuery({
+  const fetchCities = async (country) => {
+    try {
+      const response = await axios.post(
+        "https://countriesnow.space/api/v0.1/countries/cities",
+        {
+          country,
+        },
+      );
+      setCities(response.data.data);
+    } catch (err) {
+      toast.error("Failed to load cities.");
+      return err;
+    }
+  };
+
+  const handleCountryChange = (e) => {
+    const selectedCountry = e.target.value;
+    setSelectedCountry(selectedCountry);
+    fetchCities(selectedCountry);
+  };
+
+  const {
+    data: countries,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["countries"],
     queryFn: getCountries,
     staleTime: 1000 * 60 * 60 * 24, // 24 hours
@@ -45,13 +74,12 @@ function Checkout() {
       </p>
     );
 
-  console.log(data);
   console.log(user);
 
   return (
     <main className="items grid h-screen grid-cols-4 items-center justify-between">
       <section className="col-span-3 h-full md:col-span-2">
-        <h1 className="pt-4 text-center font-redHatDisplay text-xl font-bold uppercase md:text-2xl">
+        <h1 className="pt-4 text-center font-redHatDisplay text-sm font-bold uppercase md:text-2xl">
           Checkout for {user.fullName}{" "}
         </h1>
         <div className="divider">
@@ -84,7 +112,7 @@ function Checkout() {
             required={true}
           />
           <p className="pt-2 font-redHatDisplay">
-            We will send you a check and contact if needed{" "}
+            We will send a check and contact you if needed{" "}
           </p>
         </section>
         {/*  */}
@@ -98,11 +126,14 @@ function Checkout() {
           <select
             className="mt-2 w-72 rounded-lg border border-stone-950 px-4 py-2 lg:w-96"
             id="country"
+            onChange={handleCountryChange}
+            value={selectedCountry}
             name="country"
             required={true}
           >
-            {data
-              .sort((a, b) => a.name.common.localeCompare(b.name.common))
+            <option value="">Select a country</option>
+            {countries
+              ?.sort((a, b) => a.name.common.localeCompare(b.name.common))
               .map((country) => (
                 <option key={country.name.common} value={country.name.common}>
                   {country.name.common}
@@ -123,32 +154,36 @@ function Checkout() {
                 required={true}
               />
             </div>
-
+            {/*  */}
             <div className="mb-4 flex flex-col items-center">
-              <label htmlFor="address2" className="font-bold">
-                Address
-              </label>
-              <input
-                className="mt-2 w-72 rounded-lg border border-stone-950 px-4 py-2 lg:w-44"
-                type="text"
-                id="address2"
-                name="address2"
-                required={true}
-              />
+              <label htmlFor="city">City</label>
+              <select
+                id="city"
+                required
+                className="mt-2 w-72 rounded-lg border border-stone-950 px-4 py-2"
+              >
+                <option value="">Select a city</option>
+                {cities.map((city) => (
+                  <option key={city} value={city}>
+                    {city}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="mb-4 flex flex-col items-center">
-              <label htmlFor="address2" className="font-bold">
-                Address
+              <label htmlFor="zip" className="font-bold">
+                ZIP code
               </label>
               <input
                 className="mt-2 w-72 rounded-lg border border-stone-950 px-4 py-2 lg:w-44"
                 type="text"
-                id="address2"
-                name="address2"
+                id="zip"
+                name="zip"
                 required={true}
               />
             </div>
           </div>
+          <section></section>
         </section>
 
         {/*  */}
