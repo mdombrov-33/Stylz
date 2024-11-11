@@ -153,21 +153,21 @@ function Catalog() {
 
         {/* Pagination */}
         <CatalogPagination
-          filteredItems={filteredItems}
-          handlePrevPage={handlePrevPage}
-          handleNextPage={handleNextPage}
-          page={page}
           data={data}
-        />
-
-        {/* Sidebar Navigation */}
-        <CatalogNavigation
-          setSelectedCategory={setSelectedCategory}
-          setSelectedGender={setSelectedGender}
-          selectedGender={selectedGender}
-          selectedCategory={selectedCategory}
+          handleNextPage={handleNextPage}
+          handlePrevPage={handlePrevPage}
+          page={page}
+          filteredItems={filteredItems}
         />
       </section>
+
+      {/* Sidebar Navigation */}
+      <CatalogNavigation
+        setSelectedCategory={setSelectedCategory}
+        setSelectedGender={setSelectedGender}
+        selectedGender={selectedGender}
+        selectedCategory={selectedCategory}
+      />
     </main>
   );
 }

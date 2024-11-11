@@ -7,7 +7,7 @@ function CatalogPagination({
 }) {
   if (filteredItems.length > 0) {
     return (
-      <>
+      <section>
         <section className="join mt-4 flex h-40 w-full grid-cols-2 items-end justify-center p-6">
           <button
             onClick={handlePrevPage}
@@ -25,7 +25,7 @@ function CatalogPagination({
           </button>
         </section>
         <p className="pb-4 text-center">{`Page ${page} of ${data.totalPages}`}</p>
-      </>
+      </section>
     );
   }
 }
