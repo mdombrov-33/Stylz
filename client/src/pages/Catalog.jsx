@@ -121,7 +121,7 @@ function Catalog() {
         </section>
 
         {/* Catalog Items */}
-        {/* <section className="flex flex-col items-center justify-start py-6">
+        <section className="flex flex-col items-center justify-start py-6">
           <section className="mt-6 grid gap-4 px-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
             {filteredItems.map((item) => (
               <CatalogContent
@@ -136,7 +136,7 @@ function Catalog() {
               />
             ))}
           </section>
-        </section> */}
+        </section>
 
         {/* No items found  */}
         {filteredItems.length === 0 && (
