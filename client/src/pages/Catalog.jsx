@@ -34,7 +34,6 @@ function Catalog() {
     return () => observer.unobserve(footerElement);
   }, []);
 
-  // Fetch catalog items based on the current page and filters
   const fetchCatalogItems = async ({ queryKey }) => {
     const [, { page, category, gender }] = queryKey;
     try {
@@ -50,7 +49,6 @@ function Catalog() {
     }
   };
 
-  // Query setup to fetch catalog items with pagination and filters
   const { data, isLoading, error } = useQuery({
     queryKey: [
       "catalogItems",
@@ -66,17 +64,14 @@ function Catalog() {
     keepPreviousData: true, // Keeps previous page data while fetching the new page
   });
 
-  // Reset page to 1 when filters change
   useEffect(() => {
-    setPage(1); // Reset page when filters change
+    setPage(1);
   }, [selectedCategory, selectedGender]);
 
-  // Scroll to top when page or filters changes
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [selectedCategory, selectedGender, page]);
 
-  // Handle pagination controls
   const handleNextPage = () => {
     if (data && page < data.totalPages) setPage((prevPage) => prevPage + 1);
   };
@@ -85,7 +80,6 @@ function Catalog() {
     if (page > 1) setPage((prevPage) => prevPage - 1);
   };
 
-  // Handle loader and errors
   if (isLoading) {
     return <Loader />;
   }
@@ -97,7 +91,6 @@ function Catalog() {
       </p>
     );
 
-  // Filter items based on selected filters
   const filteredItems =
     data?.items?.filter((item) => {
       const isCategoryMatch = selectedCategory
@@ -128,7 +121,7 @@ function Catalog() {
         </section>
 
         {/* Catalog Items */}
-        <section className="flex flex-col items-center justify-start py-6">
+        {/* <section className="flex flex-col items-center justify-start py-6">
           <section className="mt-6 grid gap-4 px-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
             {filteredItems.map((item) => (
               <CatalogContent
@@ -143,7 +136,7 @@ function Catalog() {
               />
             ))}
           </section>
-        </section>
+        </section> */}
 
         {/* No items found  */}
         {filteredItems.length === 0 && (
