@@ -10,7 +10,7 @@ function CartContent() {
 
   return (
     <main className="flex">
-      <table className="table overflow-x-scroll">
+      <table className="table">
         <thead>
           <tr>
             <th className="font-delaGothicOne md:text-2xl">Item</th>
@@ -19,7 +19,7 @@ function CartContent() {
             <th className="font-delaGothicOne md:text-2xl">Quantity</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="overflow-x-scroll">
           {cart.map((item) => (
             <tr key={`${item.id}-${item.size}`} className="hover">
               <td>
