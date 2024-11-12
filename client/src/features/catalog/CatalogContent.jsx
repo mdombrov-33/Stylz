@@ -14,7 +14,7 @@ function CatalogContent({ id, isAvailable, price, name, image, altImage }) {
       <section className="card h-[400px] w-full shadow-xl md:h-[600px]">
         <figure>
           <img
-            className={`${theme === "lemonade" ? "brightness-75 saturate-100" : "brightness-50 saturate-100"} w-full min-w-96 object-cover`}
+            className={`${theme === "lemonade" ? "brightness-75 saturate-100" : "brightness-50 saturate-100"} w-full max-w-96 object-cover`}
             src={`${baseURL}/${isHovered ? altImage : image}`}
             alt={name}
             onMouseLeave={() => setIsHovered(false)}
