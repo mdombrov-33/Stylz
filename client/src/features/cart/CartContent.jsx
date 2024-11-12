@@ -10,7 +10,7 @@ function CartContent() {
 
   return (
     <main className="flex">
-      <table className="table overflow-x-auto">
+      <table className="table overflow-x-scroll">
         <thead>
           <tr>
             <th className="font-delaGothicOne md:text-2xl">Item</th>
