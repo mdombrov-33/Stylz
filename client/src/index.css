@@ -4,3 +4,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Override the input field */
+.react-tel-input .form-control {
+  background-color: var(--input-bg-color) !important;
+  color: var(--input-text-color) !important;
+  border-color: var(--input-border-color) !important;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+/* Override the flag dropdown */
+.react-tel-input .flag-dropdown {
+  background-color: var(--dropdown-bg-color) !important;
+  border-color: var(--input-border-color) !important;
+}
+
+/* Override the dropdown list */
+.react-tel-input .country-list {
+  background-color: var(--dropdown-bg-color) !important;
+}

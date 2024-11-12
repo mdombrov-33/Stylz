@@ -2,13 +2,32 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import "react-phone-input-2/lib/style.css";
 
-import ApplePayBtn from "@/features/checkout/ApplePayBtn";
-import GooglePayBtn from "@/features/checkout/GooglePayBtn";
-import PayPalBtn from "@/features/checkout/PayPalBtn";
+// import ApplePayBtn from "@/features/checkout/ApplePayBtn";
+// import GooglePayBtn from "@/features/checkout/GooglePayBtn";
+// import PayPalBtn from "@/features/checkout/PayPalBtn";
+
+/*
+        <div className="divider">
+          <p className="font-redHatDisplay font-bold">Express Checkout</p>
+        </div>
+        <div className="flex flex-col items-center justify-center gap-4 2xl:flex-row">
+          <GooglePayBtn />
+          <ApplePayBtn />
+          <PayPalBtn />
+        </div>
+        <div className="divider">
+          <p className="font-redHatDisplay text-sm font-bold uppercase">
+            or pay with a credit card
+          </p>
+        </div> }
+        */
+
 import useUserStore from "@/store/user-store";
 import useThemeStore from "@/store/theme-store";
 import Loader from "@/components/Loader";
+import PhoneInputCheckout from "@/features/checkout/PhoneInput";
 
 function Checkout() {
   const { theme } = useThemeStore((state) => state);
@@ -79,22 +98,11 @@ function Checkout() {
   return (
     <main className="items grid h-screen grid-cols-4 items-center justify-between">
       <section className="col-span-3 h-full md:col-span-2">
-        <h1 className="pt-4 text-center font-redHatDisplay text-sm font-bold uppercase md:text-2xl">
-          Checkout for {user.fullName}{" "}
-        </h1>
-        <div className="divider">
-          <p className="font-redHatDisplay font-bold">Express Checkout</p>
-        </div>
-        <div className="flex flex-col items-center justify-center gap-4 2xl:flex-row">
-          <GooglePayBtn />
-          <ApplePayBtn />
-          <PayPalBtn />
-        </div>
-        <div className="divider">
-          <p className="font-redHatDisplay text-sm font-bold uppercase">
-            or pay with a credit card
-          </p>
-        </div>
+        {
+          <h1 className="text-md pt-4 text-center font-redHatDisplay font-bold uppercase md:text-2xl">
+            Checkout for {user.fullName}{" "}
+          </h1>
+        }
         {/*  */}
         <section className="flex flex-col items-center justify-center px-2 pt-6">
           <h2 className="font-redHatDisplay text-xl font-bold lg:text-2xl">
@@ -158,7 +166,9 @@ function Checkout() {
             </div>
             {/*  */}
             <div className="mb-4 flex flex-col items-center">
-              <label htmlFor="city">City</label>
+              <label htmlFor="city" className="font-bold">
+                City
+              </label>
               <select
                 id="city"
                 required
@@ -185,14 +195,23 @@ function Checkout() {
               />
             </div>
           </div>
-          <section></section>
+          <div className="flex flex-col items-center justify-center">
+            <label className="font-bold">
+              Phone
+              {/* /////////////////////// */}
+              <PhoneInputCheckout />
+              {/* ////////////////////// */}
+            </label>
+          </div>
         </section>
 
         {/*  */}
       </section>
 
       {/*  */}
-      <section className="col-span-1 h-full bg-neutral-content md:col-span-2">
+      <section
+        className={`${theme === "lemonade" ? "bg-success" : "bg-base-300"} col-span-1 h-full border-l-2 border-stone-900 md:col-span-2`}
+      >
         aboba
       </section>
     </main>
