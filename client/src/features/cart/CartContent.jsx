@@ -9,7 +9,7 @@ function CartContent() {
   const baseURL = "https://stylz-shop.onrender.com";
 
   return (
-    <main className="flex">
+    <main className="flex overflow-x-auto">
       <table className="table">
         <thead>
           <tr>
@@ -19,7 +19,7 @@ function CartContent() {
             <th className="font-delaGothicOne md:text-2xl">Quantity</th>
           </tr>
         </thead>
-        <tbody className="overflow-x-scroll">
+        <tbody>
           {cart.map((item) => (
             <tr key={`${item.id}-${item.size}`} className="hover">
               <td>
