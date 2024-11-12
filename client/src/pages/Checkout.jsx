@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import "react-phone-input-2/lib/style.css";
+import { useRef } from "react";
 
 // import ApplePayBtn from "@/features/checkout/ApplePayBtn";
 // import GooglePayBtn from "@/features/checkout/GooglePayBtn";
@@ -36,9 +37,11 @@ function Checkout() {
   const { theme } = useThemeStore((state) => state);
   const { user } = useUserStore((state) => state);
   const { cart } = useCartStore((state) => state);
+  const priceRef = useRef(null);
+  const discountInputRef = useRef(null);
+  const [isDiscountApplied, setIsDiscountApplied] = useState(false);
 
   const baseURL = "https://stylz-shop.onrender.com";
-  console.log(cart);
 
   const [selectedCountry, setSelectedCountry] = useState("");
   const [cities, setCities] = useState([]);
@@ -100,7 +103,18 @@ function Checkout() {
       </p>
     );
 
-  console.log(user);
+  const checkDiscount = () => {
+    const discount = discountInputRef.current.value;
+    if (discount === "ABC123456") {
+      const price = priceRef.current.textContent;
+      const discountedPrice = (parseFloat(price) * 0.9).toFixed(2);
+      priceRef.current.textContent = `${discountedPrice}$`;
+      setIsDiscountApplied(true);
+      toast.success("Discount applied");
+    } else {
+      toast.error("Invalid discount code");
+    }
+  };
 
   return (
     <main className="grid h-screen grid-cols-4 items-center justify-between">
@@ -234,7 +248,10 @@ function Checkout() {
           >
             {cart.map((item) => {
               return (
-                <div key={item.id} className="carousel rounded-box">
+                <div
+                  key={`${item.id}-${item.size}`}
+                  className="carousel rounded-box"
+                >
                   <div className="carousel-item indicator relative w-auto">
                     {/* Item image */}
                     <img
@@ -251,7 +268,35 @@ function Checkout() {
               );
             })}
           </div>
-          aboba
+          <div className="flex flex-col items-center justify-center px-2 pb-2 pt-6">
+            <h3 className="text-center text-sm font-bold">Apply discount</h3>
+            <p className="text-center text-sm font-bold">Try this: ABC123456</p>
+            <input
+              className="mt-2 w-16 rounded-lg border border-stone-950 px-4 py-2 md:w-44"
+              type="text"
+              ref={discountInputRef}
+            />
+            <div className="pt-2">
+              <button
+                disabled={isDiscountApplied}
+                onClick={() => {
+                  checkDiscount();
+                }}
+                className="btn btn-accent w-14 rounded-md p-4 font-redHatDisplay md:w-24"
+              >
+                Apply
+              </button>
+            </div>
+            <div className="flex flex-col items-center justify-center pt-6">
+              <h3 className="text-center text-xl font-bold uppercase">Total</h3>
+              <p className="text-center text-xl font-bold" ref={priceRef}>
+                {cart
+                  .reduce((acc, item) => acc + item.price * item.quantity, 0)
+                  .toFixed(2)}
+                $
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </main>
