@@ -5,7 +5,7 @@ function CheckoutNavigation() {
   const navigate = useNavigate();
 
   return (
-    <section className="items flex h-full items-center justify-center gap-2 px-4 pt-6 md:gap-12">
+    <section className="items flex h-full items-center justify-center gap-2 px-4 pb-2 pt-6 md:gap-12">
       <button
         onClick={() => navigate(-1)}
         className="group btn h-12 w-36 text-xl font-bold uppercase"

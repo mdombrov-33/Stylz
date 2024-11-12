@@ -33,9 +33,8 @@ func NewDynamoDBClient() DynamoDBClient {
 	}
 }
 
-//* Does this user exists?
-//* How do i insert a new record into DynamoDB?
-
+// * Does this user exists?
+// * How do i insert a new record into DynamoDB?
 func (u DynamoDBClient) DoesUserExist(email string) (bool, error) {
 	result, err := u.dataBaseStore.GetItem(&dynamodb.GetItemInput{ // using & by AWS design. Pass by reference is more performant
 		TableName: aws.String(TABLE_NAME),

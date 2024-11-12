@@ -11,10 +11,9 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 )
 
-//* Extract the request headers
-//* Extract claims
-//* Validate everything
-
+// * Extract the request headers
+// * Extract claims
+// * Validate everything
 func ValidateJWTMiddleWare(next func(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error)) func(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	return func(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 

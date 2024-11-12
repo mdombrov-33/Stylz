@@ -6,7 +6,7 @@ function Toggle() {
   return (
     <label
       htmlFor="AcceptConditions"
-      className={`${theme === "lemonade" ? "bg-stone-950" : "bg-[#121212]"} relative inline-block h-8 w-14 cursor-pointer rounded-full transition [-webkit-tap-highlight-color:_transparent] has-[:checked]:bg-success`}
+      className={`${theme === "lemonade" ? "bg-[#a6ac9d]" : "bg-[#121212]"} relative inline-block h-8 w-14 cursor-pointer rounded-full transition [-webkit-tap-highlight-color:_transparent] has-[:checked]:bg-success`}
     >
       <input type="checkbox" id="AcceptConditions" className="peer sr-only" />
 

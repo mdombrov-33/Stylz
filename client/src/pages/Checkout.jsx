@@ -26,6 +26,7 @@ import "react-phone-input-2/lib/style.css";
 
 import useUserStore from "@/store/user-store";
 import useThemeStore from "@/store/theme-store";
+import useCartStore from "@/store/cart-store";
 import Loader from "@/components/Loader";
 import PhoneInputCheckout from "@/features/checkout/PhoneInputCheckout";
 import Toggle from "@/features/checkout/Toggle";
@@ -34,6 +35,10 @@ import CheckoutNavigation from "@/features/checkout/CheckoutNavigation";
 function Checkout() {
   const { theme } = useThemeStore((state) => state);
   const { user } = useUserStore((state) => state);
+  const { cart } = useCartStore((state) => state);
+
+  const baseURL = "https://stylz-shop.onrender.com";
+  console.log(cart);
 
   const [selectedCountry, setSelectedCountry] = useState("");
   const [cities, setCities] = useState([]);
@@ -62,7 +67,7 @@ function Checkout() {
       );
       setCities(response.data.data);
     } catch (err) {
-      toast.error("Failed to load cities.");
+      toast.error("Failed to load cities for selected country");
       return err;
     }
   };
@@ -217,9 +222,37 @@ function Checkout() {
 
       {/*  */}
       <section
-        className={`${theme === "lemonade" ? "bg-success" : "bg-base-300"} col-span-1 h-full border-l-2 border-stone-900 md:col-span-2`}
+        className={`${theme === "lemonade" ? "bg-[#d3cfcfbd]" : "bg-base-300"} col-span-1 h-full w-full border-l-2 border-black md:col-span-2`}
       >
-        <div className="h-full"></div>
+        <div className="flex h-full flex-col items-center">
+          <h2 className="pt-4 text-center text-xl font-bold lg:text-2xl">
+            Your order:
+          </h2>
+          <div
+            // Grid based on the number of items in the cart
+            className={`mt-4 grid grid-cols-1 gap-2 px-4 ${cart.length === 1 ? "md:grid-cols-1" : cart.length === 2 ? "md:grid-cols-2" : "md:grid-cols-5"}`}
+          >
+            {cart.map((item) => {
+              return (
+                <div key={item.id} className="carousel rounded-box">
+                  <div className="carousel-item indicator relative w-auto">
+                    {/* Item image */}
+                    <img
+                      src={`${baseURL}/${item.image}`}
+                      alt={item.name}
+                      className={`${theme === "lemonade" ? "brightness-100 saturate-100" : "brightness-75 saturate-150"} h-12 w-12 object-fill md:h-16 md:w-16 lg:h-24 lg:w-24`}
+                    />
+                    {/* Quantity badge in the top-right corner */}
+                    <span className="badge indicator-item badge-accent badge-sm absolute right-0 top-0 translate-x-1 translate-y-0.5 transform font-bold">
+                      {item.quantity}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          aboba
+        </div>
       </section>
     </main>
   );
