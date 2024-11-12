@@ -46,7 +46,7 @@ function CartContent() {
               <td className="p-0">
                 <button
                   onClick={() => removeFromCart(item.id, item.size)}
-                  className="btn btn-ghost p-0 mr-2 font-redHatDisplay md:text-2xl"
+                  className="btn btn-ghost font-redHatDisplay md:text-2xl"
                 >
                   Remove
                 </button>

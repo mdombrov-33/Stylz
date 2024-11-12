@@ -120,7 +120,7 @@ const router = createBrowserRouter([
   {
     path: "checkout",
     element: <Checkout />,
-    // loader: checkAuthLoader,
+    loader: checkAuthLoader,
     errorElement: <ErrorPage />,
   },
   {
