@@ -131,7 +131,9 @@ function Checkout() {
             name="country"
             required={true}
           >
-            <option value="">Select a country</option>
+            <option disabled={selectedCountry !== ""} value="">
+              Select a country
+            </option>
             {countries
               ?.sort((a, b) => a.name.common.localeCompare(b.name.common))
               .map((country) => (
