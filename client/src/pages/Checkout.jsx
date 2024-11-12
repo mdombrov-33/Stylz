@@ -119,7 +119,7 @@ function Checkout() {
             Email
           </label>
           <input
-            className="mt-2 w-72 rounded-lg border border-stone-950 px-4 py-2 lg:w-96"
+            className="mt-2 w-72 rounded-lg border border-stone-950 px-4 py-2 lg:w-64"
             type="email"
             defaultValue={user.email}
             id="email"
@@ -225,7 +225,7 @@ function Checkout() {
         className={`${theme === "lemonade" ? "bg-[#d3cfcfbd]" : "bg-base-300"} col-span-1 h-full w-full border-l-2 border-black md:col-span-2`}
       >
         <div className="flex h-full flex-col items-center">
-          <h2 className="pt-4 text-center text-xl font-bold lg:text-2xl">
+          <h2 className="pt-4 text-center font-bold lg:text-2xl">
             Your order:
           </h2>
           <div

@@ -32,6 +32,7 @@ function PhoneInputCheckout() {
         inputProps={{
           name: "phone",
         }}
+        inputStyle={{ width: "288px", borderRadius: "8px" }}
       />
     </div>
   );
