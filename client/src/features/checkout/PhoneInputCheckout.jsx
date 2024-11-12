@@ -26,12 +26,14 @@ function PhoneInputCheckout() {
   }, [theme]);
 
   return (
-    <PhoneInput
-      placeholder="Enter phone number"
-      inputProps={{
-        name: "phone",
-      }}
-    />
+    <div className="mt-2">
+      <PhoneInput
+        placeholder="Enter phone number"
+        inputProps={{
+          name: "phone",
+        }}
+      />
+    </div>
   );
 }
 

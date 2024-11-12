@@ -8,7 +8,7 @@ function CartNavigation() {
       <ReturnBtn to={-1} />
 
       <Link to="/checkout">
-        <button className="btn btn-success font-redHatDisplay text-3xl font-bold">
+        <button className="btn btn-success w-44 font-redHatDisplay text-3xl font-bold">
           Checkout
         </button>
       </Link>

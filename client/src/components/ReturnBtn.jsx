@@ -6,9 +6,9 @@ function ReturnBtn({ to }) {
   return (
     <button
       onClick={() => navigate(to)}
-      className="btn text-2xl font-bold uppercase group"
+      className="group btn w-44 text-2xl font-bold uppercase"
     >
-      <IoArrowBackCircle className="inline transition-transform transform group-hover:-translate-x-1" />
+      <IoArrowBackCircle className="inline transform transition-transform group-hover:-translate-x-1" />
       Return
     </button>
   );

@@ -27,7 +27,9 @@ import "react-phone-input-2/lib/style.css";
 import useUserStore from "@/store/user-store";
 import useThemeStore from "@/store/theme-store";
 import Loader from "@/components/Loader";
-import PhoneInputCheckout from "@/features/checkout/PhoneInput";
+import PhoneInputCheckout from "@/features/checkout/PhoneInputCheckout";
+import Toggle from "@/features/checkout/Toggle";
+import CheckoutNavigation from "@/features/checkout/CheckoutNavigation";
 
 function Checkout() {
   const { theme } = useThemeStore((state) => state);
@@ -96,8 +98,8 @@ function Checkout() {
   console.log(user);
 
   return (
-    <main className="items grid h-screen grid-cols-4 items-center justify-between">
-      <section className="col-span-3 h-full md:col-span-2">
+    <main className="grid h-screen grid-cols-4 items-center justify-between">
+      <section className="scrollbar-thin col-span-3 h-full overflow-y-auto md:col-span-2 md:overflow-auto">
         {
           <h1 className="text-md pt-4 text-center font-redHatDisplay font-bold uppercase md:text-2xl">
             Checkout for {user.fullName}{" "}
@@ -150,6 +152,10 @@ function Checkout() {
                 </option>
               ))}
           </select>
+          <label className="mt-6 text-center font-bold">
+            Phone
+            <PhoneInputCheckout />
+          </label>
           {/*  */}
           <div className="mt-6 flex flex-wrap justify-evenly lg:gap-8 xl:gap-12">
             <div className="mb-4 flex flex-col items-center">
@@ -172,7 +178,7 @@ function Checkout() {
               <select
                 id="city"
                 required
-                className="mt-2 w-72 rounded-lg border border-stone-950 px-4 py-2"
+                className="mt-2 w-72 rounded-lg border border-stone-950 px-4 py-2 lg:w-44"
               >
                 <option value="">Select a city</option>
                 {cities.map((city) => (
@@ -196,13 +202,14 @@ function Checkout() {
             </div>
           </div>
           <div className="flex flex-col items-center justify-center">
-            <label className="font-bold">
-              Phone
-              {/* /////////////////////// */}
-              <PhoneInputCheckout />
-              {/* ////////////////////// */}
-            </label>
+            <div className="flex gap-6 pt-2">
+              <p className="font-redHatDisplay">Don&#39;t call me</p>
+              <Toggle />
+            </div>
           </div>
+          <section className="lg:mt-12">
+            <CheckoutNavigation />
+          </section>
         </section>
 
         {/*  */}
@@ -212,7 +219,7 @@ function Checkout() {
       <section
         className={`${theme === "lemonade" ? "bg-success" : "bg-base-300"} col-span-1 h-full border-l-2 border-stone-900 md:col-span-2`}
       >
-        aboba
+        <div className="h-full"></div>
       </section>
     </main>
   );
