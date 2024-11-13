@@ -23,6 +23,7 @@ const FAQs = lazy(() => import("./pages/ContactRoutes/FAQs"));
 const Feedback = lazy(() => import("./pages/ContactRoutes/Feedback"));
 const Ordering = lazy(() => import("./pages/ContactRoutes/Ordering"));
 const Payment = lazy(() => import("./pages/ContactRoutes/Payment"));
+const CheckoutPayOrder = lazy(() => import("./pages/CheckoutPayOrder"));
 const Returns = lazy(() => import("./pages/ContactRoutes/Returns"));
 const Shipping = lazy(() => import("./pages/ContactRoutes/Shipping"));
 const SizeGuide = lazy(() => import("./pages/ContactRoutes/SizeGuide"));
@@ -118,8 +119,14 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "checkout",
+    path: "/checkout",
     element: <Checkout />,
+    loader: checkAuthLoader,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/checkout/payment",
+    element: <CheckoutPayOrder />,
     loader: checkAuthLoader,
     errorElement: <ErrorPage />,
   },

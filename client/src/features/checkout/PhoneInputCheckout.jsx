@@ -16,6 +16,10 @@ function PhoneInputCheckout() {
       theme === "lemonade" ? "#000" : "##9FB9D0",
     );
     document.documentElement.style.setProperty(
+      "--input-placeholder-color",
+      theme === "lemonade" ? "#000" : "#9FB9D0",
+    );
+    document.documentElement.style.setProperty(
       "--input-border-color",
       theme === "lemonade" ? "#1C1B1B" : "#1C1B1B",
     );
