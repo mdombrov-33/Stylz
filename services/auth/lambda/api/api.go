@@ -1,6 +1,7 @@
 package api
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"lambda-func/database"
@@ -9,6 +10,7 @@ import (
 	"regexp"
 
 	"github.com/aws/aws-lambda-go/events"
+	"google.golang.org/api/idtoken"
 )
 
 var allowedOrigins = map[string]bool{
@@ -210,6 +212,107 @@ func (api ApiHandler) LoginUser(request events.APIGatewayProxyRequest) (events.A
 		StatusCode: http.StatusOK,
 		Headers: map[string]string{
 			"Access-Control-Allow-Origin": allowedOrigin,
+		},
+	}, nil
+}
+
+// ////////////////////////
+func (api ApiHandler) GoogleSignInHandler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+	var payload struct {
+		IDToken string `json:"id_token"`
+	}
+
+	allowedOrigin := getAllowedOrigin(request)
+	err := json.Unmarshal([]byte(request.Body), &payload)
+	if err != nil {
+		return events.APIGatewayProxyResponse{
+			Body:       "Invalid Request",
+			StatusCode: http.StatusBadRequest,
+			Headers: map[string]string{
+				"Access-Control-Allow-Origin": allowedOrigin,
+			},
+		}, err
+	}
+
+	// Verify ID token
+	tokenInfo, err := idtoken.Validate(context.Background(), payload.IDToken, "989656860661-7dcaamrkn7urs76s0foqjvoj9vseohcn.apps.googleusercontent.com")
+	if err != nil {
+		return events.APIGatewayProxyResponse{
+			Body:       "Invalid Google ID token",
+			StatusCode: http.StatusBadRequest,
+			Headers: map[string]string{
+				"Access-Control-Allow-Origin": allowedOrigin,
+			},
+		}, err
+	}
+
+	// Extract user details
+	email := tokenInfo.Claims["email"].(string)
+	fullName := tokenInfo.Claims["name"].(string)
+
+	// Check if user exists in DynamoDB
+	userExists, err := api.dbStore.DoesUserExist(email)
+	if err != nil {
+		return events.APIGatewayProxyResponse{
+			Body:       "Internal Server Error",
+			StatusCode: http.StatusInternalServerError,
+			Headers: map[string]string{
+				"Access-Control-Allow-Origin": allowedOrigin,
+			},
+		}, err
+	}
+
+	var user types.User
+	if !userExists {
+		// Create a new user
+		user = types.User{
+			Email:        email,
+			FullName:     fullName,
+			AuthProvider: "google",
+		}
+
+		err = api.dbStore.InsertUser(user)
+		if err != nil {
+			return events.APIGatewayProxyResponse{
+				Body:       "Internal Server Error",
+				StatusCode: http.StatusInternalServerError,
+				Headers: map[string]string{
+					"Access-Control-Allow-Origin": allowedOrigin,
+				},
+			}, err
+		}
+	} else {
+		// Retrieve existing user
+		user, err = api.dbStore.GetUser(email)
+		if err != nil {
+			return events.APIGatewayProxyResponse{
+				Body:       "Internal Server Error",
+				StatusCode: http.StatusInternalServerError,
+				Headers: map[string]string{
+					"Access-Control-Allow-Origin": allowedOrigin,
+				},
+			}, err
+		}
+	}
+
+	// Create JWT token
+	accessToken, err := types.CreateToken(user)
+	if err != nil {
+		return events.APIGatewayProxyResponse{
+			Body:       fmt.Sprintf(`{"error": "Failed to create token: %s"}`, err.Error()),
+			StatusCode: http.StatusInternalServerError,
+			Headers: map[string]string{
+				"Access-Control-Allow-Origin": allowedOrigin,
+			},
+		}, nil
+	}
+
+	return events.APIGatewayProxyResponse{
+		Body:       fmt.Sprintf(`{"full_name": "%s", "email": "%s", "access_token": "%s"}`, user.FullName, user.Email, accessToken),
+		StatusCode: http.StatusOK,
+		Headers: map[string]string{
+			"Access-Control-Allow-Origin": allowedOrigin,
+			"Content-Type":                "application/json",
 		},
 	}, nil
 }

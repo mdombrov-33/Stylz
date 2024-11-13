@@ -29,7 +29,7 @@ function Login() {
 
     try {
       const res = await axios.post(
-        "https://xp3vs2ukp2.execute-api.eu-north-1.amazonaws.com/prod/google-login", // Your backend endpoint for Google login
+        "https://xp3vs2ukp2.execute-api.eu-north-1.amazonaws.com/prod/login-google", // Your backend endpoint for Google login
         { token: googleToken },
         {
           headers: {

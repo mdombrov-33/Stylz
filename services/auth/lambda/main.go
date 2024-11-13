@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"lambda-func/app"
-	"lambda-func/middleware"
 	"net/http"
 
 	"github.com/aws/aws-lambda-go/events" // allows us to extract paths, requests etc.
@@ -37,10 +36,16 @@ func main() {
 		switch request.Path {
 		case "/register":
 			return lambdaApp.APIHandler.RegisterUserHandler(request)
+
 		case "/login":
 			return lambdaApp.APIHandler.LoginUser(request)
-		case "/protected":
-			return middleware.ValidateJWTMiddleWare(ProtectedHandler)(request) // two () () is chaining the functions
+
+		case "/login-google":
+			return lambdaApp.APIHandler.GoogleSignInHandler(request)
+
+		// case "/protected":
+		// 	return middleware.ValidateJWTMiddleWare(ProtectedHandler)(request) // two () () is chaining the functions
+
 		default:
 			return events.APIGatewayProxyResponse{
 				Body:       "Not Found",
