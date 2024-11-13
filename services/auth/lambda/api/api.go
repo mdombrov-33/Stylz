@@ -212,11 +212,11 @@ func (api ApiHandler) LoginUser(request events.APIGatewayProxyRequest) (events.A
 		StatusCode: http.StatusOK,
 		Headers: map[string]string{
 			"Access-Control-Allow-Origin": allowedOrigin,
+			"Content-Type":                "application/json",
 		},
 	}, nil
 }
 
-// ////////////////////////
 func (api ApiHandler) GoogleSignInHandler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	var payload struct {
 		IDToken string `json:"id_token"`
