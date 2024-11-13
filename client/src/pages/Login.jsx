@@ -132,12 +132,12 @@ function Login() {
                   toast.error("Google login failed, please try again.")
                 }
                 useOneTap={false}
-                theme={theme === "lemonade" ? "outline" : "filled_black"}
+                theme="outline"
                 size="large"
                 shape="rectangular"
                 text="signin_with"
                 logo_alignment="left"
-                width="360px"
+                width="384px"
                 locale="en"
               />
             </GoogleOAuthProvider>
