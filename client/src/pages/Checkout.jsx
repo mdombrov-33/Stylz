@@ -272,7 +272,7 @@ function Checkout() {
             <h3 className="text-center text-sm font-bold">Apply discount</h3>
             <p className="text-center text-sm font-bold">Try this: ABC123456</p>
             <input
-              className="mt-2 w-16 rounded-lg border border-stone-950 px-4 py-2 md:w-44"
+              className="mt-2 h-8 w-16 rounded-lg border border-stone-950 px-4 py-2 md:w-44"
               type="text"
               ref={discountInputRef}
             />
@@ -282,7 +282,7 @@ function Checkout() {
                 onClick={() => {
                   checkDiscount();
                 }}
-                className="btn btn-accent w-14 rounded-md p-4 font-redHatDisplay md:w-24"
+                className="btn btn-accent h-max w-14 rounded-md p-4 font-redHatDisplay md:w-24"
               >
                 Apply
               </button>
