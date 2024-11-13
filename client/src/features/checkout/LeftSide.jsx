@@ -7,7 +7,7 @@ import axios from "axios";
 import "react-phone-input-2/lib/style.css";
 
 import Toggle from "@/features/checkout/Toggle";
-import PhoneInputCheckout from "@/features/checkout/PhoneInputCheckout";
+import PhoneInputCheckout from "@/features/checkout/PhoneInput";
 import Loader from "@/components/Loader";
 
 function LeftSide({ user }) {
