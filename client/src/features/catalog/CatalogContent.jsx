@@ -11,7 +11,7 @@ function CatalogContent({ id, isAvailable, price, name, image, altImage }) {
 
   return (
     <main>
-      <section className="card h-full w-80 shadow-xl">
+      <section className="card h-full w-[350px] shadow-xl">
         <figure>
           <img
             className={`${theme === "lemonade" ? "brightness-75 saturate-100" : "brightness-50 saturate-100"} max-h-96 w-full object-cover`}
