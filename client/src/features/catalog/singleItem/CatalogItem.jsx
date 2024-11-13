@@ -6,11 +6,11 @@ import axios from "axios";
 
 import Loader from "@/components/Loader";
 import ReturnBtn from "@/components/ReturnBtn";
-import CatalogItemImages from "@/features/catalog/SingleItem/CatalogItemImages";
-import CatalogItemInfo from "@/features/catalog/SingleItem/CatalogItemInfo";
-import CatalogItemBtns from "@/features/catalog/SingleItem/CatalogItemBtns";
-import CatalogItemRating from "@/features/catalog/SingleItem/CatalogItemRating";
-import CatalogItemAccordion from "@/features/catalog/SingleItem/CatalogItemAccordion";
+import CatalogItemImages from "@/features/catalog/singleItem/CatalogItemImages";
+import CatalogItemInfo from "@/features/catalog/singleItem/CatalogItemInfo";
+import CatalogItemBtns from "@/features/catalog/singleItem/CatalogItemBtns";
+import CatalogItemRating from "@/features/catalog/singleItem/CatalogItemRating";
+import CatalogItemAccordion from "@/features/catalog/singleItem/CatalogItemAccordion";
 
 function CatalogItem() {
   const { id } = useParams();
@@ -19,7 +19,7 @@ function CatalogItem() {
   const fetchProductDetails = async () => {
     try {
       const response = await axios.get(
-        `https://stylz-shop.onrender.com/api/catalog/${id}`
+        `https://stylz-shop.onrender.com/api/catalog/${id}`,
       );
       return response.data;
     } catch (err) {
