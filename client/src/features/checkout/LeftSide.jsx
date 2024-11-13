@@ -20,9 +20,8 @@ function LeftSide({ user }) {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
-    console.log(data);
+    // const formData = new FormData(e.target);
+    // const data = Object.fromEntries(formData.entries());
 
     // Simulate a backend submission delay
     setTimeout(() => {
@@ -30,6 +29,7 @@ function LeftSide({ user }) {
       navigate("/checkout/payment");
     }, 2000);
   };
+
   const getCountries = async () => {
     try {
       const response = await axios.get("https://restcountries.com/v3.1/all");
@@ -193,7 +193,7 @@ function LeftSide({ user }) {
             </div>
           </div>
 
-          <section className="items flex h-full items-center justify-center gap-2 px-4 pb-2 pt-6 md:gap-12">
+          <section className="items flex h-full items-center justify-center gap-2 px-4 pb-2 pt-8 md:gap-12 md:pt-20">
             <button
               onClick={() => navigate(-1)}
               className="group btn h-12 w-36 text-xl font-bold uppercase"
