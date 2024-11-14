@@ -162,7 +162,7 @@ export async function action({ request }) {
 
   try {
     await axios.post(
-      "https://hyb4du33cc.execute-api.eu-north-1.amazonaws.com/prod/register",
+      "https://xvcgdjm2l7.execute-api.eu-north-1.amazonaws.com/prod/register",
       registerData,
       {
         headers: {
