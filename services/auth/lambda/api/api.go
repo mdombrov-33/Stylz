@@ -210,6 +210,7 @@ func (api ApiHandler) LoginUser(request events.APIGatewayProxyRequest) (events.A
 		StatusCode: http.StatusOK,
 		Headers: map[string]string{
 			"Access-Control-Allow-Origin": allowedOrigin,
+			"Content-Type":                "application/json",
 		},
 	}, nil
 }

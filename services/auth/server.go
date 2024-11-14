@@ -30,7 +30,7 @@ func NewGoAwsStack(scope constructs.Construct, id string, props *GoAwsStackProps
 		RemovalPolicy: awscdk.RemovalPolicy_DESTROY,  // remove the DB when the stack is destroyed(cdk destroy)
 	})
 
-	myFunction := awslambda.NewFunction(stack, jsii.String("myLambdaFunction"), &awslambda.FunctionProps{
+	myFunction := awslambda.NewFunction(stack, jsii.String("StylzLambdaFunction"), &awslambda.FunctionProps{
 		Runtime: awslambda.Runtime_PROVIDED_AL2023(),                                    // environment(Node, Ruby etc.). Here is a custom runtime because we are using Go
 		Code:    awslambda.AssetCode_FromAsset(jsii.String("lambda/function.zip"), nil), // code for the lambda function
 		Handler: jsii.String("main"),                                                    // handler for the lambda function
@@ -41,7 +41,7 @@ func NewGoAwsStack(scope constructs.Construct, id string, props *GoAwsStackProps
 	table.GrantReadWriteData(myFunction)
 
 	//* Create an API Gateway
-	api := awsapigateway.NewRestApi(stack, jsii.String("myAPIGateway"), &awsapigateway.RestApiProps{
+	api := awsapigateway.NewRestApi(stack, jsii.String("StylzAPIGateway"), &awsapigateway.RestApiProps{
 		//* Enable CORS
 		DefaultCorsPreflightOptions: &awsapigateway.CorsOptions{
 			AllowHeaders: jsii.Strings("Content-Type", "Authorization"),                        // headers

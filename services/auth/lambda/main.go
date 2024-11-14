@@ -41,6 +41,7 @@ func main() {
 			return lambdaApp.APIHandler.LoginUser(request)
 		case "/protected":
 			return middleware.ValidateJWTMiddleWare(ProtectedHandler)(request) // two () () is chaining the functions
+
 		default:
 			return events.APIGatewayProxyResponse{
 				Body:       "Not Found",

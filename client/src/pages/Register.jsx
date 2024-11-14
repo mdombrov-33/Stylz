@@ -18,7 +18,7 @@ function Register() {
 
   const handleFormSubmit = async (event) => {
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
-      event.preventDefault(); // Prevent form submission if passwords don't match
+      event.preventDefault();
       toast.error("Passwords do not match");
     }
   };
