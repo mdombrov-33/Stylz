@@ -18,7 +18,7 @@ function Register() {
 
   const handleFormSubmit = async (event) => {
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
-      event.preventDefault(); // Prevent form submission if passwords don't match
+      event.preventDefault();
       toast.error("Passwords do not match");
     }
   };
@@ -162,7 +162,7 @@ export async function action({ request }) {
 
   try {
     await axios.post(
-      "https://xp3vs2ukp2.execute-api.eu-north-1.amazonaws.com/prod/register",
+      "https://hyb4du33cc.execute-api.eu-north-1.amazonaws.com/prod/register",
       registerData,
       {
         headers: {
