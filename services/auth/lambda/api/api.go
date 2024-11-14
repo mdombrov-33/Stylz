@@ -219,7 +219,7 @@ func (api ApiHandler) LoginUser(request events.APIGatewayProxyRequest) (events.A
 
 func (api ApiHandler) GoogleSignInHandler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	var payload struct {
-		IDToken string `json:"id_token"`
+		IDToken string `json:"token"`
 	}
 
 	allowedOrigin := getAllowedOrigin(request)

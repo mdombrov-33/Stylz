@@ -1,7 +1,7 @@
 import { toast } from "react-hot-toast";
 import { Form, Link, useNavigation, redirect } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 
 import ReturnBtn from "@/components/ReturnBtn";
@@ -11,7 +11,6 @@ import useUserStore from "@/store/user-store";
 function Login() {
   const navigation = useNavigation();
   const { theme } = useThemeStore((state) => state);
-  const [googleToken, setGoogleToken] = useState(null);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -24,13 +23,10 @@ function Login() {
       return;
     }
 
-    setGoogleToken(response.credential);
-    console.log(googleToken);
-
     try {
       const res = await axios.post(
         "https://hyb4du33cc.execute-api.eu-north-1.amazonaws.com/prod/login-google",
-        { token: googleToken },
+        { token: response.credential },
         {
           headers: {
             "Content-Type": "application/json",
