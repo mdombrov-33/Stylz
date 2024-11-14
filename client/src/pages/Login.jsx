@@ -119,7 +119,7 @@ export async function action({ request }) {
 
   try {
     const response = await axios.post(
-      "https://xp3vs2ukp2.execute-api.eu-north-1.amazonaws.com/prod/login",
+      "https://qw2e6j0b6j.execute-api.eu-north-1.amazonaws.com/prod/login",
       loginData,
       {
         headers: {
