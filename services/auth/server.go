@@ -73,10 +73,6 @@ func NewGoAwsStack(scope constructs.Construct, id string, props *GoAwsStackProps
 	loginGoogleResource := api.Root().AddResource(jsii.String("login-google"), nil)
 	loginGoogleResource.AddMethod(jsii.String("POST"), integration, nil)
 
-	//* Google Login route
-	googleLoginResource := api.Root().AddResource(jsii.String("google-login"), nil)
-	googleLoginResource.AddMethod(jsii.String("POST"), integration, nil)
-
 	return stack
 }
 
