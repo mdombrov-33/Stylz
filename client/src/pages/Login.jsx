@@ -29,7 +29,7 @@ function Login() {
 
     try {
       const res = await axios.post(
-        "https://iu9hmhl5zf.execute-api.eu-north-1.amazonaws.com/prod/google-login",
+        "https://iu9hmhl5zf.execute-api.eu-north-1.amazonaws.com/prod/login-google",
         { token: googleToken },
         {
           headers: {

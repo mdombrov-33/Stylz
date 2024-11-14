@@ -39,10 +39,11 @@ func main() {
 			return lambdaApp.APIHandler.RegisterUserHandler(request)
 		case "/login":
 			return lambdaApp.APIHandler.LoginUser(request)
-		// case "/google-login":
-		// return lambdaApp.APIHandler.GoogleSignInHandler(request)
 		case "/protected":
 			return middleware.ValidateJWTMiddleWare(ProtectedHandler)(request) // two () () is chaining the functions
+		case "/login-google":
+			return lambdaApp.APIHandler.GoogleSignInHandler(request)
+
 		default:
 			return events.APIGatewayProxyResponse{
 				Body:       "Not Found",
