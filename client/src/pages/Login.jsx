@@ -1,8 +1,8 @@
-import { FaGoogle } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 import { Form, Link, useNavigation, redirect } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
+import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 
 import ReturnBtn from "@/components/ReturnBtn";
 import useThemeStore from "@/store/theme-store";
@@ -16,6 +16,40 @@ function Login() {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
+  // Handle Google token submission
+  const handleGoogleLogin = async (response) => {
+    if (!response.credential) {
+      toast.error("Google login failed, please try again.");
+      return;
+    }
+
+    try {
+      const res = await axios.post(
+        "https://xvcgdjm2l7.execute-api.eu-north-1.amazonaws.com/prod/login-google",
+        { token: response.credential },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      );
+
+      const { access_token, email, full_name } = res.data;
+      const expiration = new Date();
+      expiration.setHours(expiration.getHours() + 2);
+
+      sessionStorage.setItem("access_token", access_token);
+      sessionStorage.setItem("expiration", expiration.toISOString());
+
+      useUserStore.getState().setUser(email, full_name);
+      toast.success("Google login successful!");
+      return redirect("/");
+    } catch (err) {
+      toast.error("Google login failed, please try again.");
+      return err;
+    }
+  };
+  // //////////////////////////////////
   return (
     <main className="grid h-screen justify-center md:grid-cols-2">
       <section className="mt-20 flex flex-col items-center justify-center">
@@ -83,11 +117,29 @@ function Login() {
                 "Sign In"
               )}
             </button>
-            <button className="btn my-2 w-full rounded-lg bg-neutral-content py-2 text-lg text-white">
-              <FaGoogle />
-              Sign in with Google
-            </button>
           </Form>
+
+          <section className="mt-2 flex items-center justify-center">
+            {/* Google Sign-In Button */}
+            <GoogleOAuthProvider clientId="989656860661-7dcaamrkn7urs76s0foqjvoj9vseohcn.apps.googleusercontent.com">
+              <GoogleLogin
+                onSuccess={handleGoogleLogin}
+                onError={() =>
+                  toast.error("Google login failed, please try again.")
+                }
+                useOneTap={false}
+                theme="outline"
+                size="large"
+                shape="rectangular"
+                text="signin_with"
+                logo_alignment="left"
+                width="384px"
+                locale="en"
+              />
+            </GoogleOAuthProvider>
+          </section>
+
+          {/* ///////////////// */}
         </fieldset>
         <p className="mt-2">
           Don&apos;t have an account?{" "}
@@ -119,7 +171,7 @@ export async function action({ request }) {
 
   try {
     const response = await axios.post(
-      " https://xvcgdjm2l7.execute-api.eu-north-1.amazonaws.com/prod/login",
+      "https://xvcgdjm2l7.execute-api.eu-north-1.amazonaws.com/prod/login",
       loginData,
       {
         headers: {

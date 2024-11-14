@@ -10,7 +10,7 @@ const AppLayout = lazy(() => import("./pages/AppLayout"));
 const ShopNew = lazy(() => import("./pages/ShopNew"));
 const Catalog = lazy(() => import("./pages/Catalog"));
 const CatalogItem = lazy(
-  () => import("./features/catalog/SingleItem/CatalogItem"),
+  () => import("./features/catalog/singleItem/CatalogItem"),
 );
 const Cart = lazy(() => import("./pages/Cart"));
 const ErrorPage = lazy(() => import("./pages/ErrorPage"));
