@@ -19,6 +19,7 @@ type User struct {
 	Email        string `json:"email"`
 	PasswordHash string `json:"password"`
 	FullName     string `json:"full_name"`
+	AuthProvider string `json:"auth_provider"`
 }
 
 func NewUser(registerUser RegisterUser) (User, error) {

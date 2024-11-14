@@ -25,7 +25,7 @@ function Login() {
 
     try {
       const res = await axios.post(
-        "https://hyb4du33cc.execute-api.eu-north-1.amazonaws.com/prod/login-google",
+        "https://xvcgdjm2l7.execute-api.eu-north-1.amazonaws.com/prod/login-google",
         { token: response.credential },
         {
           headers: {

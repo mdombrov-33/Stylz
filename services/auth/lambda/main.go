@@ -39,6 +39,8 @@ func main() {
 			return lambdaApp.APIHandler.RegisterUserHandler(request)
 		case "/login":
 			return lambdaApp.APIHandler.LoginUser(request)
+		case "login-google":
+			return lambdaApp.APIHandler.GoogleSignInHandler(request)
 		case "/protected":
 			return middleware.ValidateJWTMiddleWare(ProtectedHandler)(request) // two () () is chaining the functions
 

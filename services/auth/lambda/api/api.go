@@ -1,6 +1,7 @@
 package api
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"lambda-func/database"
@@ -9,6 +10,7 @@ import (
 	"regexp"
 
 	"github.com/aws/aws-lambda-go/events"
+	"google.golang.org/api/idtoken"
 )
 
 var allowedOrigins = map[string]bool{
@@ -201,6 +203,124 @@ func (api ApiHandler) LoginUser(request events.APIGatewayProxyRequest) (events.A
 			StatusCode: http.StatusInternalServerError,
 			Headers: map[string]string{
 				"Access-Control-Allow-Origin": allowedOrigin,
+			},
+		}, nil
+	}
+
+	return events.APIGatewayProxyResponse{
+		Body:       fmt.Sprintf(`{"full_name": "%s", "email": "%s", "access_token": "%s"}`, user.FullName, user.Email, accessToken),
+		StatusCode: http.StatusOK,
+		Headers: map[string]string{
+			"Access-Control-Allow-Origin": allowedOrigin,
+			"Content-Type":                "application/json",
+		},
+	}, nil
+}
+
+// ////////////////////////////////////
+func (api ApiHandler) GoogleSignInHandler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+	var payload struct {
+		IDToken string `json:"token"`
+	}
+
+	allowedOrigin := getAllowedOrigin(request)
+	err := json.Unmarshal([]byte(request.Body), &payload)
+	if err != nil {
+		return events.APIGatewayProxyResponse{
+			Body:       "Invalid Request",
+			StatusCode: http.StatusBadRequest,
+			Headers: map[string]string{
+				"Access-Control-Allow-Origin": allowedOrigin,
+				"Content-Type":                "application/json",
+			},
+		}, err
+	}
+
+	// Verify the Google ID token
+	tokenInfo, err := idtoken.Validate(context.Background(), payload.IDToken, "989656860661-7dcaamrkn7urs76s0foqjvoj9vseohcn.apps.googleusercontent.com")
+	if err != nil {
+		return events.APIGatewayProxyResponse{
+			Body:       "Invalid Google ID token",
+			StatusCode: http.StatusUnauthorized,
+			Headers: map[string]string{
+				"Access-Control-Allow-Origin": allowedOrigin,
+				"Content-Type":                "application/json",
+			},
+		}, nil
+	}
+
+	// Extract user details from Google token
+	email, ok := tokenInfo.Claims["email"].(string)
+	if !ok {
+		return events.APIGatewayProxyResponse{
+			Body:       "Invalid Google token claims",
+			StatusCode: http.StatusInternalServerError,
+			Headers: map[string]string{
+				"Access-Control-Allow-Origin": allowedOrigin,
+				"Content-Type":                "application/json",
+			},
+		}, nil
+	}
+	fullName := tokenInfo.Claims["name"].(string)
+
+	// Check if the user exists in DynamoDB
+	userExists, err := api.dbStore.DoesUserExist(email)
+	if err != nil {
+		return events.APIGatewayProxyResponse{
+			Body:       "Internal Server Error",
+			StatusCode: http.StatusInternalServerError,
+			Headers: map[string]string{
+				"Access-Control-Allow-Origin": allowedOrigin,
+				"Content-Type":                "application/json",
+			},
+		}, err
+	}
+
+	var user types.User
+	if !userExists {
+		// Register the user if they don't exist
+		user = types.User{
+			Email:        email,
+			FullName:     fullName,
+			AuthProvider: "google",
+		}
+
+		// Insert user into the database
+		err = api.dbStore.InsertUser(user)
+		if err != nil {
+			return events.APIGatewayProxyResponse{
+				Body:       `{"error": "Failed to create user"}`,
+				StatusCode: http.StatusInternalServerError,
+				Headers: map[string]string{
+					"Access-Control-Allow-Origin": allowedOrigin,
+					"Content-Type":                "application/json",
+				},
+			}, err
+		}
+	} else {
+		// Retrieve existing user details
+		user, err = api.dbStore.GetUser(email)
+		if err != nil {
+			return events.APIGatewayProxyResponse{
+				Body:       "User retrieval failed",
+				StatusCode: http.StatusInternalServerError,
+				Headers: map[string]string{
+					"Access-Control-Allow-Origin": allowedOrigin,
+					"Content-Type":                "application/json",
+				},
+			}, err
+		}
+	}
+
+	// Create JWT token for both new and returning users
+	accessToken, err := types.CreateToken(user)
+	if err != nil {
+		return events.APIGatewayProxyResponse{
+			Body:       "Failed to create token",
+			StatusCode: http.StatusInternalServerError,
+			Headers: map[string]string{
+				"Access-Control-Allow-Origin": allowedOrigin,
+				"Content-Type":                "application/json",
 			},
 		}, nil
 	}
