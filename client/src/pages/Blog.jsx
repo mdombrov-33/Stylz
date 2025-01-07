@@ -49,7 +49,7 @@ const blogData = [
 
 function Blog() {
   return (
-    <section className="grid h-full w-full grid-cols-3 items-center justify-evenly gap-6 px-6 pt-6">
+    <section className="grid h-full w-full items-center justify-evenly gap-6 px-6 py-6 md:grid-cols-2 xl:grid-cols-3">
       {blogData.map((item) => (
         <BlogItem
           key={item.id}
