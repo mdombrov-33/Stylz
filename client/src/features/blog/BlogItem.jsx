@@ -1,7 +1,7 @@
 function BlogItem({ title, image, date, description }) {
   return (
     <>
-      <article className="relative overflow-hidden rounded-lg shadow transition hover:shadow-lg">
+      <article className="relative transform overflow-hidden rounded-lg shadow transition hover:scale-105 hover:shadow-lg">
         <img
           alt=""
           src={image}
