@@ -49,7 +49,7 @@ function Payment() {
   return (
     <>
       <div>
-        <p className="mt-6 p-4 text-center font-redHatDisplay text-2xl font-bold xl:mr-44">
+        <p className="mt-6 p-4 text-center text-3xl font-bold xl:mr-44">
           We support different payment services, check them out!
         </p>
       </div>

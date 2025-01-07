@@ -6,7 +6,9 @@ function ContactInfo() {
         <div className="ml-2 grid items-center justify-center md:grid-cols-2 md:gap-40 lg:mt-12">
           {/* LEFT SIDE */}
           <div>
-            <h2 className="mt-4 text-2xl font-bold uppercase">live support</h2>
+            <h2 className="mt-4 text-center text-2xl font-bold uppercase">
+              live support
+            </h2>
             <p className="mt-6">
               Message us on <span className="underline">Whatsapp</span> or
               through Live Chat using button below(ENGLISH ONLY).
