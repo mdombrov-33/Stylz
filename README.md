@@ -14,12 +14,12 @@ This project is a full-stack app composed of three main parts:
 
 The client is a React app bootstrapped with Vite. It uses popular React libraries such as:
 
-- React 18
+- React
 - React Router DOM
 - React Query for data fetching
-- Redux Toolkit for state management
+- Zustand for state management
 - Tailwind CSS and DaisyUI for styling
-- Other utilities like axios, react-hook-form, react-icons, etc.
+- Other utilities like axios, react-icons, etc.
 
 ### Installation & Development
 ```bash
@@ -40,7 +40,7 @@ This Node.js Express server provides REST API endpoints for the product catalog 
 ### Running the Mock API Server
 
 ```bash
-cd services/mock-api
+cd services/shop
 npm install
 node server.js
 ```
