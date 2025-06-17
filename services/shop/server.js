@@ -334,6 +334,10 @@ const getNanoid = async () => {
     },
   ];
 
+  app.head("/ping", (req, res) => {
+    res.status(200).send({ message: "Server is running!" });
+  });
+
   app.get("/api/catalog/:id", (req, res) => {
     const itemId = req.params.id;
     const item = catalogItems.find((item) => item.id === itemId);
